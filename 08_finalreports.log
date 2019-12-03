@@ -1,0 +1,372 @@
+1                                                          The SAS System                          12:09 Wednesday, November 6, 2019
+
+NOTE: Unable to open SASUSER.REGSTRY. WORK.REGSTRY will be opened instead.
+NOTE: All registry changes will be lost at the end of the session.
+
+WARNING: Unable to copy SASUSER registry to WORK registry. Because of this, you will not see registry customizations during this 
+         session.
+NOTE: Unable to open SASUSER.PROFILE. WORK.PROFILE will be opened instead.
+NOTE: All profile changes will be lost at the end of the session.
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M6) 
+      Licensed to THE URBAN INSTITUTE, Site 70113200.
+NOTE: This session is executing on the X64_ES08R2  platform.
+
+
+
+NOTE: Analytical products:
+      
+      SAS/STAT 15.1
+
+NOTE: Additional host information:
+
+ X64_ES08R2 WIN 6.1.7601 Service Pack 1 Server
+
+NOTE: SAS initialization used:
+      real time           2.32 seconds
+      cpu time            0.21 seconds
+      
+
+NOTE: AUTOEXEC processing beginning; file is C:\Program 
+      Files\SASHome2\SASFoundation\9.4\autoexec.sas.
+
+
+NOTE: AUTOEXEC processing completed.
+
+1          /***************************************************************************************
+1        ! ****************************/
+2          /*	Purpose: Aggregate cleaned up MAX data from 01_studypop_analyticfile with CDPS data
+2        ! and AHRF and MSA/HRR data
+3          /*			on user-input geographic variable			
+4          /*	Project: MACPAC Spending Variations
+5          /*	Author: Leah Durbak (based on code by Abby Norling-Ruggles, modified by Kyle Caswell,
+5        !  modified by Tim Waidmann)
+6          /*	Notes:
+7          /*		1) Collapse macros for easier manipulation
+8          /***************************************************************************************
+8        ! ****************************/
+9          /*Options to change*/
+10         %macro prod();
+11         	options obs=MAX;
+12         	/*Log*/
+13         	/*proc printto print="P:\MCD-SPVR\log\08_finalreports_&sysdate..lst"
+14         	               log="P:\MCD-SPVR\log\08_finalreports_&sysdate..log" NEW;
+15         	run;*/
+16         %mend;
+2                                         The SAS System          12:09 Wednesday, November 6, 2019
+
+17         
+18         %macro test();	
+19         	options obs=100000;
+20         	/*Log*/
+21         	proc printto;run;
+22         %mend;
+23         
+24         %prod();
+25         *%test();
+26         
+27         /*Libraries*/
+28         libname data    "P:\MCD-SPVR\data\raw_data\SAS_DATASETS";
+NOTE: Libref DATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\raw_data\SAS_DATASETS
+29         libname space   "P:\MCD-SPVR\data\workspace";
+NOTE: Libref SPACE was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\workspace
+30         libname area    "P:\MCD-SPVR\data\NO_PII";
+NOTE: Libref AREA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\NO_PII
+31         libname out     "P:\MCD-SPVR\data\workspace\output";
+NOTE: Libref OUT was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\workspace\output
+32         libname library "P:\MCD-SPVR\data\workspace";
+NOTE: Libref LIBRARY refers to the same physical library as SPACE.
+NOTE: Libref LIBRARY was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\workspace
+32       !                                               * includes format file;
+33         libname cpds_wt "P:\MCD-SPVR\data\NO_PII\CDPS_WEIGHTS";
+NOTE: Libref CPDS_WT was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\NO_PII\CDPS_WEIGHTS
+34         libname scores  "P:\MCD-SPVR\data\workspace\CDPS_SCORES";
+NOTE: Libref SCORES was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\workspace\CDPS_SCORES
+35         libname ahrf_hrr "\\sas1_alt\MCD-SPVR\data\NO_PII\HRR\workspace";
+NOTE: Libref AHRF_HRR was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\sas1_alt\MCD-SPVR\data\NO_PII\HRR\workspace
+36         
+37         
+38         /* Macro vars to change*/
+39         %let msa = out.msa_2012_02nov2019;
+40         
+41         %let fname = %sysfunc(date(),date9.)_t%sysfunc(compress(%sysfunc(time(),time8.),:.));
+42         %let space_name = %sysfunc(date(),date9.);
+43         %let year = 2012;
+3                                         The SAS System          12:09 Wednesday, November 6, 2019
+
+44         %let dum_tab = %str(ods excel options(sheet_interval="table"); ods exclude all; data
+44       ! _null_; file print; put _all_; run; ods select all;);
+45         %let report_folder = P:\MCD-SPVR\reports;
+46         * AHRF HRR-state level file -- check for updated file;
+47         %let ahrf_hrr = ahrf_hrr_state_v09_25_2018;
+48         
+49         
+50         proc format library=library;
+51         	
+51       !  value missing_S
+52         		.S = 'Too small - marked missing'
+53         		. = 'Missing'
+54         		other = 'Not Missing';
+NOTE: Format MISSING_S is already on the library LIBRARY.FORMATS.
+NOTE: Format MISSING_S has been written to LIBRARY.FORMATS.
+55         	
+55       !  value missing_zip
+56         		. = 'Missing'
+57         		00000 = 'All zeros'
+58         		99999 = 'All nines'
+59         		other = 'Not Missing';
+NOTE: Format MISSING_ZIP is already on the library LIBRARY.FORMATS.
+NOTE: Format MISSING_ZIP has been written to LIBRARY.FORMATS.
+60         	
+60       !  value $missing_county
+61         		' ' = 'Missing'
+62         		'000' = 'All zeros'
+63         		'999' = 'All nines'
+64         		other = 'Not Missing';
+NOTE: Format $MISSING_COUNTY is already on the library LIBRARY.FORMATS.
+NOTE: Format $MISSING_COUNTY has been written to LIBRARY.FORMATS.
+65         	
+65       !  value missing_num
+66         		. = 'Missing'
+67         		other = 'Not Missing';
+NOTE: Format MISSING_NUM is already on the library LIBRARY.FORMATS.
+NOTE: Format MISSING_NUM has been written to LIBRARY.FORMATS.
+68         	
+68       !  value $missing_char
+69         		' ' = 'Missing'
+70         		other = 'Not Missing';
+NOTE: Format $MISSING_CHAR is already on the library LIBRARY.FORMATS.
+NOTE: Format $MISSING_CHAR has been written to LIBRARY.FORMATS.
+71         	
+71       !  value ltss 0="No LTSS"
+72         			   1="LTSS"
+73         			   9="ALL (Foster Care)";
+NOTE: Format LTSS is already on the library LIBRARY.FORMATS.
+NOTE: Format LTSS has been written to LIBRARY.FORMATS.
+74         	
+74       !  value dual 0="Medicaid Only"
+75         			   1="Dual-Eligible"
+76         			   9="ALL (Foster Care)";
+4                                         The SAS System          12:09 Wednesday, November 6, 2019
+
+NOTE: Format DUAL is already on the library LIBRARY.FORMATS.
+NOTE: Format DUAL has been written to LIBRARY.FORMATS.
+77         	
+77       !  value dis  0="No Disability"
+78         			   1="Disability"
+79         			   9="ALL (Foster Care)";
+NOTE: Format DIS is already on the library LIBRARY.FORMATS.
+NOTE: Format DIS has been written to LIBRARY.FORMATS.
+80         	
+80       !  value mc   0="Fee-for-Service"
+81         			   1="Managed Care"
+82         			   9="ALL (Foster Care)";
+NOTE: Format MC is already on the library LIBRARY.FORMATS.
+NOTE: Format MC has been written to LIBRARY.FORMATS.
+83         	
+83       !  value age  1="Child"
+84         			   2="Adult"
+85         			   3="Elderly";
+NOTE: Format AGE is already on the library LIBRARY.FORMATS.
+NOTE: Format AGE has been written to LIBRARY.FORMATS.
+86         	
+86       !  value foster 1="Foster Care"
+87         				 0="Non-Foster";
+NOTE: Format FOSTER is already on the library LIBRARY.FORMATS.
+NOTE: Format FOSTER has been written to LIBRARY.FORMATS.
+88         quit;
+
+NOTE: PROCEDURE FORMAT used (Total process time):
+      real time           0.04 seconds
+      cpu time            0.01 seconds
+      
+
+89         
+90         
+91         ods excel file="&report_folder.\output_summarystats_&fname..xlsx";
+92         ods excel options(sheet_name="msa" sheet_interval="none");
+93         data msa_num(keep=_NUMERIC_) msa_char(keep=_CHARACTER_);
+94             set &msa.;
+95         run;
+
+NOTE: There were 16710 observations read from the data set OUT.MSA_2012_02NOV2019.
+NOTE: The data set WORK.MSA_NUM has 16710 observations and 97 variables.
+NOTE: The data set WORK.MSA_CHAR has 16710 observations and 3 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.12 seconds
+      cpu time            0.07 seconds
+      
+
+96         proc odstext;
+97         	  p "&msa. descriptive statistics" / style=[color=red font_weight=bold];
+98         run;
+NOTE: PROCEDURE ODSTEXT used (Total process time):
+      real time           0.32 seconds
+5                                         The SAS System          12:09 Wednesday, November 6, 2019
+
+      cpu time            0.03 seconds
+      
+NOTE: The PROCEDURE ODSTEXT printed page 1.
+
+99         proc means stackodsoutput data=msa_num n mean std min max nmiss ;
+100        	title "&msa. descriptive statistics for numeric variables";
+101        run;
+
+NOTE: There were 16710 observations read from the data set WORK.MSA_NUM.
+NOTE: The PROCEDURE MEANS printed pages 2-15.
+NOTE: PROCEDURE MEANS used (Total process time):
+      real time           0.45 seconds
+      cpu time            0.57 seconds
+      
+
+102        proc odstext;
+103        	  p "Show cells marked .S in &msa." / style=[font_weight=bold];
+104        run;
+NOTE: PROCEDURE ODSTEXT used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+NOTE: The PROCEDURE ODSTEXT printed page 16.
+
+105        proc freq data=&msa;
+106        	title "Show cells marked .S in &msa.";
+107        	tables spd_p50 res_spd_max/  missing;
+108        	format spd_p50 res_spd_max missing_S.;
+109        run;
+
+NOTE: There were 16710 observations read from the data set OUT.MSA_2012_02NOV2019.
+NOTE: The PROCEDURE FREQ printed page 17.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.17 seconds
+      cpu time            0.07 seconds
+      
+
+110        
+111        proc freq data=msa_char;
+112        	title "&msa. descriptive statistics for character variables";
+113        run;
+
+NOTE: There were 16710 observations read from the data set WORK.MSA_CHAR.
+NOTE: The PROCEDURE FREQ printed pages 18-39.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           2.15 seconds
+      cpu time            2.10 seconds
+      
+
+114        
+115        &dum_tab.;
+
+NOTE: Non-portable document will be produced. The current settings of FORMCHAR use nonstandard 
+6                                         The SAS System          12:09 Wednesday, November 6, 2019
+
+      line-drawing characters and the resulting output file will not render correctly unless all 
+      readers of the document have the SAS Monospace font installed. To make your document 
+      portable, issue the following command: 
+      OPTIONS FORMCHAR="|----|+|---+=|-/\<>*";
+
+NOTE: 1 lines were written to file PRINT.
+NOTE: DATA statement used (Total process time):
+      real time           0.03 seconds
+      cpu time            0.00 seconds
+      
+
+116        ods excel options(sheet_name="Spend Summary" sheet_interval="none");
+117        proc sql;
+118        	select substr(st_msa,1,2) as state,
+119        		sum(cell_n) as cell_n_tot format comma16.,
+120        		sum(mcd_spd_tot) format dollar16. as mdcd_spd_tot,
+121        		sum(mcd_spd_tot)/sum(cell_n) format dollar16. as spd_per_n,
+122        		sum(mcd_spd_tot_tc) format dollar16. as mdcd_spd_tot_tc,
+123        		sum(mcd_spd_tot_tc)/sum(cell_n) format dollar16. as spd_tc_per_n,
+124        		count(distinct substr(st_msa,3)) as num_MSAs
+125        	from &msa.
+126        	group by calculated state;
+127        quit;
+NOTE: The PROCEDURE SQL printed pages 40-43.
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.46 seconds
+      cpu time            0.28 seconds
+      
+
+128        
+129        &dum_tab.;
+
+NOTE: 1 lines were written to file PRINT.
+NOTE: DATA statement used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+130        ods excel options(sheet_name="contents" sheet_interval="none");
+131        proc contents data=&msa.;run;
+
+NOTE: PROCEDURE CONTENTS used (Total process time):
+      real time           0.46 seconds
+      cpu time            0.32 seconds
+      
+NOTE: The PROCEDURE CONTENTS printed pages 44-46.
+
+132        ods excel close;
+NOTE: Writing EXCEL file: P:\MCD-SPVR\reports\output_summarystats_06NOV2019_t120929.xlsx
+133        /*export a stata copy;
+134        proc export data=out.msa_allcells_&date.
+135          outfile= "P:\MCD-SPVR\data\workspace\output\msa_allcells_&date..dta" replace;
+136        run;
+7                                         The SAS System          12:09 Wednesday, November 6, 2019
+
+137        */
+138        
+139        proc sql;
+140        	create table temp as
+141        	select *
+142        	from &msa.
+143        	where mcd_spd_tot > 19712419;
+NOTE: Table WORK.TEMP created, with 2669 rows and 100 columns.
+
+144        quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.07 seconds
+      cpu time            0.04 seconds
+      
+
+145        
+146        proc freq data=temp;
+147        	tables cell_n*mcd_spd_tot/list missing;
+148        run;
+
+NOTE: There were 2669 observations read from the data set WORK.TEMP.
+NOTE: The PROCEDURE FREQ printed pages 47-103.
+NOTE: PROCEDURE FREQ used (Total process time):
+      real time           0.14 seconds
+      cpu time            0.04 seconds
+      
+
+149        
+150        proc printto;run;
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           10.88 seconds
+      cpu time            4.11 seconds
+      

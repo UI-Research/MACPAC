@@ -1,0 +1,71 @@
+1                                         The SAS System           22:34 Wednesday, October 9, 2019
+
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M6) 
+      Licensed to THE URBAN INSTITUTE, Site 70113200.
+NOTE: This session is executing on the X64_ES08R2  platform.
+
+
+
+NOTE: Analytical products:
+      
+      SAS/STAT 15.1
+
+NOTE: Additional host information:
+
+ X64_ES08R2 WIN 6.1.7601 Service Pack 1 Server
+
+NOTE: SAS initialization used:
+      real time           0.42 seconds
+      cpu time            0.17 seconds
+      
+
+NOTE: AUTOEXEC processing beginning; file is C:\Program 
+      Files\SASHome2\SASFoundation\9.4\autoexec.sas.
+
+
+NOTE: AUTOEXEC processing completed.
+
+1          /***************************************************************************************
+1        ! ****************************/
+2          /*	Purpose: Aggregate cleaned up MAX data from 01_studypop_analyticfile with CDPS data
+2        ! and AHRF and MSA/HRR data
+3          /*			on user-input geographic variable			
+4          /*	Project: MACPAC Spending Variations
+5          /*	Author: Leah Durbak (based on code by Abby Norling-Ruggles, modified by Kyle Caswell,
+5        !  modified by Tim Waidmann)
+6          /*	Notes:
+7          /*		1) Collapse macros for easier manipulation
+8          /***************************************************************************************
+8        ! ****************************/
+9          /*Options to change*/
+10         %macro prod();
+11         	options obs=MAX;
+12         	/*Log*/
+13         	proc printto print="P:\MCD-SPVR\log\03_aggregate_&sysdate..lst"
+14         	               log="P:\MCD-SPVR\log\03_aggregate_&sysdate..log" NEW;
+15         	run;
+16         %mend;
+17         
+18         %macro test();	
+19         	options obs=100000;
+20         	/*Log*/
+21         	proc printto;run;
+22         %mend;
+23         
+2                                         The SAS System           22:34 Wednesday, October 9, 2019
+
+24         %prod();
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.00 seconds
+      
+
+ERROR: Errors printed on page 16.
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           3:44:52.52
+      cpu time            2:49:08.00
+      

@@ -1,0 +1,112 @@
+1                                                          The SAS System                             16:32 Monday, February 4, 2019
+
+NOTE: Unable to open SASUSER.REGSTRY. WORK.REGSTRY will be opened instead.
+NOTE: All registry changes will be lost at the end of the session.
+
+WARNING: Unable to copy SASUSER registry to WORK registry. Because of this, you will not see registry customizations during this 
+         session.
+NOTE: Unable to open SASUSER.PROFILE. WORK.PROFILE will be opened instead.
+NOTE: All profile changes will be lost at the end of the session.
+NOTE: Copyright (c) 2002-2012 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M3) 
+      Licensed to THE URBAN INSTITUTE, Site 70113200.
+NOTE: This session is executing on the X64_ES08R2  platform.
+
+
+
+NOTE: Updated analytical products:
+      
+      SAS/STAT 14.1
+
+NOTE: Additional host information:
+
+ X64_ES08R2 WIN 6.1.7601 Service Pack 1 Server
+
+NOTE: SAS initialization used:
+      real time           0.44 seconds
+      cpu time            0.10 seconds
+      
+
+NOTE: AUTOEXEC processing beginning; file is C:\Program 
+      Files\SASHome2\SASFoundation\9.4\autoexec.sas.
+
+
+NOTE: AUTOEXEC processing completed.
+
+1          /***********************************************************************************
+1        ! ********************************/
+2          /*	Purpose: Aggregate cleaned up MAX data from 01_studypop_analyticfile with CDPS
+2        ! data and AHRF and MSA data
+3          /*			on user-input geographic variable			
+4          /*	Project: MACPAC Spending Variations
+5          /*	Author: Leah Durbak (based on code by Abby Norling-Ruggles, modified by Kyle
+5        ! Caswell, modified by Tim Waidmann)
+6          /*	Notes:
+7          /*		1) Collapse macros for easier manipulation
+8          /***********************************************************************************
+8        ! ********************************/
+9          
+10         /*Libraries*/
+11         libname data    "P:\MCD-SPVR\data\raw_data\SAS_DATASETS";
+NOTE: Libref DATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\raw_data\SAS_DATASETS
+2                                       The SAS System           16:32 Monday, February 4, 2019
+
+12         libname space   "P:\MCD-SPVR\data\workspace";
+NOTE: Libref SPACE was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\workspace
+13         libname area    "P:\MCD-SPVR\data\NO_PII";
+NOTE: Libref AREA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\NO_PII
+14         libname out     "P:\MCD-SPVR\data\workspace\output";
+NOTE: Libref OUT was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\workspace\output
+15         libname library "P:\MCD-SPVR\data\workspace";
+NOTE: Libref LIBRARY refers to the same physical library as SPACE.
+NOTE: Libref LIBRARY was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\workspace
+15       !                                               * includes format file;
+16         libname cpds_wt "P:\MCD-SPVR\data\NO_PII\CDPS_WEIGHTS";
+NOTE: Libref CPDS_WT was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\NO_PII\CDPS_WEIGHTS
+17         libname scores  "P:\MCD-SPVR\data\workspace\CDPS_SCORES";
+NOTE: Libref SCORES was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\workspace\CDPS_SCORES
+18         libname ahrf_hrr "\\sas1_alt\MCD-SPVR\data\NO_PII\HRR\workspace";
+NOTE: Libref AHRF_HRR was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\sas1_alt\MCD-SPVR\data\NO_PII\HRR\workspace
+19         /*Options to change*/
+20         options obs=MAX;
+21         
+22         /* Macro vars to change*/
+23         %let fname = %sysfunc(date(),date9.)_t%sysfunc(compress(%sysfunc(time(),time8.),:.))
+23       ! ;
+24         %let space_name = %sysfunc(date(),date9.);
+25         %let indata_max = space.id_pop_01feb2019; /*input data file from
+25       ! 01_studypop_analyticfile*/
+26         %let year = 2012;
+27         * AHRF HRR-state level file -- check for updated file;
+28         %let ahrf_hrr = ahrf_hrr_state_v09_25_2018;
+29         /*Log*/
+30         proc printto print="P:\MCD-SPVR\log\03_aggregate_msa_&sysdate..lst"
+31                        log="P:\MCD-SPVR\log\03_aggregate_msa_&sysdate..log" NEW;
+32         run;
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           5:40:56.52
+      cpu time            3:15:13.44
+      

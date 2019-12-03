@@ -1,0 +1,89 @@
+                                           The SAS System       11:27 Thursday, January 24, 2019   1
+
+Max and Zip Data Merge Results
+
+first two cols: 0 = no match between MAX and Zips, 1 = match between MAX and Zips
+
+second two cols: 0 = MAX var not in Zips data, 1 = MAX var in Zips data, . = MAX var is missing
+
+                                   Max and Zip Data Merge Results                                  2
+         first two cols: 0 = no match between MAX and Zips, 1 = match between MAX and Zips
+  second two cols: 0 = MAX var not in Zips data, 1 = MAX var in Zips data, . = MAX var is missing
+                                                                    11:27 Thursday, January 24, 2019
+
+                                         The FREQ Procedure
+
+                                                                                 Cumulative
+        no_zip_match    no_cnty_match    valid_zip    valid_cnty    Frequency     Frequency
+        ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                   0                0            1             1    63922157      63922157 
+                   1                1            .             1       36193      63958350 
+                   1                1            0             .      114691      64073041 
+                   1                1            0             0         203      64073244 
+                   1                1            0             1      750937      64824181 
+                   1                1            1             .      315431      65139612 
+                   1                1            1             0       18055      65157667 
+                   1                1            1             1     5076713      70234380 
+                                   Max and Zip Data Merge Results                                  3
+         first two cols: 0 = no match between MAX and Zips, 1 = match between MAX and Zips
+  second two cols: 0 = MAX var not in Zips data, 1 = MAX var in Zips data, . = MAX var is missing
+                                                                    11:27 Thursday, January 24, 2019
+
+After Invalid Zip Fixes
+
+                                   Max and Zip Data Merge Results                                  4
+         first two cols: 0 = no match between MAX and Zips, 1 = match between MAX and Zips
+  second two cols: 0 = MAX var not in Zips data, 1 = MAX var in Zips data, . = MAX var is missing
+                                                                    11:27 Thursday, January 24, 2019
+
+Zip Fix Summary
+
+                                   Max and Zip Data Merge Results                                  5
+         first two cols: 0 = no match between MAX and Zips, 1 = match between MAX and Zips
+  second two cols: 0 = MAX var not in Zips data, 1 = MAX var in Zips data, . = MAX var is missing
+                                                                    11:27 Thursday, January 24, 2019
+
+Max and Zip Data Merge Results
+
+                                   Max and Zip Data Merge Results                                  6
+                                                                    11:27 Thursday, January 24, 2019
+
+                                         The FREQ Procedure
+
+        zip_match    cnty_match    replaced_zip    replaced_cnty    valid_zip    valid_cnty
+        ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                1             1               0                0            1             1
+                1             1               1                0            .             1
+                1             1               1                0            0             1
+                1             1               1                0            1             1
+                1             1               1                1            1             .
+                1             1               1                1            1             0
+
+                                                  Cumulative    Cumulative
+                         Frequency     Percent     Frequency      Percent
+                         ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                         63922387       91.16      63922387        91.16  
+                            36193        0.05      63958580        91.21  
+                           750939        1.07      64709519        92.28  
+                          5076748        7.24      69786267        99.52  
+                           315433        0.45      70101700        99.97  
+                            18055        0.03      70119755       100.00  
+                                Zip and County Code Fix Frequencies                                7
+                                                                    11:27 Thursday, January 24, 2019
+
+                                         The FREQ Procedure
+
+                                              Zip code
+ 
+                                                          Cumulative    Cumulative
+                       zip_fx    Frequency     Percent     Frequency      Percent
+                  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                  Not Missing    70119486      100.00      70119486       100.00  
+
+
+                                 State abbreviation and county code
+ 
+                                                          Cumulative    Cumulative
+                  cnty_fx        Frequency     Percent     Frequency      Percent
+                  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                  Not Missing    70119486      100.00      70119486       100.00  

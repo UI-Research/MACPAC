@@ -1,0 +1,43 @@
+                                   All PersonLevel Data Count                                  1
+                                                                 17:45 Tuesday, December 4, 2018
+
+                                                  All
+                                          PersonLevel
+                                           Data Count
+                                          ƒƒƒƒƒƒƒƒƒƒƒ
+                                             70593409
+                             Without Obs Missing ALL Geodata Count                             2
+                                                                 17:45 Tuesday, December 4, 2018
+
+                                             Without
+                                                 Obs
+                                             Missing
+                                                 ALL
+                                             Geodata
+                                               Count
+                                            ƒƒƒƒƒƒƒƒ
+                                            69865022
+                      Unmatched geos with Valid/Invalid Zips and Counties                      3
+                                valid = present in zips data set 17:45 Tuesday, December 4, 2018
+
+                                       The FREQ Procedure
+
+                                                                Cumulative
+                      valid_zip    valid_county    Frequency     Frequency
+                      ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                              0               0        3071          3071 
+                              0               1      750937        754008 
+                              1               0      112259        866267 
+                              1               1     5076713       5942980 
+                      Unmatched geos with Valid/Invalid Zips and Counties                      4
+                                valid = present in zips data set 17:45 Tuesday, December 4, 2018
+
+Number of Obs with Valid zip_miss
+
+                               Number of Obs with Valid zip_miss                               5
+                                                                 17:45 Tuesday, December 4, 2018
+
+                                         num_validzip_
+                                                  miss
+                                         ƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                                               5188972

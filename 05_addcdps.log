@@ -1,0 +1,388 @@
+1                                                          The SAS System                          08:00 Wednesday, November 6, 2019
+
+NOTE: Unable to open SASUSER.REGSTRY. WORK.REGSTRY will be opened instead.
+NOTE: All registry changes will be lost at the end of the session.
+
+WARNING: Unable to copy SASUSER registry to WORK registry. Because of this, you will not see registry customizations during this 
+         session.
+NOTE: Unable to open SASUSER.PROFILE. WORK.PROFILE will be opened instead.
+NOTE: All profile changes will be lost at the end of the session.
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M6) 
+      Licensed to THE URBAN INSTITUTE, Site 70113200.
+NOTE: This session is executing on the X64_ES08R2  platform.
+
+
+
+NOTE: Analytical products:
+      
+      SAS/STAT 15.1
+
+NOTE: Additional host information:
+
+ X64_ES08R2 WIN 6.1.7601 Service Pack 1 Server
+
+NOTE: SAS initialization used:
+      real time           0.99 seconds
+      cpu time            0.18 seconds
+      
+
+NOTE: AUTOEXEC processing beginning; file is C:\Program 
+      Files\SASHome2\SASFoundation\9.4\autoexec.sas.
+
+
+NOTE: AUTOEXEC processing completed.
+
+1          /***************************************************************************************
+1        ! ****************************/
+2          /*	Purpose: Aggregate cleaned up MAX data from 01_studypop_analyticfile with CDPS data
+2        ! and AHRF and MSA/HRR data
+3          /*			on user-input geographic variable			
+4          /*	Project: MACPAC Spending Variations
+5          /*	Author: Leah Durbak (based on code by Abby Norling-Ruggles, modified by Kyle Caswell,
+5        !  modified by Tim Waidmann)
+6          /* Notes:
+7          /*		Updated full benefits definition
+8          /***************************************************************************************
+8        ! ****************************/
+9          /*Options to change*/
+10         %macro prod();
+11         	options obs=MAX;
+12         	/*Log*/
+13         	proc printto print="P:\MCD-SPVR\log\05_addcdps_&sysdate..lst"
+14         	               log="P:\MCD-SPVR\log\05_addcdps_&sysdate..log" NEW;
+15         	run;
+16         %mend;
+2                                         The SAS System          08:00 Wednesday, November 6, 2019
+
+17         
+18         %macro test();	
+19         	options obs=MAX;
+20         	/*Log*/
+21         	proc printto;run;
+22         %mend;
+23         
+24         *%prod();
+25         %test();
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.01 seconds
+      cpu time            0.01 seconds
+      
+
+26         
+27         /*Libraries*/
+28         libname data    "P:\MCD-SPVR\data\raw_data\SAS_DATASETS";
+NOTE: Libref DATA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\raw_data\SAS_DATASETS
+29         libname space   "P:\MCD-SPVR\data\workspace";
+NOTE: Libref SPACE was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\workspace
+30         libname area    "P:\MCD-SPVR\data\NO_PII";
+NOTE: Libref AREA was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\NO_PII
+31         libname out     "P:\MCD-SPVR\data\workspace\output";
+NOTE: Libref OUT was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\workspace\output
+32         libname library "P:\MCD-SPVR\data\workspace";
+NOTE: Libref LIBRARY refers to the same physical library as SPACE.
+NOTE: Libref LIBRARY was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\workspace
+32       !                                               * includes format file;
+33         libname cpds_wt "P:\MCD-SPVR\data\NO_PII\CDPS_WEIGHTS";
+NOTE: Libref CPDS_WT was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\NO_PII\CDPS_WEIGHTS
+34         libname scores  "P:\MCD-SPVR\data\workspace\CDPS_SCORES";
+NOTE: Libref SCORES was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: P:\MCD-SPVR\data\workspace\CDPS_SCORES
+35         libname ahrf_hrr "\\sas1_alt\MCD-SPVR\data\NO_PII\HRR\workspace";
+NOTE: Libref AHRF_HRR was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\sas1_alt\MCD-SPVR\data\NO_PII\HRR\workspace
+36         
+37         /* Macro vars to change*/
+3                                         The SAS System          08:00 Wednesday, November 6, 2019
+
+38         %let indata = space.id_pop; /*input data file from 01_studypop_analyticfile*/
+39         %let outdata=space.temp_max_cdpsscores;
+40         
+41         %let year=2012;
+42         %let fname = %sysfunc(date(),date9.)_t%sysfunc(compress(%sysfunc(time(),time8.),:.));
+43         %let space_name = %sysfunc(date(),date9.);
+44         %let report_folder = P:\MCD-SPVR\reports;
+45         * AHRF HRR-state level file -- check for updated file;
+46         %let ahrf_hrr = ahrf_hrr_state_v09_25_2018;
+47         
+48         /*drop tables for space
+49         proc sql;
+50         	drop table space.temp_max_cdpsscores;
+51         quit;
+52         */
+53         /*ADHOC FIX FOR RI, ALREADY FIXED IN 01_POPFILE
+54         proc sql;
+55         	create table temp (drop=EL_RSDNC_CNTY_CD_LTST county
+55       ! rename=(EL_RSDNC_CNTY_CD_LTST_fx=EL_RSDNC_CNTY_CD_LTST county_fx=county)) as
+56         	select *,
+57         		case when state_cd = 'RI' and EL_RSDNC_CNTY_CD_LTST in('000','999',' ') then "005"
+58         		else EL_RSDNC_CNTY_CD_LTST
+59         		end as EL_RSDNC_CNTY_CD_LTST_fx,
+60         		case when state_cd = 'RI' and EL_RSDNC_CNTY_CD_LTST in('000','999',' ') then "RI-005"
+61         		else county
+62         		end as county_fx
+63         	from &indata.;
+64         quit;
+65         
+66         data space.temp;
+67         	set temp;
+68         run;*/
+69         /****************/
+70         /* Add CDPS data*/
+71         /****************/
+72         *1 concatenate state cdps files (DATA);
+73         data work.cdps_allst;
+74         	set scores.cdps_asth:;
+75         	state_cd=substr(recipno,1,2);
+76         run;
+
+NOTE: There were 141141 observations read from the data set SCORES.CDPS_ASTH_AK.
+NOTE: There were 1091519 observations read from the data set SCORES.CDPS_ASTH_AL.
+NOTE: There were 721172 observations read from the data set SCORES.CDPS_ASTH_AR.
+NOTE: There were 1669283 observations read from the data set SCORES.CDPS_ASTH_AZ.
+NOTE: There were 8070125 observations read from the data set SCORES.CDPS_ASTH_CA.
+NOTE: There were 662236 observations read from the data set SCORES.CDPS_ASTH_CO.
+NOTE: There were 820071 observations read from the data set SCORES.CDPS_ASTH_CT.
+NOTE: There were 237407 observations read from the data set SCORES.CDPS_ASTH_DC.
+NOTE: There were 248338 observations read from the data set SCORES.CDPS_ASTH_DE.
+NOTE: There were 4086554 observations read from the data set SCORES.CDPS_ASTH_FL.
+NOTE: There were 1967221 observations read from the data set SCORES.CDPS_ASTH_GA.
+NOTE: There were 298726 observations read from the data set SCORES.CDPS_ASTH_HI.
+4                                         The SAS System          08:00 Wednesday, November 6, 2019
+
+NOTE: There were 628211 observations read from the data set SCORES.CDPS_ASTH_IA.
+NOTE: There were 266084 observations read from the data set SCORES.CDPS_ASTH_ID.
+NOTE: There were 3025013 observations read from the data set SCORES.CDPS_ASTH_IL.
+NOTE: There were 1253148 observations read from the data set SCORES.CDPS_ASTH_IN.
+NOTE: There were 425967 observations read from the data set SCORES.CDPS_ASTH_KS.
+NOTE: There were 931963 observations read from the data set SCORES.CDPS_ASTH_KY.
+NOTE: There were 1203504 observations read from the data set SCORES.CDPS_ASTH_LA.
+NOTE: There were 1493404 observations read from the data set SCORES.CDPS_ASTH_MA.
+NOTE: There were 1115570 observations read from the data set SCORES.CDPS_ASTH_MD.
+NOTE: There were 366939 observations read from the data set SCORES.CDPS_ASTH_ME.
+NOTE: There were 2248332 observations read from the data set SCORES.CDPS_ASTH_MI.
+NOTE: There were 1115036 observations read from the data set SCORES.CDPS_ASTH_MN.
+NOTE: There were 1138914 observations read from the data set SCORES.CDPS_ASTH_MO.
+NOTE: There were 768130 observations read from the data set SCORES.CDPS_ASTH_MS.
+NOTE: There were 134656 observations read from the data set SCORES.CDPS_ASTH_MT.
+NOTE: There were 1972408 observations read from the data set SCORES.CDPS_ASTH_NC.
+NOTE: There were 85888 observations read from the data set SCORES.CDPS_ASTH_ND.
+NOTE: There were 269686 observations read from the data set SCORES.CDPS_ASTH_NE.
+NOTE: There were 165170 observations read from the data set SCORES.CDPS_ASTH_NH.
+NOTE: There were 1184579 observations read from the data set SCORES.CDPS_ASTH_NJ.
+NOTE: There were 631469 observations read from the data set SCORES.CDPS_ASTH_NM.
+NOTE: There were 377060 observations read from the data set SCORES.CDPS_ASTH_NV.
+NOTE: There were 5808088 observations read from the data set SCORES.CDPS_ASTH_NY.
+NOTE: There were 2531089 observations read from the data set SCORES.CDPS_ASTH_OH.
+NOTE: There were 964454 observations read from the data set SCORES.CDPS_ASTH_OK.
+NOTE: There were 746804 observations read from the data set SCORES.CDPS_ASTH_OR.
+NOTE: There were 2525876 observations read from the data set SCORES.CDPS_ASTH_PA.
+NOTE: There were 29093 observations read from the data set SCORES.CDPS_ASTH_RI.
+NOTE: There were 1061987 observations read from the data set SCORES.CDPS_ASTH_SC.
+NOTE: There were 135812 observations read from the data set SCORES.CDPS_ASTH_SD.
+NOTE: There were 1527594 observations read from the data set SCORES.CDPS_ASTH_TN.
+NOTE: There were 5215154 observations read from the data set SCORES.CDPS_ASTH_TX.
+NOTE: There were 374572 observations read from the data set SCORES.CDPS_ASTH_UT.
+NOTE: There were 1098012 observations read from the data set SCORES.CDPS_ASTH_VA.
+NOTE: There were 194598 observations read from the data set SCORES.CDPS_ASTH_VT.
+NOTE: There were 1391017 observations read from the data set SCORES.CDPS_ASTH_WA.
+NOTE: There were 1264079 observations read from the data set SCORES.CDPS_ASTH_WI.
+NOTE: There were 404952 observations read from the data set SCORES.CDPS_ASTH_WV.
+NOTE: There were 87938 observations read from the data set SCORES.CDPS_ASTH_WY.
+NOTE: The data set WORK.CDPS_ALLST has 66176043 observations and 128 variables.
+NOTE: DATA statement used (Total process time):
+      real time           4:33.05
+      cpu time            2:44.61
+      
+
+77         
+78         *2 join CDPS to categories_full by RECIPNO (SQL);
+79         proc sql;
+80         	create table cat_plus_cdps as
+81         	select *
+82         	from &indata. a left join cdps_allst (drop= male age state_cd) b
+83         	on a.RECIPNO = b.RECIPNO
+84         	where a.EL_RSTRCT_BNFT_FLG_LTST in ("1","7","8","A","B");
+5                                         The SAS System          08:00 Wednesday, November 6, 2019
+
+WARNING: Variable recipno already exists on file WORK.CAT_PLUS_CDPS.
+NOTE: Table WORK.CAT_PLUS_CDPS created, with 58958997 rows and 544 columns.
+
+85         quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           1:02:48.31
+      cpu time            51:47.02
+      
+
+86         
+87         proc sql;
+88         	create table space.drp_benes_wofllbenf as
+89         	select *
+90         	from &indata.
+91         	where EL_RSTRCT_BNFT_FLG_LTST not in ("1","7","8","A","B");
+NOTE: Table SPACE.DRP_BENES_WOFLLBENF created, with 7829666 rows and 420 columns.
+
+92         quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           13:58.43
+      cpu time            4:57.19
+      
+
+93         
+94         *3 get means of spending and CDPS and generate mult_c=(spend_c/cdps_c) (by
+94       ! 'chip','nmcd','','msg') (SQL);
+95         proc sql;
+96         	create table spendavg as
+97         	select age_cell,
+98         		AVG(TOT_MDCD_PYMT_AMT) as mspend_c,
+99         		AVG(CDPS_SCORE) as cdps_c,
+100        		AVG(TOT_MDCD_PYMT_AMT) / AVG(CDPS_SCORE) as mult_c
+101        	from cat_plus_cdps
+102        	group by age_cell;
+NOTE: Table WORK.SPENDAVG created, with 52 rows and 4 columns.
+
+103        quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           5:18.91
+      cpu time            5:34.63
+      
+
+104        
+105        *4. join means to individual records by 'chip','nmcd','','msg'  and
+106           generate pspend_i=spend_i*mult_c and rspend_i=spend_i-pspend_i (SQL);
+107        proc sql;
+108        	create table indata as
+109        	select T1.*,
+110        		(T1.TOT_MDCD_PYMT_AMT) AS mspend_i,
+111        		T2.mspend_c,
+112        		T2.cdps_c,
+113        		T2.mult_c,
+114        		T1.CDPS_SCORE*T2.mult_c AS Pspend_i,
+6                                         The SAS System          08:00 Wednesday, November 6, 2019
+
+115        		(T1.TOT_MDCD_PYMT_AMT) - T1.CDPS_SCORE*T2.mult_c AS Rspend_i
+116        	from cat_plus_cdps T1 left join spendavg T2
+117        	on T1.age_cell=T2.age_cell;
+NOTE: Table WORK.INDATA created, with 58958997 rows and 550 columns.
+
+118        quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           54:09.76
+      cpu time            42:24.26
+      
+
+119        
+120        /************************************************/
+121        /*Initial processing to attach MSA info to files*/
+122        /************************************************/
+123        /*
+124        proc sql;
+125        	create table space.temp_ahrf_msa_xwalk as
+126        	select *,
+127        		&year. as year,
+128        		catx("-",state_cd,county_fips) as st_cnty,
+129        		case when state_fips = '72' then 'PR'
+130        			else state_cd
+131        			end as state_cd_fx,
+132        		case when metropolitanmicropolitanstatis = 'Metropolitan Statistical Area' then
+132      ! catx('-', state_cd, cbsacode)
+133        			else catx('-', state_cd, "XXXXX")
+134        			end as st_msa,
+135        		case when metropolitanmicropolitanstatis ne 'Metropolitan Statistical Area' then
+135      ! "Non-metropolitan area"
+136        			else cbsatitle
+137        		end as cbsatitle_fx,
+138        		case when missing(unemp_d) or missing(unemp_n) then 1 else 0 end as ahrf_msg
+139        	from space.ahrf_msa;
+140        quit;		
+141        
+142        proc sql;
+143        	create table space.temp_ahrf_aggre as
+144        	select year, st_msa,
+145        		case when substr(st_msa,4,5) = "XXXXX" then "Non-metropolitan area"
+146        			else cbsatitle
+147        		end as cbsatitle_fx,
+148        		1000*sum(hos_n)/sum(pop)label = "Number of hospital beds per 1k people, 2010" as beds,
+149        		1000*sum(md_n)/sum(pop)label = "Number of physicians per 1k people, 2010" as md,
+150        		sum(poverty_d)/sum(poverty_n) label = "Rate of persons in poverty" as povrate,
+151        		sum(unemp_d)/sum(unemp_n) label = "Unemployment rate" as urate,
+152        		sum(ahrf_msg) as sum_ahrf_msg
+153        	from space.temp_ahrf_msa_xwalk
+154        	group by year, st_msa, calculated cbsatitle_fx;
+155        quit;
+156        */
+157        proc sql ;
+158        	create table max_2012_msa_join (drop=cbsatitle_fx)as
+7                                         The SAS System          08:00 Wednesday, November 6, 2019
+
+159        	select  a.*, b.* ,cbsatitle_fx as cbsatitle
+160        	from indata a left join space.temp_ahrf_msa_xwalk (drop=year cbsatitle) b
+161        	on a.county=b.st_cnty;
+WARNING: Variable state_cd already exists on file WORK.MAX_2012_MSA_JOIN.
+NOTE: Table WORK.MAX_2012_MSA_JOIN created, with 58958997 rows and 574 columns.
+
+162        quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           51:06.04
+      cpu time            43:23.08
+      
+
+163        
+164        proc sql;
+165        	create table space.temp_max_cdpsscores as
+166        	select *
+167        	from max_2012_msa_join
+168        	where st_msa ne ' ';
+NOTE: Table SPACE.TEMP_MAX_CDPSSCORES created, with 58941632 rows and 574 columns.
+
+169        quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           16:01.49
+      cpu time            12:38.72
+      
+
+170        /*
+171        proc freq data=max_2012_msa_join;
+172        	title "Obs with ST_MSA matches";
+173        	tables st_msa county/list missing;
+174        	format st_msa county $missing_char.;
+175        run;
+176        
+177        proc sql;
+178        	title Obs without ST_MSA matches;
+179        	select county, count(county) as number_missing
+180        	from max_2012_msa_join
+181        	where st_msa = ' '
+182        	group by county;
+183        	title;
+184        quit;
+185        */
+186        proc printto;run;
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           3:27:57.17
+      cpu time            2:43:29.77
+8                                         The SAS System          08:00 Wednesday, November 6, 2019
+
+      

@@ -1,0 +1,73 @@
+1                                                          The SAS System                           16:17 Wednesday, October 9, 2019
+
+NOTE: Unable to open SASUSER.REGSTRY. WORK.REGSTRY will be opened instead.
+NOTE: All registry changes will be lost at the end of the session.
+
+WARNING: Unable to copy SASUSER registry to WORK registry. Because of this, you will not see registry customizations during this 
+         session.
+NOTE: Unable to open SASUSER.PROFILE. WORK.PROFILE will be opened instead.
+NOTE: All profile changes will be lost at the end of the session.
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M6) 
+      Licensed to THE URBAN INSTITUTE, Site 70113200.
+NOTE: This session is executing on the X64_ES08R2  platform.
+
+
+
+NOTE: Analytical products:
+      
+      SAS/STAT 15.1
+
+NOTE: Additional host information:
+
+ X64_ES08R2 WIN 6.1.7601 Service Pack 1 Server
+
+NOTE: SAS initialization used:
+      real time           0.54 seconds
+      cpu time            0.21 seconds
+      
+
+NOTE: AUTOEXEC processing beginning; file is C:\Program 
+      Files\SASHome2\SASFoundation\9.4\autoexec.sas.
+
+
+NOTE: AUTOEXEC processing completed.
+
+1          /***************************************************************************************
+1        ! ****************************/
+2          /*	Purpose: Aggregate cleaned up MAX data from 01_studypop_analyticfile with CDPS data
+2        ! and AHRF and MSA/HRR data
+3          /*			on user-input geographic variable			
+4          /*	Project: MACPAC Spending Variations
+5          /*	Author: Leah Durbak (based on code by Abby Norling-Ruggles, modified by Kyle Caswell,
+5        !  modified by Tim Waidmann)
+6          /*	Notes:
+7          /*		1) Collapse macros for easier manipulation
+8          /***************************************************************************************
+8        ! ****************************/
+9          /*Options to change*/
+10         %macro prod();
+11         	options obs=MAX;
+12         	/*Log*/
+13         	proc printto print="P:\MCD-SPVR\log\03_aggregate_&sysdate..lst"
+14         	               log="P:\MCD-SPVR\log\03_aggregate_&sysdate..log" NEW;
+15         	run;
+16         %mend;
+2                                         The SAS System           16:17 Wednesday, October 9, 2019
+
+17         
+18         %macro test();	
+19         	options obs=100000;
+20         	/*Log*/
+21         	proc printto;run;
+22         %mend;
+23         
+24         %prod();
+
+ERROR: Errors printed on pages 6,8,9,13,18,19.
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           11:47.59
+      cpu time            10:43.09
+      

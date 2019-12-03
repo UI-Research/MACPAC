@@ -1,0 +1,1030 @@
+                               Service type vs. age cat for dropped                              16
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+  Variable              Label                                                    N           Mean
+  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+  zip_code                                                                70119486       51116.77
+  zip_miss                                                                70083293       51177.81
+  calc_date                                                               70119486       19328.00
+  EL_DOB                Date of birth                                     70053020        9734.26
+  EL_DOD                Date of death (from MSIS)                           617481       19163.51
+  MDCR_DOD              Date of death (from Medicare EDB)                   681222       19161.40
+  EL_RSDNC_ZIP_CD_LTST  Zip code of residence                             70119486       51151.39
+  EL_ELGBLTY_MO_CNT     Eligible months                                   70119486      9.6525683
+  MC_COMBO_MO_1         Managed Care combinations (Jan)                   70119486      5.9373658
+  MC_COMBO_MO_2         Managed Care combinations (Feb)                   70119486      5.9636984
+  MC_COMBO_MO_3         Managed Care combinations (Mar)                   70119486      6.0456724
+  MC_COMBO_MO_4         Managed Care combinations (Apr)                   70119486      5.9935702
+  MC_COMBO_MO_5         Managed Care combinations (May)                   70119486      5.9966273
+  MC_COMBO_MO_6         Managed Care combinations (Jun)                   70119486      5.9644288
+  MC_COMBO_MO_7         Managed Care combinations (Jul)                   70119486      6.0254692
+  MC_COMBO_MO_8         Managed Care combinations (Aug)                   70119486      6.0279076
+  MC_COMBO_MO_9         Managed Care combinations (Sep)                   70119486      6.0276886
+  MC_COMBO_MO_10        Managed Care combinations (Oct)                   70119486      6.1146398
+  MC_COMBO_MO_11        Managed Care combinations (Nov)                   70119486      6.0644008
+  MC_COMBO_MO_12        Managed Care combinations (Dec)                   70119486      6.0429476
+  EL_CHIP_FLAG_1        SCHIP eligibility (Jan)                           70119486      0.9030740
+  EL_CHIP_FLAG_2        SCHIP eligibility (Feb)                           70119486      0.9038207
+  EL_CHIP_FLAG_3        SCHIP eligibility (Mar)                           70119486      0.9048639
+  EL_CHIP_FLAG_4        SCHIP eligibility (Apr)                           70119486      0.9071489
+  EL_CHIP_FLAG_5        SCHIP eligibility (May)                           70119486      0.9076605
+  EL_CHIP_FLAG_6        SCHIP eligibility (Jun)                           70119486      0.9057335
+  EL_CHIP_FLAG_7        SCHIP eligibility (Jul)                           70119486      0.9112966
+  EL_CHIP_FLAG_8        SCHIP eligibility (Aug)                           70119486      0.9135617
+  EL_CHIP_FLAG_9        SCHIP eligibility (Sep)                           70119486      0.9118125
+  EL_CHIP_FLAG_10       SCHIP eligibility (Oct)                           70119486      0.9298534
+  EL_CHIP_FLAG_11       SCHIP eligibility (Nov)                           70119486      0.9257947
+  EL_CHIP_FLAG_12       SCHIP eligibility (Dec)                           70119486      0.9246236
+  TOT_IP_STAY_CNT       Inpatient Stays Count                             70119486      0.1384728
+  TOT_IP_DAY_CNT_STAYS  Inpatient Days Count                              70119486      0.4215997
+  TOT_MDCD_PYMT_AMT     Total Medicaid Payment Amount                     70119486        4986.45
+  FFS_PYMT_AMT_01       Inpatient Spending                                70119486    424.4696719
+  FFS_CLM_CNT_08        Claim count (MAX TOS 08)                          70119486      2.1234615
+  FFS_PYMT_AMT_08       Medicaid Payment Amount (MAX TOS 08)              70119486    128.5458987
+  FFS_CLM_CNT_12        Claim count (MAX TOS 12)                          70119486      1.0329893
+  FFS_PYMT_AMT_12       Medicaid Payment Amount (MAX TOS 12)              70119486     87.3068054
+  FFS_CLM_CNT_16        Prescription drug claims count                    70119486      3.9521338
+  FFS_PYMT_AMT_16       Prescription drug spending                        70119486    288.7447797
+  CLTC_FFS_PYMT_AMT_11  Medicaid Payment Amount (CLTC 11)                 70119486    140.9404214
+  CLTC_FFS_PYMT_AMT_12  Medicaid Payment Amount (CLTC 12)                 70119486     10.6773801
+  CLTC_FFS_PYMT_AMT_13  Medicaid Payment Amount (CLTC 13)                 70119486     14.6541980
+  CLTC_FFS_PYMT_AMT_14  Medicaid Payment Amount (CLTC 14)                 70119486     55.0177342
+  CLTC_FFS_PYMT_AMT_15  Medicaid Payment Amount (CLTC 15)                 70119486     11.5963299
+  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              17
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+  Variable              Label                                                    N           Mean
+  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+  CLTC_FFS_PYMT_AMT_16  Medicaid Payment Amount (CLTC 16)                 70119486     10.9805834
+  CLTC_FFS_PYMT_AMT_17  Medicaid Payment Amount (CLTC 17)                 70119486     14.1987066
+  CLTC_FFS_PYMT_AMT_18  Medicaid Payment Amount (CLTC 18)                 70119486     18.5074808
+  CLTC_FFS_PYMT_AMT_19  Medicaid Payment Amount (CLTC 19)                 70119486     30.1966306
+  CLTC_FFS_PYMT_AMT_20  Medicaid Payment Amount (CLTC 20)                 70119486     38.2777071
+  CLTC_FFS_PYMT_AMT_30  Medicaid Payment Amount (CLTC 30)                 70119486    201.3559318
+  CLTC_FFS_PYMT_AMT_31  Medicaid Payment Amount (CLTC 31)                 70119486     22.2219159
+  CLTC_FFS_PYMT_AMT_32  Medicaid Payment Amount (CLTC 32)                 70119486      1.9510822
+  CLTC_FFS_PYMT_AMT_33  Medicaid Payment Amount (CLTC 33)                 70119486     53.7006154
+  CLTC_FFS_PYMT_AMT_34  Medicaid Payment Amount (CLTC 34)                 70119486      9.8109227
+  CLTC_FFS_PYMT_AMT_35  Medicaid Payment Amount (CLTC 35)                 70119486    181.6774406
+  CLTC_FFS_PYMT_AMT_36  Medicaid Payment Amount (CLTC 36)                 70119486      7.8260273
+  CLTC_FFS_PYMT_AMT_37  Medicaid Payment Amount (CLTC 37)                 70119486      3.7261995
+  CLTC_FFS_PYMT_AMT_38  Medicaid Payment Amount (CLTC 38)                 70119486      2.4474184
+  CLTC_FFS_PYMT_AMT_39  Medicaid Payment Amount (CLTC 39)                 70119486      0.0126483
+  CLTC_FFS_PYMT_AMT_40  Medicaid Payment Amount (CLTC 40)                 70119486     20.6591718
+  full_benf                                                                      0              .
+  year                  Claims year                                       70119486        2012.00
+  cell_n                Flag for sums                                     70119486      1.0000000
+  pm_n                  Eligible months                                   70119486      9.6525683
+  tot_pay               TOT_MDCD_PYMT_AMT                                 70119486        4986.45
+  physclin_clm_cnt      Physician and clinic claim count                  70119486      3.1564508
+  physclin_pymt_amt     Physician and clinic spending                     70119486    215.8527041
+  cltc                  Sum of CLTC_FFS_PYMT_AMT_11-CLTC_FFS_PYMT_AMT_40  70119486    850.4365461
+  lt_nurs               Fee_for_srvc_ind_07 recipient                     70119486      0.0185870
+  _ltss                 Missing or unknown ltss flag                             0              .
+  ltss                  Long-term support services                        70119486      0.0975828
+  age                   Age                                               70053020     25.7727571
+  age_cat               Age Category                                      70053022      1.5737304
+  age_0                 Less than 1 year old as of 12/1/2012              70119486      0.0336426
+  age_1_5               Between 1-5 years old  as of 12/1/2012            70119486      0.1627162
+  age_6_18              Between 6-18 years old as of 12/1/2012            70119486      0.3246068
+  age_19_44             Between 19-44 years old as of 12/1/2012           70119486      0.2646018
+  age_45_64             Between 45-64 years old  as of 12/1/2012          70119486      0.1175067
+  age_65_84             Between 65-84 years old  as of 12/1/2012          70119486      0.0761504
+  age_85p               85 years or older as of 12/1/2012                 70119486      0.0198275
+  male                  Number of Male Beneficiary                        70056275      0.4307781
+  mas_cash              MAS Cash Beneficiary                              70119486      0.3589996
+  mas_mn                MAS Medically Needy Beneficiary                   70119486      0.0523979
+  mas_pov               MAS Poverty-Related Beneficiary                   70119486      0.3610526
+  mas_oth               MAS Other Beneficiary                             70119486      0.1154859
+  mas_1115              MAS 1115 Exspansion Beneficiary                   70119486      0.0716175
+  boe_aged              BOE Aged Beneficiary                              70119486      0.0873275
+  boe_disabled          BOE Disabled Beneficiary                          70119486      0.1538530
+  boe_child             BOE Child Beneficiary                             70119486      0.4725880
+  boe_adult             BOE Adult Beneficiary                             70119486      0.2374426
+  boe_uchild            BOE Child (Unemployed Adult) Beneficiary          70119486      0.0036568
+  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              18
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+  Variable              Label                                                    N           Mean
+  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+  boe_uadult            BOE Unemployed Adult Beneficiary                  70119486      0.0039836
+  boe_fchild            BOE Foster Child Beneficiary                      70119486      0.0128478
+  disabled                                                                70119486      0.1538530
+  _age                  Missing age flag                                  70119486    0.000947896
+  _male                 Missing or unknown male flag                      70119486    0.000901476
+  died_n                Number Dying in Year                              70119486      0.0115083
+  _died                 Missing or unknown died flag                      70119486      1.0000000
+  mc__1                 Managed care - Jan                                70114904      0.3836109
+  mc__2                 Managed care - Feb                                70114977      0.3852945
+  mc__3                 Managed care - Mar                                70115072      0.3952470
+  mc__4                 Managed care - Apr                                70115163      0.4032069
+  mc__5                 Managed care - May                                70115240      0.4050823
+  mc__6                 Managed care - Jun                                70115311      0.4084075
+  mc__7                 Managed care - Jul                                70115330      0.4122667
+  mc__8                 Managed care - Aug                                70115390      0.4131857
+  mc__9                 Managed care - Sep                                70115431      0.4133079
+  mc_10                 Managed care - Oct                                70108841      0.4161007
+  mc_11                 Managed care - Nov                                70108868      0.4146578
+  mc_12                 Managed care - Dec                                70108895      0.4171479
+  _mc__1                Missing or unknown mc1 flag                       70119486    0.000065346
+  _mc__2                Missing or unknown mc2 flag                       70119486    0.000064305
+  _mc__3                Missing or unknown mc3 flag                       70119486    0.000062950
+  _mc__4                Missing or unknown mc4 flag                       70119486    0.000061652
+  _mc__5                Missing or unknown mc5 flag                       70119486    0.000060554
+  _mc__6                Missing or unknown mc6 flag                       70119486    0.000059541
+  _mc__7                Missing or unknown mc7 flag                       70119486    0.000059270
+  _mc__8                Missing or unknown mc8 flag                       70119486    0.000058415
+  _mc__9                Missing or unknown mc9 flag                       70119486    0.000057830
+  _mc_10                Missing or unknown mc10 flag                      70119486    0.000151812
+  _mc_11                Missing or unknown mc11 flag                      70119486    0.000151427
+  _mc_12                Missing or unknown mc12 flag                      70119486    0.000151042
+  dual__1               Dual eligible - Jan                               70098900      0.1338134
+  dual__2               Dual eligible - Feb                               70098846      0.1337420
+  dual__3               Dual eligible - Mar                               70098728      0.1337898
+  dual__4               Dual eligible - Apr                               70098891      0.1341853
+  dual__5               Dual eligible - May                               70098703      0.1340996
+  dual__6               Dual eligible - Jun                               70098599      0.1339241
+  dual__7               Dual eligible - Jul                               70099881      0.1350857
+  dual__8               Dual eligible - Aug                               70099769      0.1351143
+  dual__9               Dual eligible - Sep                               70099724      0.1366512
+  dual_10               Dual eligible - Oct                               70099954      0.1358131
+  dual_11               Dual eligible - Nov                               70099759      0.1356660
+  dual_12               Dual eligible - Dec                               70099674      0.1356306
+  _dual__1              Missing or unknown dual_1 flag                    70119486    0.000293585
+  _dual__2              Missing or unknown dual_2 flag                    70119486    0.000294355
+  _dual__3              Missing or unknown dual_3 flag                    70119486    0.000296038
+  _dual__4              Missing or unknown dual_4 flag                    70119486    0.000293713
+  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              19
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+  Variable              Label                                                    N           Mean
+  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+  _dual__5              Missing or unknown dual_5 flag                    70119486    0.000296394
+  _dual__6              Missing or unknown dual_6 flag                    70119486    0.000297877
+  _dual__7              Missing or unknown dual_7 flag                    70119486    0.000279594
+  _dual__8              Missing or unknown dual_8 flag                    70119486    0.000281191
+  _dual__9              Missing or unknown dual_9 flag                    70119486    0.000281833
+  _dual_10              Missing or unknown dual_10 flag                   70119486    0.000278553
+  _dual_11              Missing or unknown dual_11 flag                   70119486    0.000281334
+  _dual_12              Missing or unknown dual_12 flag                   70119486    0.000282546
+  dual_full__1          Full dual eligible - Jan                          70119486      0.8668536
+  dual_full__2          Full dual eligible - Feb                          70119486      0.8669148
+  dual_full__3          Full dual eligible - Mar                          70119486      0.8668695
+  dual_full__4          Full dual eligible - Apr                          70119486      0.8664398
+  dual_full__5          Full dual eligible - May                          70119486      0.8665203
+  dual_full__6          Full dual eligible - Jun                          70119486      0.8666929
+  dual_full__7          Full dual eligible - Jul                          70119486      0.8655103
+  dual_full__8          Full dual eligible - Aug                          70119486      0.8654805
+  dual_full__9          Full dual eligible - Sep                          70119486      0.8639388
+  dual_full_10          Full dual eligible - Oct                          70119486      0.8643814
+  dual_full_11          Full dual eligible - Nov                          70119486      0.8645278
+  dual_full_12          Full dual eligible - Dec                          70119486      0.8645611
+  _dual_full__1         Missing or unknown dual_full_1 flag               70119486      0.8668536
+  _dual_full__2         Missing or unknown dual_full_2 flag               70119486      0.8669148
+  _dual_full__3         Missing or unknown dual_full_3 flag               70119486      0.8668695
+  _dual_full__4         Missing or unknown dual_full_4 flag               70119486      0.8664398
+  _dual_full__5         Missing or unknown dual_full_5 flag               70119486      0.8665203
+  _dual_full__6         Missing or unknown dual_full_6 flag               70119486      0.8666929
+  _dual_full__7         Missing or unknown dual_full_7 flag               70119486      0.8655103
+  _dual_full__8         Missing or unknown dual_full_8 flag               70119486      0.8654805
+  _dual_full__9         Missing or unknown dual_full_9 flag               70119486      0.8639388
+  _dual_full_10         Missing or unknown dual_full_10 flag              70119486      0.8643814
+  _dual_full_11         Missing or unknown dual_full_11 flag              70119486      0.8645278
+  _dual_full_12         Missing or unknown dual_full_12 flag              70119486      0.8645611
+  disabled__1           Disabled - Jan                                    70072651      0.1379198
+  disabled__2           Disabled - Feb                                    70073477      0.1379646
+  disabled__3           Disabled - Mar                                    70074722      0.1379376
+  disabled__4           Disabled - Apr                                    70071458      0.1384556
+  disabled__5           Disabled - May                                    70073669      0.1384585
+  disabled__6           Disabled - Jun                                    70073833      0.1380635
+  disabled__7           Disabled - Jul                                    70072252      0.1395019
+  disabled__8           Disabled - Aug                                    70072895      0.1394516
+  disabled__9           Disabled - Sep                                    70073000      0.1392070
+  disabled_10           Disabled - Oct                                    70073840      0.1405825
+  disabled_11           Disabled - Nov                                    70075336      0.1402958
+  disabled_12           Disabled - Dec                                    70075910      0.1401890
+  chip__1               CHIP - Jan                                        70119485      0.0501924
+  chip__2               CHIP - Feb                                        70119485      0.0506731
+  chip__3               CHIP - Mar                                        70119485      0.0508979
+  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              20
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+  Variable              Label                                                    N           Mean
+  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+  chip__4               CHIP - Apr                                        70119484      0.0510174
+  chip__5               CHIP - May                                        70119485      0.0511974
+  chip__6               CHIP - Jun                                        70119485      0.0513943
+  chip__7               CHIP - Jul                                        70119484      0.0518034
+  chip__8               CHIP - Aug                                        70119484      0.0520886
+  chip__9               CHIP - Sep                                        70119484      0.0522667
+  chip_10               CHIP - Oct                                        70037365      0.0525495
+  chip_11               CHIP - Nov                                        70038020      0.0524873
+  chip_12               CHIP - Dec                                        70038402      0.0524802
+  _chip__1              Missing or unknown chip_1 flag                    70119486   1.4261371E-8
+  _chip__2              Missing or unknown chip_2 flag                    70119486   1.4261371E-8
+  _chip__3              Missing or unknown chip_3 flag                    70119486   1.4261371E-8
+  _chip__4              Missing or unknown chip_4 flag                    70119486   2.8522742E-8
+  _chip__5              Missing or unknown chip_5 flag                    70119486   1.4261371E-8
+  _chip__6              Missing or unknown chip_6 flag                    70119486   1.4261371E-8
+  _chip__7              Missing or unknown chip_7 flag                    70119486   2.8522742E-8
+  _chip__8              Missing or unknown chip_8 flag                    70119486   2.8522742E-8
+  _chip__9              Missing or unknown chip_9 flag                    70119486   2.8522742E-8
+  _chip_10              Missing or unknown chip_10 flag                   70119486      0.0011712
+  _chip_11              Missing or unknown chip_11 flag                   70119486      0.0011618
+  _chip_12              Missing or unknown chip_12 flag                   70119486      0.0011564
+  nmcd__1               Not Mediciad - Jan                                70119486      0.2005242
+  nmcd__2               Not Mediciad - Feb                                70119486      0.2002709
+  nmcd__3               Not Mediciad - Mar                                70119486      0.1995244
+  nmcd__4               Not Mediciad - Apr                                70119486      0.1974122
+  nmcd__5               Not Mediciad - May                                70119486      0.1971389
+  nmcd__6               Not Mediciad - Jun                                70119486      0.1992995
+  nmcd__7               Not Mediciad - Jul                                70119486      0.1938523
+  nmcd__8               Not Mediciad - Aug                                70119486      0.1919040
+  nmcd__9               Not Mediciad - Sep                                70119486      0.1939561
+  nmcd_10               Not Mediciad - Oct                                70119486      0.1856235
+  nmcd_11               Not Mediciad - Nov                                70119486      0.1894961
+  nmcd_12               Not Mediciad - Dec                                70119486      0.1905744
+  foster__1             Foster care - Jan                                 70119486      0.0112354
+  foster__2             Foster care - Feb                                 70119486      0.0112408
+  foster__3             Foster care - Mar                                 70119486      0.0112717
+  foster__4             Foster care - Apr                                 70119486      0.0112971
+  foster__5             Foster care - May                                 70119486      0.0113197
+  foster__6             Foster care - Jun                                 70119486      0.0113363
+  foster__7             Foster care - Jul                                 70119486      0.0113102
+  foster__8             Foster care - Aug                                 70119486      0.0113032
+  foster__9             Foster care - Sep                                 70119486      0.0112907
+  foster_10             Foster care - Oct                                 70119486      0.0113315
+  foster_11             Foster care - Nov                                 70119486      0.0113322
+  foster_12             Foster care - Dec                                 70119486      0.0113366
+  elig_months_01        Eligible months for service type 1                70119486      0.0865316
+  elig_months_02        Eligible months for service type 2                70119486      0.3240044
+  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              21
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+  Variable              Label                                                    N           Mean
+  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+  elig_months_03        Eligible months for service type 3                70119486      0.0167857
+  elig_months_04        Eligible months for service type 4                70119486      4.0090236
+  elig_months_05        Eligible months for service type 5                70119486      0.2580276
+  elig_months_06        Eligible months for service type 6                70119486      0.2526185
+  elig_months_07        Eligible months for service type 7                70119486      0.0520429
+  elig_months_08        Eligible months for service type 8                70119486      2.6045309
+  elig_months_09        Eligible months for service type 9                70119486      0.0211070
+  elig_months_10        Eligible months for service type 10               70119486      0.0774230
+  elig_months_11        Eligible months for service type 11               70119486      0.0244499
+  elig_months_12        Eligible months for service type 12               70119486      0.0834329
+  elig_months_13        Eligible months for service type 13               70119486      0.2777244
+  elig_months_14        Eligible months for service type 14               70119486      0.3692125
+  elig_months_15        Eligible months for service type 15               70119486      0.3298316
+  elig_months_16        Eligible months for service type 16               70119486      0.4303022
+  elig_months_17        Eligible months for service type 17               70119486      0.1356053
+  mo_mcd                Months eligible for Medicaid                      70119486      7.6035651
+  mo_dual               Months eligible for dual                          70119486      1.6134836
+  mo_mc                 Months eligible for managed care                  70119486      4.6427582
+  mo_ffs                Months eligible for FFS                           70119486      4.5742905
+  mo_dsbl               Months not eligible for disability                70119486      1.6666491
+  mo_nondsbl                                                              70119486      7.5503996
+  mo_ltss               Months eligible for long-term support services    70119486      1.0665007
+  mo_nonltss                                                              70119486      8.1505480
+  months_1                                                                70119486      0.0863706
+  months_2                                                                70119486      0.3238743
+  months_3                                                                70119486      0.0168081
+  months_4                                                                70119486      4.0069471
+  months_5                                                                70119486      0.2583419
+  months_6                                                                70119486      0.2527712
+  months_7                                                                70119486      0.0521836
+  months_8                                                                70119486      2.6073297
+  months_9                                                                70119486      0.0211073
+  months_10                                                               70119486      0.0774332
+  months_11                                                               70119486      0.0244516
+  months_12                                                               70119486      0.0834328
+  months_13                                                               70119486      0.2777757
+  months_14                                                               70119486      0.3690802
+  months_15                                                               70119486      0.3301630
+  months_16                                                               70119486      0.4300699
+  months_17                                                               70119486      0.1356009
+  d_servicetype_n                                                         70084534      1.7774686
+  dual_cat              Dual-Eligibility Category                         70119486      0.5569522
+  mc_cat                Managed Care Category                             70119486      0.8846241
+  dis_cat               Disability Category                               70119486      0.5589912
+  ltss_cat              LTSS Use Category                                 70119486      0.5018126
+  foster_cat            Foster Care Category                              70119486      0.3021398
+  no_zip_match                                                            70119486      0.0883824
+  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              22
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+  Variable              Label                                                    N           Mean
+  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+  no_cnty_match                                                           70119486      0.0883824
+  zip_match                                                               70119486      0.9121338
+  cnty_match                                                              70119486      0.9161161
+  valid_zip                                                               70083293      0.9892851
+  valid_cnty                                                              69804055      0.9997413
+  zip_fx                Zip code                                          70119486       51116.77
+  replaced_zip          1 if zip was replaced during geo fixes            70119486      0.0883824
+  replaced_cnty         1 if state/county was replaced during geo fixes   70119486      0.0047560
+  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+
+Variable              Label                                                  Std Dev       Minimum
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+zip_code                                                                    29850.47       1001.00
+zip_miss                                                                    29793.11     1.0000000
+calc_date                                                                          0      19328.00
+EL_DOB                Date of birth                                          8545.18     -58238.00
+EL_DOD                Date of death (from MSIS)                          368.5823929     -17551.00
+MDCR_DOD              Date of death (from Medicare EDB)                  161.0648623      15344.00
+EL_RSDNC_ZIP_CD_LTST  Zip code of residence                                 29808.09             0
+EL_ELGBLTY_MO_CNT     Eligible months                                      3.6901998             0
+MC_COMBO_MO_1         Managed Care combinations (Jan)                      5.9660249             0
+MC_COMBO_MO_2         Managed Care combinations (Feb)                      5.9818115             0
+MC_COMBO_MO_3         Managed Care combinations (Mar)                      5.9400013             0
+MC_COMBO_MO_4         Managed Care combinations (Apr)                      5.8750392             0
+MC_COMBO_MO_5         Managed Care combinations (May)                      5.8768285             0
+MC_COMBO_MO_6         Managed Care combinations (Jun)                      5.8689542             0
+MC_COMBO_MO_7         Managed Care combinations (Jul)                      5.8890857             0
+MC_COMBO_MO_8         Managed Care combinations (Aug)                      5.8895562             0
+MC_COMBO_MO_9         Managed Care combinations (Sep)                      5.8803944             0
+MC_COMBO_MO_10        Managed Care combinations (Oct)                      5.9317749             0
+MC_COMBO_MO_11        Managed Care combinations (Nov)                      5.9142015             0
+MC_COMBO_MO_12        Managed Care combinations (Dec)                      5.8959677             0
+EL_CHIP_FLAG_1        SCHIP eligibility (Jan)                              0.5435495             0
+EL_CHIP_FLAG_2        SCHIP eligibility (Feb)                              0.5438887             0
+EL_CHIP_FLAG_3        SCHIP eligibility (Mar)                              0.5436326             0
+EL_CHIP_FLAG_4        SCHIP eligibility (Apr)                              0.5423348             0
+EL_CHIP_FLAG_5        SCHIP eligibility (May)                              0.5423386             0
+EL_CHIP_FLAG_6        SCHIP eligibility (Jun)                              0.5442120             0
+EL_CHIP_FLAG_7        SCHIP eligibility (Jul)                              0.5402854             0
+EL_CHIP_FLAG_8        SCHIP eligibility (Aug)                              0.5391309             0
+EL_CHIP_FLAG_9        SCHIP eligibility (Sep)                              0.5410322             0
+EL_CHIP_FLAG_10       SCHIP eligibility (Oct)                              0.6020922             0
+EL_CHIP_FLAG_11       SCHIP eligibility (Nov)                              0.6042008             0
+EL_CHIP_FLAG_12       SCHIP eligibility (Dec)                              0.6046132             0
+TOT_IP_STAY_CNT       Inpatient Stays Count                                0.7519182             0
+TOT_IP_DAY_CNT_STAYS  Inpatient Days Count                                 5.1963181  -930.0000000
+TOT_MDCD_PYMT_AMT     Total Medicaid Payment Amount                         18420.14             0
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              23
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+Variable              Label                                                  Std Dev       Minimum
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+FFS_PYMT_AMT_01       Inpatient Spending                                     6218.63             0
+FFS_CLM_CNT_08        Claim count (MAX TOS 08)                             8.4755190             0
+FFS_PYMT_AMT_08       Medicaid Payment Amount (MAX TOS 08)               978.9605225             0
+FFS_CLM_CNT_12        Claim count (MAX TOS 12)                             7.5688520             0
+FFS_PYMT_AMT_12       Medicaid Payment Amount (MAX TOS 12)               725.9113583             0
+FFS_CLM_CNT_16        Prescription drug claims count                      13.6729687             0
+FFS_PYMT_AMT_16       Prescription drug spending                             5116.10             0
+CLTC_FFS_PYMT_AMT_11  Medicaid Payment Amount (CLTC 11)                      1871.85             0
+CLTC_FFS_PYMT_AMT_12  Medicaid Payment Amount (CLTC 12)                      1179.77             0
+CLTC_FFS_PYMT_AMT_13  Medicaid Payment Amount (CLTC 13)                  593.1548808             0
+CLTC_FFS_PYMT_AMT_14  Medicaid Payment Amount (CLTC 14)                      1865.46             0
+CLTC_FFS_PYMT_AMT_15  Medicaid Payment Amount (CLTC 15)                  651.8846423             0
+CLTC_FFS_PYMT_AMT_16  Medicaid Payment Amount (CLTC 16)                  479.5867632             0
+CLTC_FFS_PYMT_AMT_17  Medicaid Payment Amount (CLTC 17)                  227.3919356             0
+CLTC_FFS_PYMT_AMT_18  Medicaid Payment Amount (CLTC 18)                  339.6080073             0
+CLTC_FFS_PYMT_AMT_19  Medicaid Payment Amount (CLTC 19)                      1034.55             0
+CLTC_FFS_PYMT_AMT_20  Medicaid Payment Amount (CLTC 20)                  944.8546917             0
+CLTC_FFS_PYMT_AMT_30  Medicaid Payment Amount (CLTC 30)                      3029.98             0
+CLTC_FFS_PYMT_AMT_31  Medicaid Payment Amount (CLTC 31)                  909.8681880             0
+CLTC_FFS_PYMT_AMT_32  Medicaid Payment Amount (CLTC 32)                  472.8072988             0
+CLTC_FFS_PYMT_AMT_33  Medicaid Payment Amount (CLTC 33)                      1241.45             0
+CLTC_FFS_PYMT_AMT_34  Medicaid Payment Amount (CLTC 34)                  697.7795307             0
+CLTC_FFS_PYMT_AMT_35  Medicaid Payment Amount (CLTC 35)                      4146.78             0
+CLTC_FFS_PYMT_AMT_36  Medicaid Payment Amount (CLTC 36)                  737.5089105             0
+CLTC_FFS_PYMT_AMT_37  Medicaid Payment Amount (CLTC 37)                  101.0530608             0
+CLTC_FFS_PYMT_AMT_38  Medicaid Payment Amount (CLTC 38)                  121.8028417             0
+CLTC_FFS_PYMT_AMT_39  Medicaid Payment Amount (CLTC 39)                   14.6062855             0
+CLTC_FFS_PYMT_AMT_40  Medicaid Payment Amount (CLTC 40)                      1344.76             0
+full_benf                                                                          .             .
+year                  Claims year                                                  0       2012.00
+cell_n                Flag for sums                                                0     1.0000000
+pm_n                  Eligible months                                      3.6901998             0
+tot_pay               TOT_MDCD_PYMT_AMT                                     18420.14             0
+physclin_clm_cnt      Physician and clinic claim count                    11.6965532             0
+physclin_pymt_amt     Physician and clinic spending                          1250.91             0
+cltc                  Sum of CLTC_FFS_PYMT_AMT_11-CLTC_FFS_PYMT_AMT_40       7638.48             0
+lt_nurs               Fee_for_srvc_ind_07 recipient                        0.1350610             0
+_ltss                 Missing or unknown ltss flag                                 .             .
+ltss                  Long-term support services                           0.2967498             0
+age                   Age                                                 23.3909046             0
+age_cat               Age Category                                         0.6608341     1.0000000
+age_0                 Less than 1 year old as of 12/1/2012                 0.1803075             0
+age_1_5               Between 1-5 years old  as of 12/1/2012               0.3691065             0
+age_6_18              Between 6-18 years old as of 12/1/2012               0.4682278             0
+age_19_44             Between 19-44 years old as of 12/1/2012              0.4411210             0
+age_45_64             Between 45-64 years old  as of 12/1/2012             0.3220231             0
+age_65_84             Between 65-84 years old  as of 12/1/2012             0.2652387             0
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              24
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+Variable              Label                                                  Std Dev       Minimum
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+age_85p               85 years or older as of 12/1/2012                    0.1394073             0
+male                  Number of Male Beneficiary                           0.4951851             0
+mas_cash              MAS Cash Beneficiary                                 0.4797071             0
+mas_mn                MAS Medically Needy Beneficiary                      0.2228282             0
+mas_pov               MAS Poverty-Related Beneficiary                      0.4803058             0
+mas_oth               MAS Other Beneficiary                                0.3196074             0
+mas_1115              MAS 1115 Exspansion Beneficiary                      0.2578535             0
+boe_aged              BOE Aged Beneficiary                                 0.2823143             0
+boe_disabled          BOE Disabled Beneficiary                             0.3608078             0
+boe_child             BOE Child Beneficiary                                0.4992480             0
+boe_adult             BOE Adult Beneficiary                                0.4255157             0
+boe_uchild            BOE Child (Unemployed Adult) Beneficiary             0.0603606             0
+boe_uadult            BOE Unemployed Adult Beneficiary                     0.0629903             0
+boe_fchild            BOE Foster Child Beneficiary                         0.1126176             0
+disabled                                                                   0.3608078             0
+_age                  Missing age flag                                     0.0307733             0
+_male                 Missing or unknown male flag                         0.0300110             0
+died_n                Number Dying in Year                                 0.1066575             0
+_died                 Missing or unknown died flag                                 0     1.0000000
+mc__1                 Managed care - Jan                                   0.4862649             0
+mc__2                 Managed care - Feb                                   0.4866648             0
+mc__3                 Managed care - Mar                                   0.4889037             0
+mc__4                 Managed care - Apr                                   0.4905416             0
+mc__5                 Managed care - May                                   0.4909080             0
+mc__6                 Managed care - Jun                                   0.4915392             0
+mc__7                 Managed care - Jul                                   0.4922427             0
+mc__8                 Managed care - Aug                                   0.4924056             0
+mc__9                 Managed care - Sep                                   0.4924271             0
+mc_10                 Managed care - Oct                                   0.4929107             0
+mc_11                 Managed care - Nov                                   0.4926629             0
+mc_12                 Managed care - Dec                                   0.4930877             0
+_mc__1                Missing or unknown mc1 flag                          0.0080834             0
+_mc__2                Missing or unknown mc2 flag                          0.0080188             0
+_mc__3                Missing or unknown mc3 flag                          0.0079338             0
+_mc__4                Missing or unknown mc4 flag                          0.0078516             0
+_mc__5                Missing or unknown mc5 flag                          0.0077814             0
+_mc__6                Missing or unknown mc6 flag                          0.0077161             0
+_mc__7                Missing or unknown mc7 flag                          0.0076985             0
+_mc__8                Missing or unknown mc8 flag                          0.0076427             0
+_mc__9                Missing or unknown mc9 flag                          0.0076044             0
+_mc_10                Missing or unknown mc10 flag                         0.0123203             0
+_mc_11                Missing or unknown mc11 flag                         0.0123046             0
+_mc_12                Missing or unknown mc12 flag                         0.0122890             0
+dual__1               Dual eligible - Jan                                  0.3404517             0
+dual__2               Dual eligible - Feb                                  0.3403749             0
+dual__3               Dual eligible - Mar                                  0.3404263             0
+dual__4               Dual eligible - Apr                                  0.3408513             0
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              25
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+Variable              Label                                                  Std Dev       Minimum
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+dual__5               Dual eligible - May                                  0.3407593             0
+dual__6               Dual eligible - Jun                                  0.3405708             0
+dual__7               Dual eligible - Jul                                  0.3418151             0
+dual__8               Dual eligible - Aug                                  0.3418457             0
+dual__9               Dual eligible - Sep                                  0.3434788             0
+dual_10               Dual eligible - Oct                                  0.3425900             0
+dual_11               Dual eligible - Nov                                  0.3424335             0
+dual_12               Dual eligible - Dec                                  0.3423959             0
+_dual__1              Missing or unknown dual_1 flag                       0.0171318             0
+_dual__2              Missing or unknown dual_2 flag                       0.0171542             0
+_dual__3              Missing or unknown dual_3 flag                       0.0172032             0
+_dual__4              Missing or unknown dual_4 flag                       0.0171355             0
+_dual__5              Missing or unknown dual_5 flag                       0.0172135             0
+_dual__6              Missing or unknown dual_6 flag                       0.0172566             0
+_dual__7              Missing or unknown dual_7 flag                       0.0167187             0
+_dual__8              Missing or unknown dual_8 flag                       0.0167664             0
+_dual__9              Missing or unknown dual_9 flag                       0.0167855             0
+_dual_10              Missing or unknown dual_10 flag                      0.0166876             0
+_dual_11              Missing or unknown dual_11 flag                      0.0167707             0
+_dual_12              Missing or unknown dual_12 flag                      0.0168067             0
+dual_full__1          Full dual eligible - Jan                             0.3397329             0
+dual_full__2          Full dual eligible - Feb                             0.3396668             0
+dual_full__3          Full dual eligible - Mar                             0.3397157             0
+dual_full__4          Full dual eligible - Apr                             0.3401792             0
+dual_full__5          Full dual eligible - May                             0.3400924             0
+dual_full__6          Full dual eligible - Jun                             0.3399063             0
+dual_full__7          Full dual eligible - Jul                             0.3411777             0
+dual_full__8          Full dual eligible - Aug                             0.3412096             0
+dual_full__9          Full dual eligible - Sep                             0.3428535             0
+dual_full_10          Full dual eligible - Oct                             0.3423831             0
+dual_full_11          Full dual eligible - Nov                             0.3422273             0
+dual_full_12          Full dual eligible - Dec                             0.3421918             0
+_dual_full__1         Missing or unknown dual_full_1 flag                  0.3397329             0
+_dual_full__2         Missing or unknown dual_full_2 flag                  0.3396668             0
+_dual_full__3         Missing or unknown dual_full_3 flag                  0.3397157             0
+_dual_full__4         Missing or unknown dual_full_4 flag                  0.3401792             0
+_dual_full__5         Missing or unknown dual_full_5 flag                  0.3400924             0
+_dual_full__6         Missing or unknown dual_full_6 flag                  0.3399063             0
+_dual_full__7         Missing or unknown dual_full_7 flag                  0.3411777             0
+_dual_full__8         Missing or unknown dual_full_8 flag                  0.3412096             0
+_dual_full__9         Missing or unknown dual_full_9 flag                  0.3428535             0
+_dual_full_10         Missing or unknown dual_full_10 flag                 0.3423831             0
+_dual_full_11         Missing or unknown dual_full_11 flag                 0.3422273             0
+_dual_full_12         Missing or unknown dual_full_12 flag                 0.3421918             0
+disabled__1           Disabled - Jan                                       0.3448158             0
+disabled__2           Disabled - Feb                                       0.3448628             0
+disabled__3           Disabled - Mar                                       0.3448345             0
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              26
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+Variable              Label                                                  Std Dev       Minimum
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+disabled__4           Disabled - Apr                                       0.3453775             0
+disabled__5           Disabled - May                                       0.3453806             0
+disabled__6           Disabled - Jun                                       0.3449666             0
+disabled__7           Disabled - Jul                                       0.3464695             0
+disabled__8           Disabled - Aug                                       0.3464172             0
+disabled__9           Disabled - Sep                                       0.3461624             0
+disabled_10           Disabled - Oct                                       0.3475904             0
+disabled_11           Disabled - Nov                                       0.3472937             0
+disabled_12           Disabled - Dec                                       0.3471830             0
+chip__1               CHIP - Jan                                           0.2183417             0
+chip__2               CHIP - Feb                                           0.2193293             0
+chip__3               CHIP - Mar                                           0.2197893             0
+chip__4               CHIP - Apr                                           0.2200332             0
+chip__5               CHIP - May                                           0.2204002             0
+chip__6               CHIP - Jun                                           0.2208007             0
+chip__7               CHIP - Jul                                           0.2216299             0
+chip__8               CHIP - Aug                                           0.2222058             0
+chip__9               CHIP - Sep                                           0.2225644             0
+chip_10               CHIP - Oct                                           0.2231323             0
+chip_11               CHIP - Nov                                           0.2230075             0
+chip_12               CHIP - Dec                                           0.2229934             0
+_chip__1              Missing or unknown chip_1 flag                     0.000119421             0
+_chip__2              Missing or unknown chip_2 flag                     0.000119421             0
+_chip__3              Missing or unknown chip_3 flag                     0.000119421             0
+_chip__4              Missing or unknown chip_4 flag                     0.000168887             0
+_chip__5              Missing or unknown chip_5 flag                     0.000119421             0
+_chip__6              Missing or unknown chip_6 flag                     0.000119421             0
+_chip__7              Missing or unknown chip_7 flag                     0.000168887             0
+_chip__8              Missing or unknown chip_8 flag                     0.000168887             0
+_chip__9              Missing or unknown chip_9 flag                     0.000168887             0
+_chip_10              Missing or unknown chip_10 flag                      0.0342021             0
+_chip_11              Missing or unknown chip_11 flag                      0.0340656             0
+_chip_12              Missing or unknown chip_12 flag                      0.0339858             0
+nmcd__1               Not Mediciad - Jan                                   0.4003926             0
+nmcd__2               Not Mediciad - Feb                                   0.4002030             0
+nmcd__3               Not Mediciad - Mar                                   0.3996428             0
+nmcd__4               Not Mediciad - Apr                                   0.3980460             0
+nmcd__5               Not Mediciad - May                                   0.3978381             0
+nmcd__6               Not Mediciad - Jun                                   0.3994737             0
+nmcd__7               Not Mediciad - Jul                                   0.3953146             0
+nmcd__8               Not Mediciad - Aug                                   0.3937980             0
+nmcd__9               Not Mediciad - Sep                                   0.3953949             0
+nmcd_10               Not Mediciad - Oct                                   0.3888025             0
+nmcd_11               Not Mediciad - Nov                                   0.3919022             0
+nmcd_12               Not Mediciad - Dec                                   0.3927541             0
+foster__1             Foster care - Jan                                    0.1054001             0
+foster__2             Foster care - Feb                                    0.1054253             0
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              27
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+Variable              Label                                                  Std Dev       Minimum
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+foster__3             Foster care - Mar                                    0.1055683             0
+foster__4             Foster care - Apr                                    0.1056858             0
+foster__5             Foster care - May                                    0.1057904             0
+foster__6             Foster care - Jun                                    0.1058669             0
+foster__7             Foster care - Jul                                    0.1057461             0
+foster__8             Foster care - Aug                                    0.1057138             0
+foster__9             Foster care - Sep                                    0.1056560             0
+foster_10             Foster care - Oct                                    0.1058445             0
+foster_11             Foster care - Nov                                    0.1058478             0
+foster_12             Foster care - Dec                                    0.1058681             0
+elig_months_01        Eligible months for service type 1                   0.9395169             0
+elig_months_02        Eligible months for service type 2                   1.8400675             0
+elig_months_03        Eligible months for service type 3                   0.3846976             0
+elig_months_04        Eligible months for service type 4                   5.0659260             0
+elig_months_05        Eligible months for service type 5                   1.6576995             0
+elig_months_06        Eligible months for service type 6                   1.5742241             0
+elig_months_07        Eligible months for service type 7                   0.7127628             0
+elig_months_08        Eligible months for service type 8                   4.2094864             0
+elig_months_09        Eligible months for service type 9                   0.4711802             0
+elig_months_10        Eligible months for service type 10                  0.9085824             0
+elig_months_11        Eligible months for service type 11                  0.5061849             0
+elig_months_12        Eligible months for service type 12                  0.9497045             0
+elig_months_13        Eligible months for service type 13                  1.7635145             0
+elig_months_14        Eligible months for service type 14                  1.9939961             0
+elig_months_15        Eligible months for service type 15                  1.8954274             0
+elig_months_16        Eligible months for service type 16                  2.1460700             0
+elig_months_17        Eligible months for service type 17                  1.2073998             0
+mo_mcd                Months eligible for Medicaid                         4.9816832             0
+mo_dual               Months eligible for dual                             3.9679129             0
+mo_mc                 Months eligible for managed care                     5.2165556             0
+mo_ffs                Months eligible for FFS                              5.0699299             0
+mo_dsbl               Months not eligible for disability                   4.0245545             0
+mo_nondsbl                                                                 4.9864273             0
+mo_ltss               Months eligible for long-term support services       3.3465589             0
+mo_nonltss                                                                 4.7550681             0
+months_1                                                                   0.9404881             0
+months_2                                                                   1.8420817             0
+months_3                                                                   0.3863600             0
+months_4                                                                   5.0820661             0
+months_5                                                                   1.6603743             0
+months_6                                                                   1.5778998             0
+months_7                                                                   0.7150126             0
+months_8                                                                   4.2275433             0
+months_9                                                                   0.4718476             0
+months_10                                                                  0.9098114             0
+months_11                                                                  0.5069700             0
+months_12                                                                  0.9509079             0
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              28
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+Variable              Label                                                  Std Dev       Minimum
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+months_13                                                                  1.7647225             0
+months_14                                                                  1.9958270             0
+months_15                                                                  1.8981584             0
+months_16                                                                  2.1478898             0
+months_17                                                                  1.2091411             0
+d_servicetype_n                                                            1.1211593     1.0000000
+dual_cat              Dual-Eligibility Category                            1.6185440             0
+mc_cat                Managed Care Category                                1.5732109             0
+dis_cat               Disability Category                                  1.6184710             0
+ltss_cat              LTSS Use Category                                    1.6195447             0
+foster_cat            Foster Care Category                                 1.2873248             0
+no_zip_match                                                               0.2838502             0
+no_cnty_match                                                              0.2838502             0
+zip_match                                                                  0.2831003             0
+cnty_match                                                                 0.2772137             0
+valid_zip                                                                  0.1029568             0
+valid_cnty                                                                 0.0160806             0
+zip_fx                Zip code                                              29850.47       1001.00
+replaced_zip          1 if zip was replaced during geo fixes               0.2838502             0
+replaced_cnty         1 if state/county was replaced during geo fixes      0.0687993             0
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+
+       Variable              Label                                                  Maximum
+       ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+       zip_code                                                                    99929.00
+       zip_miss                                                                    99987.00
+       calc_date                                                                   19328.00
+       EL_DOB                Date of birth                                         19358.00
+       EL_DOD                Date of death (from MSIS)                             19358.00
+       MDCR_DOD              Date of death (from Medicare EDB)                     19358.00
+       EL_RSDNC_ZIP_CD_LTST  Zip code of residence                                 99987.00
+       EL_ELGBLTY_MO_CNT     Eligible months                                     12.0000000
+       MC_COMBO_MO_1         Managed Care combinations (Jan)                     99.0000000
+       MC_COMBO_MO_2         Managed Care combinations (Feb)                     99.0000000
+       MC_COMBO_MO_3         Managed Care combinations (Mar)                     99.0000000
+       MC_COMBO_MO_4         Managed Care combinations (Apr)                     99.0000000
+       MC_COMBO_MO_5         Managed Care combinations (May)                     99.0000000
+       MC_COMBO_MO_6         Managed Care combinations (Jun)                     99.0000000
+       MC_COMBO_MO_7         Managed Care combinations (Jul)                     99.0000000
+       MC_COMBO_MO_8         Managed Care combinations (Aug)                     99.0000000
+       MC_COMBO_MO_9         Managed Care combinations (Sep)                     99.0000000
+       MC_COMBO_MO_10        Managed Care combinations (Oct)                     99.0000000
+       MC_COMBO_MO_11        Managed Care combinations (Nov)                     99.0000000
+       MC_COMBO_MO_12        Managed Care combinations (Dec)                     99.0000000
+       EL_CHIP_FLAG_1        SCHIP eligibility (Jan)                              9.0000000
+       EL_CHIP_FLAG_2        SCHIP eligibility (Feb)                              9.0000000
+       EL_CHIP_FLAG_3        SCHIP eligibility (Mar)                              9.0000000
+       ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              29
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+       Variable              Label                                                  Maximum
+       ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+       EL_CHIP_FLAG_4        SCHIP eligibility (Apr)                              9.0000000
+       EL_CHIP_FLAG_5        SCHIP eligibility (May)                              9.0000000
+       EL_CHIP_FLAG_6        SCHIP eligibility (Jun)                              9.0000000
+       EL_CHIP_FLAG_7        SCHIP eligibility (Jul)                              9.0000000
+       EL_CHIP_FLAG_8        SCHIP eligibility (Aug)                              9.0000000
+       EL_CHIP_FLAG_9        SCHIP eligibility (Sep)                              9.0000000
+       EL_CHIP_FLAG_10       SCHIP eligibility (Oct)                              9.0000000
+       EL_CHIP_FLAG_11       SCHIP eligibility (Nov)                              9.0000000
+       EL_CHIP_FLAG_12       SCHIP eligibility (Dec)                              9.0000000
+       TOT_IP_STAY_CNT       Inpatient Stays Count                              288.0000000
+       TOT_IP_DAY_CNT_STAYS  Inpatient Days Count                               998.0000000
+       TOT_MDCD_PYMT_AMT     Total Medicaid Payment Amount                      32865800.00
+       FFS_PYMT_AMT_01       Inpatient Spending                                  5475294.00
+       FFS_CLM_CNT_08        Claim count (MAX TOS 08)                               1493.00
+       FFS_PYMT_AMT_08       Medicaid Payment Amount (MAX TOS 08)                3468326.00
+       FFS_CLM_CNT_12        Claim count (MAX TOS 12)                               1080.00
+       FFS_PYMT_AMT_12       Medicaid Payment Amount (MAX TOS 12)                1477597.00
+       FFS_CLM_CNT_16        Prescription drug claims count                         1682.00
+       FFS_PYMT_AMT_16       Prescription drug spending                         24213472.00
+       CLTC_FFS_PYMT_AMT_11  Medicaid Payment Amount (CLTC 11)                    270898.00
+       CLTC_FFS_PYMT_AMT_12  Medicaid Payment Amount (CLTC 12)                    442024.00
+       CLTC_FFS_PYMT_AMT_13  Medicaid Payment Amount (CLTC 13)                    147369.00
+       CLTC_FFS_PYMT_AMT_14  Medicaid Payment Amount (CLTC 14)                    858711.00
+       CLTC_FFS_PYMT_AMT_15  Medicaid Payment Amount (CLTC 15)                    389283.00
+       CLTC_FFS_PYMT_AMT_16  Medicaid Payment Amount (CLTC 16)                    256200.00
+       CLTC_FFS_PYMT_AMT_17  Medicaid Payment Amount (CLTC 17)                    203171.00
+       CLTC_FFS_PYMT_AMT_18  Medicaid Payment Amount (CLTC 18)                    225600.00
+       CLTC_FFS_PYMT_AMT_19  Medicaid Payment Amount (CLTC 19)                    371770.00
+       CLTC_FFS_PYMT_AMT_20  Medicaid Payment Amount (CLTC 20)                   1367103.00
+       CLTC_FFS_PYMT_AMT_30  Medicaid Payment Amount (CLTC 30)                   6251776.00
+       CLTC_FFS_PYMT_AMT_31  Medicaid Payment Amount (CLTC 31)                    448131.00
+       CLTC_FFS_PYMT_AMT_32  Medicaid Payment Amount (CLTC 32)                    475333.00
+       CLTC_FFS_PYMT_AMT_33  Medicaid Payment Amount (CLTC 33)                    169113.00
+       CLTC_FFS_PYMT_AMT_34  Medicaid Payment Amount (CLTC 34)                    679725.00
+       CLTC_FFS_PYMT_AMT_35  Medicaid Payment Amount (CLTC 35)                    603358.00
+       CLTC_FFS_PYMT_AMT_36  Medicaid Payment Amount (CLTC 36)                    368919.00
+       CLTC_FFS_PYMT_AMT_37  Medicaid Payment Amount (CLTC 37)                     27916.00
+       CLTC_FFS_PYMT_AMT_38  Medicaid Payment Amount (CLTC 38)                     70174.00
+       CLTC_FFS_PYMT_AMT_39  Medicaid Payment Amount (CLTC 39)                     39508.00
+       CLTC_FFS_PYMT_AMT_40  Medicaid Payment Amount (CLTC 40)                    515328.00
+       full_benf                                                                          .
+       year                  Claims year                                            2012.00
+       cell_n                Flag for sums                                        1.0000000
+       pm_n                  Eligible months                                     12.0000000
+       tot_pay               TOT_MDCD_PYMT_AMT                                  32865800.00
+       physclin_clm_cnt      Physician and clinic claim count                       1493.00
+       physclin_pymt_amt     Physician and clinic spending                       3468326.00
+       ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              30
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+       Variable              Label                                                  Maximum
+       ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+       cltc                  Sum of CLTC_FFS_PYMT_AMT_11-CLTC_FFS_PYMT_AMT_40    6252132.00
+       lt_nurs               Fee_for_srvc_ind_07 recipient                        1.0000000
+       _ltss                 Missing or unknown ltss flag                                 .
+       ltss                  Long-term support services                           1.0000000
+       age                   Age                                                212.0000000
+       age_cat               Age Category                                         3.0000000
+       age_0                 Less than 1 year old as of 12/1/2012                 1.0000000
+       age_1_5               Between 1-5 years old  as of 12/1/2012               1.0000000
+       age_6_18              Between 6-18 years old as of 12/1/2012               1.0000000
+       age_19_44             Between 19-44 years old as of 12/1/2012              1.0000000
+       age_45_64             Between 45-64 years old  as of 12/1/2012             1.0000000
+       age_65_84             Between 65-84 years old  as of 12/1/2012             1.0000000
+       age_85p               85 years or older as of 12/1/2012                    1.0000000
+       male                  Number of Male Beneficiary                           1.0000000
+       mas_cash              MAS Cash Beneficiary                                 1.0000000
+       mas_mn                MAS Medically Needy Beneficiary                      1.0000000
+       mas_pov               MAS Poverty-Related Beneficiary                      1.0000000
+       mas_oth               MAS Other Beneficiary                                1.0000000
+       mas_1115              MAS 1115 Exspansion Beneficiary                      1.0000000
+       boe_aged              BOE Aged Beneficiary                                 1.0000000
+       boe_disabled          BOE Disabled Beneficiary                             1.0000000
+       boe_child             BOE Child Beneficiary                                1.0000000
+       boe_adult             BOE Adult Beneficiary                                1.0000000
+       boe_uchild            BOE Child (Unemployed Adult) Beneficiary             1.0000000
+       boe_uadult            BOE Unemployed Adult Beneficiary                     1.0000000
+       boe_fchild            BOE Foster Child Beneficiary                         1.0000000
+       disabled                                                                   1.0000000
+       _age                  Missing age flag                                     1.0000000
+       _male                 Missing or unknown male flag                         1.0000000
+       died_n                Number Dying in Year                                 1.0000000
+       _died                 Missing or unknown died flag                         1.0000000
+       mc__1                 Managed care - Jan                                   1.0000000
+       mc__2                 Managed care - Feb                                   1.0000000
+       mc__3                 Managed care - Mar                                   1.0000000
+       mc__4                 Managed care - Apr                                   1.0000000
+       mc__5                 Managed care - May                                   1.0000000
+       mc__6                 Managed care - Jun                                   1.0000000
+       mc__7                 Managed care - Jul                                   1.0000000
+       mc__8                 Managed care - Aug                                   1.0000000
+       mc__9                 Managed care - Sep                                   1.0000000
+       mc_10                 Managed care - Oct                                   1.0000000
+       mc_11                 Managed care - Nov                                   1.0000000
+       mc_12                 Managed care - Dec                                   1.0000000
+       _mc__1                Missing or unknown mc1 flag                          1.0000000
+       _mc__2                Missing or unknown mc2 flag                          1.0000000
+       _mc__3                Missing or unknown mc3 flag                          1.0000000
+       _mc__4                Missing or unknown mc4 flag                          1.0000000
+       ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              31
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+       Variable              Label                                                  Maximum
+       ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+       _mc__5                Missing or unknown mc5 flag                          1.0000000
+       _mc__6                Missing or unknown mc6 flag                          1.0000000
+       _mc__7                Missing or unknown mc7 flag                          1.0000000
+       _mc__8                Missing or unknown mc8 flag                          1.0000000
+       _mc__9                Missing or unknown mc9 flag                          1.0000000
+       _mc_10                Missing or unknown mc10 flag                         1.0000000
+       _mc_11                Missing or unknown mc11 flag                         1.0000000
+       _mc_12                Missing or unknown mc12 flag                         1.0000000
+       dual__1               Dual eligible - Jan                                  1.0000000
+       dual__2               Dual eligible - Feb                                  1.0000000
+       dual__3               Dual eligible - Mar                                  1.0000000
+       dual__4               Dual eligible - Apr                                  1.0000000
+       dual__5               Dual eligible - May                                  1.0000000
+       dual__6               Dual eligible - Jun                                  1.0000000
+       dual__7               Dual eligible - Jul                                  1.0000000
+       dual__8               Dual eligible - Aug                                  1.0000000
+       dual__9               Dual eligible - Sep                                  1.0000000
+       dual_10               Dual eligible - Oct                                  1.0000000
+       dual_11               Dual eligible - Nov                                  1.0000000
+       dual_12               Dual eligible - Dec                                  1.0000000
+       _dual__1              Missing or unknown dual_1 flag                       1.0000000
+       _dual__2              Missing or unknown dual_2 flag                       1.0000000
+       _dual__3              Missing or unknown dual_3 flag                       1.0000000
+       _dual__4              Missing or unknown dual_4 flag                       1.0000000
+       _dual__5              Missing or unknown dual_5 flag                       1.0000000
+       _dual__6              Missing or unknown dual_6 flag                       1.0000000
+       _dual__7              Missing or unknown dual_7 flag                       1.0000000
+       _dual__8              Missing or unknown dual_8 flag                       1.0000000
+       _dual__9              Missing or unknown dual_9 flag                       1.0000000
+       _dual_10              Missing or unknown dual_10 flag                      1.0000000
+       _dual_11              Missing or unknown dual_11 flag                      1.0000000
+       _dual_12              Missing or unknown dual_12 flag                      1.0000000
+       dual_full__1          Full dual eligible - Jan                             1.0000000
+       dual_full__2          Full dual eligible - Feb                             1.0000000
+       dual_full__3          Full dual eligible - Mar                             1.0000000
+       dual_full__4          Full dual eligible - Apr                             1.0000000
+       dual_full__5          Full dual eligible - May                             1.0000000
+       dual_full__6          Full dual eligible - Jun                             1.0000000
+       dual_full__7          Full dual eligible - Jul                             1.0000000
+       dual_full__8          Full dual eligible - Aug                             1.0000000
+       dual_full__9          Full dual eligible - Sep                             1.0000000
+       dual_full_10          Full dual eligible - Oct                             1.0000000
+       dual_full_11          Full dual eligible - Nov                             1.0000000
+       dual_full_12          Full dual eligible - Dec                             1.0000000
+       _dual_full__1         Missing or unknown dual_full_1 flag                  1.0000000
+       _dual_full__2         Missing or unknown dual_full_2 flag                  1.0000000
+       _dual_full__3         Missing or unknown dual_full_3 flag                  1.0000000
+       ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              32
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+       Variable              Label                                                  Maximum
+       ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+       _dual_full__4         Missing or unknown dual_full_4 flag                  1.0000000
+       _dual_full__5         Missing or unknown dual_full_5 flag                  1.0000000
+       _dual_full__6         Missing or unknown dual_full_6 flag                  1.0000000
+       _dual_full__7         Missing or unknown dual_full_7 flag                  1.0000000
+       _dual_full__8         Missing or unknown dual_full_8 flag                  1.0000000
+       _dual_full__9         Missing or unknown dual_full_9 flag                  1.0000000
+       _dual_full_10         Missing or unknown dual_full_10 flag                 1.0000000
+       _dual_full_11         Missing or unknown dual_full_11 flag                 1.0000000
+       _dual_full_12         Missing or unknown dual_full_12 flag                 1.0000000
+       disabled__1           Disabled - Jan                                       1.0000000
+       disabled__2           Disabled - Feb                                       1.0000000
+       disabled__3           Disabled - Mar                                       1.0000000
+       disabled__4           Disabled - Apr                                       1.0000000
+       disabled__5           Disabled - May                                       1.0000000
+       disabled__6           Disabled - Jun                                       1.0000000
+       disabled__7           Disabled - Jul                                       1.0000000
+       disabled__8           Disabled - Aug                                       1.0000000
+       disabled__9           Disabled - Sep                                       1.0000000
+       disabled_10           Disabled - Oct                                       1.0000000
+       disabled_11           Disabled - Nov                                       1.0000000
+       disabled_12           Disabled - Dec                                       1.0000000
+       chip__1               CHIP - Jan                                           1.0000000
+       chip__2               CHIP - Feb                                           1.0000000
+       chip__3               CHIP - Mar                                           1.0000000
+       chip__4               CHIP - Apr                                           1.0000000
+       chip__5               CHIP - May                                           1.0000000
+       chip__6               CHIP - Jun                                           1.0000000
+       chip__7               CHIP - Jul                                           1.0000000
+       chip__8               CHIP - Aug                                           1.0000000
+       chip__9               CHIP - Sep                                           1.0000000
+       chip_10               CHIP - Oct                                           1.0000000
+       chip_11               CHIP - Nov                                           1.0000000
+       chip_12               CHIP - Dec                                           1.0000000
+       _chip__1              Missing or unknown chip_1 flag                       1.0000000
+       _chip__2              Missing or unknown chip_2 flag                       1.0000000
+       _chip__3              Missing or unknown chip_3 flag                       1.0000000
+       _chip__4              Missing or unknown chip_4 flag                       1.0000000
+       _chip__5              Missing or unknown chip_5 flag                       1.0000000
+       _chip__6              Missing or unknown chip_6 flag                       1.0000000
+       _chip__7              Missing or unknown chip_7 flag                       1.0000000
+       _chip__8              Missing or unknown chip_8 flag                       1.0000000
+       _chip__9              Missing or unknown chip_9 flag                       1.0000000
+       _chip_10              Missing or unknown chip_10 flag                      1.0000000
+       _chip_11              Missing or unknown chip_11 flag                      1.0000000
+       _chip_12              Missing or unknown chip_12 flag                      1.0000000
+       nmcd__1               Not Mediciad - Jan                                   1.0000000
+       nmcd__2               Not Mediciad - Feb                                   1.0000000
+       ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              33
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+       Variable              Label                                                  Maximum
+       ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+       nmcd__3               Not Mediciad - Mar                                   1.0000000
+       nmcd__4               Not Mediciad - Apr                                   1.0000000
+       nmcd__5               Not Mediciad - May                                   1.0000000
+       nmcd__6               Not Mediciad - Jun                                   1.0000000
+       nmcd__7               Not Mediciad - Jul                                   1.0000000
+       nmcd__8               Not Mediciad - Aug                                   1.0000000
+       nmcd__9               Not Mediciad - Sep                                   1.0000000
+       nmcd_10               Not Mediciad - Oct                                   1.0000000
+       nmcd_11               Not Mediciad - Nov                                   1.0000000
+       nmcd_12               Not Mediciad - Dec                                   1.0000000
+       foster__1             Foster care - Jan                                    1.0000000
+       foster__2             Foster care - Feb                                    1.0000000
+       foster__3             Foster care - Mar                                    1.0000000
+       foster__4             Foster care - Apr                                    1.0000000
+       foster__5             Foster care - May                                    1.0000000
+       foster__6             Foster care - Jun                                    1.0000000
+       foster__7             Foster care - Jul                                    1.0000000
+       foster__8             Foster care - Aug                                    1.0000000
+       foster__9             Foster care - Sep                                    1.0000000
+       foster_10             Foster care - Oct                                    1.0000000
+       foster_11             Foster care - Nov                                    1.0000000
+       foster_12             Foster care - Dec                                    1.0000000
+       elig_months_01        Eligible months for service type 1                  12.0000000
+       elig_months_02        Eligible months for service type 2                  12.0000000
+       elig_months_03        Eligible months for service type 3                  12.0000000
+       elig_months_04        Eligible months for service type 4                  12.0000000
+       elig_months_05        Eligible months for service type 5                  12.0000000
+       elig_months_06        Eligible months for service type 6                  12.0000000
+       elig_months_07        Eligible months for service type 7                  12.0000000
+       elig_months_08        Eligible months for service type 8                  12.0000000
+       elig_months_09        Eligible months for service type 9                  12.0000000
+       elig_months_10        Eligible months for service type 10                 12.0000000
+       elig_months_11        Eligible months for service type 11                 12.0000000
+       elig_months_12        Eligible months for service type 12                 12.0000000
+       elig_months_13        Eligible months for service type 13                 12.0000000
+       elig_months_14        Eligible months for service type 14                 12.0000000
+       elig_months_15        Eligible months for service type 15                 12.0000000
+       elig_months_16        Eligible months for service type 16                 12.0000000
+       elig_months_17        Eligible months for service type 17                 12.0000000
+       mo_mcd                Months eligible for Medicaid                        12.0000000
+       mo_dual               Months eligible for dual                            12.0000000
+       mo_mc                 Months eligible for managed care                    12.0000000
+       mo_ffs                Months eligible for FFS                             12.0000000
+       mo_dsbl               Months not eligible for disability                  12.0000000
+       mo_nondsbl                                                                12.0000000
+       mo_ltss               Months eligible for long-term support services      12.0000000
+       mo_nonltss                                                                12.0000000
+       ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                               Service type vs. age cat for dropped                              34
+                                                                      11:26 Monday, October 7, 2019
+
+                                        The MEANS Procedure
+
+       Variable              Label                                                  Maximum
+       ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+       months_1                                                                  12.0000000
+       months_2                                                                  12.0000000
+       months_3                                                                  12.0000000
+       months_4                                                                  12.0000000
+       months_5                                                                  12.0000000
+       months_6                                                                  12.0000000
+       months_7                                                                  12.0000000
+       months_8                                                                  12.0000000
+       months_9                                                                  12.0000000
+       months_10                                                                 12.0000000
+       months_11                                                                 12.0000000
+       months_12                                                                 12.0000000
+       months_13                                                                 12.0000000
+       months_14                                                                 12.0000000
+       months_15                                                                 12.0000000
+       months_16                                                                 12.0000000
+       months_17                                                                 12.0000000
+       d_servicetype_n                                                           12.0000000
+       dual_cat              Dual-Eligibility Category                            9.0000000
+       mc_cat                Managed Care Category                                9.0000000
+       dis_cat               Disability Category                                  9.0000000
+       ltss_cat              LTSS Use Category                                    9.0000000
+       foster_cat            Foster Care Category                                 6.0000000
+       no_zip_match                                                               1.0000000
+       no_cnty_match                                                              1.0000000
+       zip_match                                                                  1.0000000
+       cnty_match                                                                 1.0000000
+       valid_zip                                                                  1.0000000
+       valid_cnty                                                                 1.0000000
+       zip_fx                Zip code                                              99929.00
+       replaced_zip          1 if zip was replaced during geo fixes               1.0000000
+       replaced_cnty         1 if state/county was replaced during geo fixes      1.0000000
+       ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ

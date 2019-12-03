@@ -1,0 +1,787 @@
+                                          The SAS System       22:32 Wednesday, October 9, 2019   1
+
+                                        The FREQ Procedure
+
+                     In the last observed month, beneficiary had: full benefits
+                            = 1, no benefits = 0, partial benefits = 99
+ 
+                                                        Cumulative    Cumulative
+                  full_benf    Frequency     Percent     Frequency      Percent
+                  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                          0       28600       28.60         28600        28.60  
+                          1       57819       57.82         86419        86.42  
+                         99       13581       13.58        100000       100.00  
+                                      Obs with ST_MSA matches                                     2
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                        The FREQ Procedure
+
+                                                         Cumulative    Cumulative
+                 st_msa         Frequency     Percent     Frequency      Percent
+                 ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                 Not Missing      100000      100.00        100000       100.00  
+
+
+                                State abbreviation and county code
+ 
+                                                         Cumulative    Cumulative
+                 county         Frequency     Percent     Frequency      Percent
+                 ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                 Not Missing      100000      100.00        100000       100.00  
+                                                               22:32 Wednesday, October 9, 2019   3
+
+out.msa_2012_09OCT2019 descriptive statistics
+
+                out.msa_2012_09OCT2019 descriptive statistics for numeric variables               4
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                        The MEANS Procedure
+
+ 
+Variable            Label                                                          N          Mean
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+year                Claims year                                                  581   2012.000000
+age_cat             Age Category                                                 581      2.049914
+dis_cat             Disability Category                                          581      0.984509
+dual_cat            Dual-Eligibility Category                                    581      0.901893
+foster_cat          Foster Care Category                                         581      0.051635
+ltss_cat            LTSS Use Category                                            581      0.886403
+mc_cat              Managed Care Category                                        581      0.638554
+dual_mon            Number of Person Months of Dual Eligibility                  581    319.194492
+mc_mon              Number of Person Months of Managed Care Enrollment           581    498.648881
+dis_mon             Number of Person Months of Disability                        581    588.492255
+ltss_mon            Number of Person Months of LTSS Use                          581    444.963855
+elg_mon             Number of Person Months of Eligibility                       581   1864.987952
+cell_n              Number of Beneficiaries                                      581    172.117040
+d_servicetype_n     Number of Unique Statuses                                    581    237.571429
+died_n              Number Dying in Year                                         581      0.540448
+mas_cash_n          MAS Cash Beneficiaries (N)                                   581     82.724613
+mas_cash            MAS Cash Beneficiaries (%)                                   581      0.679875
+mas_mn_n            MAS Medically Needy Beneficiaries (N)                        581      0.179002
+mas_mn              MAS Medically Needy Beneficiaries (%)                        581      0.000920
+mas_pov_n           MAS Poverty-Related Beneficiaries (N)                        581     58.361446
+mas_pov             MAS Poverty-Related Beneficiaries (%)                        581      0.112535
+mas_1115_n          MAS 1115 Exspansion Beneficiaries (N)                        581      5.320138
+mas_1115            MAS 1115 Exspansion Beneficiaries (%)                        581      0.007709
+mas_oth_n           MAS Other Beneficiaries (N)                                  581     17.600688
+mas_oth             MAS Other Beneficiaries (%)                                  581      0.147392
+boe_aged_n          BOE Aged Beneficiaries (N)                                   581     11.647160
+boe_aged            BOE Aged Beneficiaries (%)                                   581      0.210017
+boe_disabled_n      BOE Disabled Beneficiaries (N)                               581     51.113597
+boe_disabled        BOE Disabled Beneficiaries (%)                               581      0.519340
+boe_child_n         BOE Child Beneficiaries (N)                                  581     77.604131
+boe_child           BOE Child Beneficiaries (%)                                  581      0.103208
+boe_adult_n         BOE Adult Beneficiaries (N)                                  581     23.666093
+boe_adult           BOE Adult Beneficiaries (%)                                  581      0.110493
+boe_uchild_n        BOE Child (Unemployed Adult) Beneficiaries (N)               581      0.003442
+boe_uchild          BOE Child (Unemployed Adult) Beneficiaries (%)               581   0.000013595
+boe_uadult_n        BOE Unemployed Adult Beneficiaries (N)                       581      0.017212
+boe_uadult          BOE Unemployed Adult Beneficiaries (%)                       581      0.000159
+boe_fchild_n        BOE Foster Child Beneficiaries (N)                           581      7.931153
+boe_fchild          BOE Foster Child Beneficiaries (%)                           581      0.051569
+male_n              Number of Male Beneficiaries (N)                             581     78.127367
+male                Number of Male Beneficiaries (%)                             581      0.407811
+_0_n                Number of Beneficiaries Age less than 1 year (N)             581      7.666093
+_0                  Number of Beneficiaries Age less than 1 year (%)             581      0.024426
+_1_5_n              Number of Beneficiaries Age 1 to 5 (N)                       581     28.641997
+_1_5                Number of Beneficiaries Age 1 to 5 (%)                       581      0.059642
+_6_18_n             Number of Beneficiaries Age 6 to 18 (N)                      581     61.277108
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                out.msa_2012_09OCT2019 descriptive statistics for numeric variables               5
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                        The MEANS Procedure
+
+ 
+   Variable            Label                                                             Std Dev
+   ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+   year                Claims year                                                             0
+   age_cat             Age Category                                                     0.771868
+   dis_cat             Disability Category                                              1.933757
+   dual_cat            Dual-Eligibility Category                                        1.952632
+   foster_cat          Foster Care Category                                             0.221480
+   ltss_cat            LTSS Use Category                                                1.955762
+   mc_cat              Managed Care Category                                            1.988803
+   dual_mon            Number of Person Months of Dual Eligibility                   1055.205782
+   mc_mon              Number of Person Months of Managed Care Enrollment            5659.311167
+   dis_mon             Number of Person Months of Disability                         1536.250768
+   ltss_mon            Number of Person Months of LTSS Use                           1447.487191
+   elg_mon             Number of Person Months of Eligibility                        6700.808631
+   cell_n              Number of Beneficiaries                                        659.041671
+   d_servicetype_n     Number of Unique Statuses                                     1025.291688
+   died_n              Number Dying in Year                                             2.362166
+   mas_cash_n          MAS Cash Beneficiaries (N)                                     305.808121
+   mas_cash            MAS Cash Beneficiaries (%)                                       0.377084
+   mas_mn_n            MAS Medically Needy Beneficiaries (N)                            1.665773
+   mas_mn              MAS Medically Needy Beneficiaries (%)                            0.008680
+   mas_pov_n           MAS Poverty-Related Beneficiaries (N)                          353.874238
+   mas_pov             MAS Poverty-Related Beneficiaries (%)                            0.259746
+   mas_1115_n          MAS 1115 Exspansion Beneficiaries (N)                           51.541655
+   mas_1115            MAS 1115 Exspansion Beneficiaries (%)                            0.036156
+   mas_oth_n           MAS Other Beneficiaries (N)                                     91.978815
+   mas_oth             MAS Other Beneficiaries (%)                                      0.267340
+   boe_aged_n          BOE Aged Beneficiaries (N)                                      68.127298
+   boe_aged            BOE Aged Beneficiaries (%)                                       0.406248
+   boe_disabled_n      BOE Disabled Beneficiaries (N)                                 134.668562
+   boe_disabled        BOE Disabled Beneficiaries (%)                                   0.499710
+   boe_child_n         BOE Child Beneficiaries (N)                                    579.950989
+   boe_child           BOE Child Beneficiaries (%)                                      0.300587
+   boe_adult_n         BOE Adult Beneficiaries (N)                                    293.808210
+   boe_adult           BOE Adult Beneficiaries (%)                                      0.304320
+   boe_uchild_n        BOE Child (Unemployed Adult) Beneficiaries (N)                   0.058621
+   boe_uchild          BOE Child (Unemployed Adult) Beneficiaries (%)                   0.000291
+   boe_uadult_n        BOE Unemployed Adult Beneficiaries (N)                           0.341972
+   boe_uadult          BOE Unemployed Adult Beneficiaries (%)                           0.003166
+   boe_fchild_n        BOE Foster Child Beneficiaries (N)                              52.164416
+   boe_fchild          BOE Foster Child Beneficiaries (%)                               0.221200
+   male_n              Number of Male Beneficiaries (N)                               309.012528
+   male                Number of Male Beneficiaries (%)                                 0.243769
+   _0_n                Number of Beneficiaries Age less than 1 year (N)                54.656943
+   _0                  Number of Beneficiaries Age less than 1 year (%)                 0.114314
+   _1_5_n              Number of Beneficiaries Age 1 to 5 (N)                         186.568170
+   _1_5                Number of Beneficiaries Age 1 to 5 (%)                           0.120753
+   _6_18_n             Number of Beneficiaries Age 6 to 18 (N)                        347.972106
+   ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                out.msa_2012_09OCT2019 descriptive statistics for numeric variables               6
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                        The MEANS Procedure
+
+ 
+   Variable            Label                                                             Minimum
+   ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+   year                Claims year                                                   2012.000000
+   age_cat             Age Category                                                     1.000000
+   dis_cat             Disability Category                                                     0
+   dual_cat            Dual-Eligibility Category                                               0
+   foster_cat          Foster Care Category                                                    0
+   ltss_cat            LTSS Use Category                                                       0
+   mc_cat              Managed Care Category                                                   0
+   dual_mon            Number of Person Months of Dual Eligibility                             0
+   mc_mon              Number of Person Months of Managed Care Enrollment                      0
+   dis_mon             Number of Person Months of Disability                                   0
+   ltss_mon            Number of Person Months of LTSS Use                                     0
+   elg_mon             Number of Person Months of Eligibility                           1.000000
+   cell_n              Number of Beneficiaries                                          1.000000
+   d_servicetype_n     Number of Unique Statuses                                        1.000000
+   died_n              Number Dying in Year                                                    0
+   mas_cash_n          MAS Cash Beneficiaries (N)                                              0
+   mas_cash            MAS Cash Beneficiaries (%)                                              0
+   mas_mn_n            MAS Medically Needy Beneficiaries (N)                                   0
+   mas_mn              MAS Medically Needy Beneficiaries (%)                                   0
+   mas_pov_n           MAS Poverty-Related Beneficiaries (N)                                   0
+   mas_pov             MAS Poverty-Related Beneficiaries (%)                                   0
+   mas_1115_n          MAS 1115 Exspansion Beneficiaries (N)                                   0
+   mas_1115            MAS 1115 Exspansion Beneficiaries (%)                                   0
+   mas_oth_n           MAS Other Beneficiaries (N)                                             0
+   mas_oth             MAS Other Beneficiaries (%)                                             0
+   boe_aged_n          BOE Aged Beneficiaries (N)                                              0
+   boe_aged            BOE Aged Beneficiaries (%)                                              0
+   boe_disabled_n      BOE Disabled Beneficiaries (N)                                          0
+   boe_disabled        BOE Disabled Beneficiaries (%)                                          0
+   boe_child_n         BOE Child Beneficiaries (N)                                             0
+   boe_child           BOE Child Beneficiaries (%)                                             0
+   boe_adult_n         BOE Adult Beneficiaries (N)                                             0
+   boe_adult           BOE Adult Beneficiaries (%)                                             0
+   boe_uchild_n        BOE Child (Unemployed Adult) Beneficiaries (N)                          0
+   boe_uchild          BOE Child (Unemployed Adult) Beneficiaries (%)                          0
+   boe_uadult_n        BOE Unemployed Adult Beneficiaries (N)                                  0
+   boe_uadult          BOE Unemployed Adult Beneficiaries (%)                                  0
+   boe_fchild_n        BOE Foster Child Beneficiaries (N)                                      0
+   boe_fchild          BOE Foster Child Beneficiaries (%)                                      0
+   male_n              Number of Male Beneficiaries (N)                                        0
+   male                Number of Male Beneficiaries (%)                                        0
+   _0_n                Number of Beneficiaries Age less than 1 year (N)                        0
+   _0                  Number of Beneficiaries Age less than 1 year (%)                        0
+   _1_5_n              Number of Beneficiaries Age 1 to 5 (N)                                  0
+   _1_5                Number of Beneficiaries Age 1 to 5 (%)                                  0
+   _6_18_n             Number of Beneficiaries Age 6 to 18 (N)                                 0
+   ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                out.msa_2012_09OCT2019 descriptive statistics for numeric variables               7
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                        The MEANS Procedure
+
+                                                                                                  N
+Variable            Label                                                             Maximum  Miss
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+year                Claims year                                                   2012.000000     0
+age_cat             Age Category                                                     3.000000     0
+dis_cat             Disability Category                                              9.000000     0
+dual_cat            Dual-Eligibility Category                                        9.000000     0
+foster_cat          Foster Care Category                                             1.000000     0
+ltss_cat            LTSS Use Category                                                9.000000     0
+mc_cat              Managed Care Category                                            9.000000     0
+dual_mon            Number of Person Months of Dual Eligibility                         12495     0
+mc_mon              Number of Person Months of Managed Care Enrollment                 115304     0
+dis_mon             Number of Person Months of Disability                               14702     0
+ltss_mon            Number of Person Months of LTSS Use                                 14722     0
+elg_mon             Number of Person Months of Eligibility                             116151     0
+cell_n              Number of Beneficiaries                                             11795     0
+d_servicetype_n     Number of Unique Statuses                                           19125     0
+died_n              Number Dying in Year                                            34.000000     0
+mas_cash_n          MAS Cash Beneficiaries (N)                                    4868.000000     0
+mas_cash            MAS Cash Beneficiaries (%)                                       1.000000     0
+mas_mn_n            MAS Medically Needy Beneficiaries (N)                           28.000000     0
+mas_mn              MAS Medically Needy Beneficiaries (%)                            0.166667     0
+mas_pov_n           MAS Poverty-Related Beneficiaries (N)                         5506.000000     0
+mas_pov             MAS Poverty-Related Beneficiaries (%)                            1.000000     0
+mas_1115_n          MAS 1115 Exspansion Beneficiaries (N)                         1088.000000     0
+mas_1115            MAS 1115 Exspansion Beneficiaries (%)                            0.333333     0
+mas_oth_n           MAS Other Beneficiaries (N)                                   1710.000000     0
+mas_oth             MAS Other Beneficiaries (%)                                      1.000000     0
+boe_aged_n          BOE Aged Beneficiaries (N)                                    1098.000000     0
+boe_aged            BOE Aged Beneficiaries (%)                                       1.000000     0
+boe_disabled_n      BOE Disabled Beneficiaries (N)                                1260.000000     0
+boe_disabled        BOE Disabled Beneficiaries (%)                                   1.000000     0
+boe_child_n         BOE Child Beneficiaries (N)                                         11668     0
+boe_child           BOE Child Beneficiaries (%)                                      1.000000     0
+boe_adult_n         BOE Adult Beneficiaries (N)                                   6871.000000     0
+boe_adult           BOE Adult Beneficiaries (%)                                      1.000000     0
+boe_uchild_n        BOE Child (Unemployed Adult) Beneficiaries (N)                   1.000000     0
+boe_uchild          BOE Child (Unemployed Adult) Beneficiaries (%)                   0.006944     0
+boe_uadult_n        BOE Unemployed Adult Beneficiaries (N)                           8.000000     0
+boe_uadult          BOE Unemployed Adult Beneficiaries (%)                           0.074074     0
+boe_fchild_n        BOE Foster Child Beneficiaries (N)                             590.000000     0
+boe_fchild          BOE Foster Child Beneficiaries (%)                               1.000000     0
+male_n              Number of Male Beneficiaries (N)                              5948.000000     0
+male                Number of Male Beneficiaries (%)                                 1.000000     0
+_0_n                Number of Beneficiaries Age less than 1 year (N)              1143.000000     0
+_0                  Number of Beneficiaries Age less than 1 year (%)                 1.000000     0
+_1_5_n              Number of Beneficiaries Age 1 to 5 (N)                        3824.000000     0
+_1_5                Number of Beneficiaries Age 1 to 5 (%)                           1.000000     0
+_6_18_n             Number of Beneficiaries Age 6 to 18 (N)                       6828.000000     0
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                out.msa_2012_09OCT2019 descriptive statistics for numeric variables               8
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                        The MEANS Procedure
+
+ 
+Variable            Label                                                          N          Mean
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+_6_18               Number of Beneficiaries Age 6 to 18 (%)                      581      0.187143
+_19_44_n            Number of Beneficiaries Age 19 to 44 (N)                     581     38.820998
+_19_44              Number of Beneficiaries Age 19 to 44 (%)                     581      0.227365
+_45_64_n            Number of Beneficiaries Age 45 to 64 (N)                     581     21.449225
+_45_64              Number of Beneficiaries Age 45 to 64 (%)                     581      0.177844
+_65_84_n            Number of Beneficiaries Age 65 to 84 (N)                     581     10.678141
+_65_84              Number of Beneficiaries Age 65 to 84 (%)                     581      0.267325
+_85p_n              Number of Beneficiaries Age 85 and above (N)                 581      3.583477
+_85p                Number of Beneficiaries Age 85 and above (%)                 581      0.056255
+cdps                Mean CDPS Score                                               43      0.926315
+no_cdps_conds       Proportion of beneficiaries with no CDPS diagnoses in year    43      0.333761
+pred_mcd_spd        Predicted Annual spending, from CDPS score                    43         14549
+beds                Number of hospital beds per 1k people, 2010                  581      3.511455
+md                  Number of physicians per 1k people, 2010                     581      1.886435
+urate               Unemployment rate, 2012                                      581     13.338962
+povrate             Rate of persons in poverty, 2012                             581      5.494070
+partial_benf_mon    Number of person months with partial benefits                581      8.865749
+wageind_WORK        Medicare WORK Wage Index, 2012                               453      1.034216
+wageind_PE          Medicare PE Wage Index, 2012                                 453      0.904925
+wageind_MPE         Medicare MPE Wage Index, 2012                                453      0.587603
+mcd_spd_tot         Total Annual Spending                                        581       1595471
+spd_avg             Mean Annual Spending                                         581         13884
+spd_se              Standard Error of Mean Annual Spending                       523   3930.056808
+mcd_spd_tot_TC      Total Spending (Top Coded)                                   581         81819
+spd_avg_TC          Mean Annual Spending (Top Coded)                             581   1070.449976
+spd_se_TC           Standard Error of Mean Annual Spending (Top Coded)           523    896.757688
+spd_p10             10th Percentile of Annual Spending                           581   2730.314114
+spd_p25             25th Percentile of Annual Spending                           581   4333.654905
+spd_p50             50th Percentile of Annual Spending                           581   8959.718589
+spd_p75             75th Percentile of Annual Spending                           581         18276
+spd_p90             90th Percentile of Annual Spending                           581         31423
+spd_p95             95th Percentile of Annual Spending                           581         42551
+spd_p99             99th Percentile of Annual Spending                           581         65665
+res_mcd_spd_tot     Total Annual Spending Residual                                43         66173
+res_spd_avg         Mean Annual Spending Residual                                 43   1754.304532
+res_spd_se          Standard Error of Mean Annual Spending Residual               38   8816.277807
+res_mcd_spd_tot_TC  Total Annual Spending Residual (Top Coded)                   581   2265.728055
+res_spd_avg_TC      Mean Annual Spending Residual (Top Coded)                    581    107.153323
+res_spd_se_TC       Standard Error of Mean Annual Spending Residual (Top Coded)  523    113.895156
+res_spd_p10         10th Percentile of Annual Spending Residual                   43        -20511
+res_spd_p25         25th Percentile of Annual Spending Residual                   43        -10335
+res_spd_p50         50th Percentile of Annual Spending Residual                   43   -907.145268
+res_spd_p75         75th Percentile of Annual Spending Residual                   43         12827
+res_spd_p90         90th Percentile of Annual Spending Residual                   43         26679
+res_spd_p95         95th Percentile of Annual Spending Residual                   43         35483
+res_spd_p99         99th Percentile of Annual Spending Residual                   43         63973
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                out.msa_2012_09OCT2019 descriptive statistics for numeric variables               9
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                        The MEANS Procedure
+
+ 
+   Variable            Label                                                             Std Dev
+   ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+   _6_18               Number of Beneficiaries Age 6 to 18 (%)                          0.326455
+   _19_44_n            Number of Beneficiaries Age 19 to 44 (N)                       262.290137
+   _19_44              Number of Beneficiaries Age 19 to 44 (%)                         0.324816
+   _45_64_n            Number of Beneficiaries Age 45 to 64 (N)                        73.484244
+   _45_64              Number of Beneficiaries Age 45 to 64 (%)                         0.279700
+   _65_84_n            Number of Beneficiaries Age 65 to 84 (N)                        47.149191
+   _65_84              Number of Beneficiaries Age 65 to 84 (%)                         0.405640
+   _85p_n              Number of Beneficiaries Age 85 and above (N)                    24.245128
+   _85p                Number of Beneficiaries Age 85 and above (%)                     0.146717
+   cdps                Mean CDPS Score                                                  0.771731
+   no_cdps_conds       Proportion of beneficiaries with no CDPS diagnoses in year       0.297177
+   pred_mcd_spd        Predicted Annual spending, from CDPS score                          11942
+   beds                Number of hospital beds per 1k people, 2010                      1.735012
+   md                  Number of physicians per 1k people, 2010                         0.866381
+   urate               Unemployment rate, 2012                                          2.322989
+   povrate             Rate of persons in poverty, 2012                                 1.612743
+   partial_benf_mon    Number of person months with partial benefits                   40.948865
+   wageind_WORK        Medicare WORK Wage Index, 2012                                   0.126383
+   wageind_PE          Medicare PE Wage Index, 2012                                     0.056703
+   wageind_MPE         Medicare MPE Wage Index, 2012                                    0.205273
+   mcd_spd_tot         Total Annual Spending                                             4196450
+   spd_avg             Mean Annual Spending                                                18161
+   spd_se              Standard Error of Mean Annual Spending                              10112
+   mcd_spd_tot_TC      Total Spending (Top Coded)                                         286372
+   spd_avg_TC          Mean Annual Spending (Top Coded)                              4383.286438
+   spd_se_TC           Standard Error of Mean Annual Spending (Top Coded)            4180.228383
+   spd_p10             10th Percentile of Annual Spending                            7614.372689
+   spd_p25             25th Percentile of Annual Spending                            9295.549455
+   spd_p50             50th Percentile of Annual Spending                                  14246
+   spd_p75             75th Percentile of Annual Spending                                  31447
+   spd_p90             90th Percentile of Annual Spending                                  45795
+   spd_p95             95th Percentile of Annual Spending                                  64582
+   spd_p99             99th Percentile of Annual Spending                                 106742
+   res_mcd_spd_tot     Total Annual Spending Residual                                     242210
+   res_spd_avg         Mean Annual Spending Residual                                       17209
+   res_spd_se          Standard Error of Mean Annual Spending Residual                     14767
+   res_mcd_spd_tot_TC  Total Annual Spending Residual (Top Coded)                          24866
+   res_spd_avg_TC      Mean Annual Spending Residual (Top Coded)                     2058.063877
+   res_spd_se_TC       Standard Error of Mean Annual Spending Residual (Top Coded)   2157.673296
+   res_spd_p10         10th Percentile of Annual Spending Residual                         22388
+   res_spd_p25         25th Percentile of Annual Spending Residual                         13067
+   res_spd_p50         50th Percentile of Annual Spending Residual                         10386
+   res_spd_p75         75th Percentile of Annual Spending Residual                         42266
+   res_spd_p90         90th Percentile of Annual Spending Residual                         48035
+   res_spd_p95         95th Percentile of Annual Spending Residual                         54170
+   res_spd_p99         99th Percentile of Annual Spending Residual                         74488
+   ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                out.msa_2012_09OCT2019 descriptive statistics for numeric variables              10
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                        The MEANS Procedure
+
+ 
+   Variable            Label                                                             Minimum
+   ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+   _6_18               Number of Beneficiaries Age 6 to 18 (%)                                 0
+   _19_44_n            Number of Beneficiaries Age 19 to 44 (N)                                0
+   _19_44              Number of Beneficiaries Age 19 to 44 (%)                                0
+   _45_64_n            Number of Beneficiaries Age 45 to 64 (N)                                0
+   _45_64              Number of Beneficiaries Age 45 to 64 (%)                                0
+   _65_84_n            Number of Beneficiaries Age 65 to 84 (N)                                0
+   _65_84              Number of Beneficiaries Age 65 to 84 (%)                                0
+   _85p_n              Number of Beneficiaries Age 85 and above (N)                            0
+   _85p                Number of Beneficiaries Age 85 and above (%)                            0
+   cdps                Mean CDPS Score                                                  0.018450
+   no_cdps_conds       Proportion of beneficiaries with no CDPS diagnoses in year              0
+   pred_mcd_spd        Predicted Annual spending, from CDPS score                     683.272727
+   beds                Number of hospital beds per 1k people, 2010                      1.147741
+   md                  Number of physicians per 1k people, 2010                         0.453283
+   urate               Unemployment rate, 2012                                          7.218923
+   povrate             Rate of persons in poverty, 2012                                 3.640294
+   partial_benf_mon    Number of person months with partial benefits                           0
+   wageind_WORK        Medicare WORK Wage Index, 2012                                   1.000000
+   wageind_PE          Medicare PE Wage Index, 2012                                     0.865000
+   wageind_MPE         Medicare MPE Wage Index, 2012                                    0.450000
+   mcd_spd_tot         Total Annual Spending                                                   0
+   spd_avg             Mean Annual Spending                                                    0
+   spd_se              Standard Error of Mean Annual Spending                                  0
+   mcd_spd_tot_TC      Total Spending (Top Coded)                                              0
+   spd_avg_TC          Mean Annual Spending (Top Coded)                                        0
+   spd_se_TC           Standard Error of Mean Annual Spending (Top Coded)                      0
+   spd_p10             10th Percentile of Annual Spending                                      0
+   spd_p25             25th Percentile of Annual Spending                                      0
+   spd_p50             50th Percentile of Annual Spending                                      0
+   spd_p75             75th Percentile of Annual Spending                                      0
+   spd_p90             90th Percentile of Annual Spending                                      0
+   spd_p95             95th Percentile of Annual Spending                                      0
+   spd_p99             99th Percentile of Annual Spending                                      0
+   res_mcd_spd_tot     Total Annual Spending Residual                                    -346252
+   res_spd_avg         Mean Annual Spending Residual                                      -33841
+   res_spd_se          Standard Error of Mean Annual Spending Residual                336.609428
+   res_mcd_spd_tot_TC  Total Annual Spending Residual (Top Coded)                              0
+   res_spd_avg_TC      Mean Annual Spending Residual (Top Coded)                               0
+   res_spd_se_TC       Standard Error of Mean Annual Spending Residual (Top Coded)             0
+   res_spd_p10         10th Percentile of Annual Spending Residual                        -93478
+   res_spd_p25         25th Percentile of Annual Spending Residual                        -62868
+   res_spd_p50         50th Percentile of Annual Spending Residual                        -26034
+   res_spd_p75         75th Percentile of Annual Spending Residual                        -23846
+   res_spd_p90         90th Percentile of Annual Spending Residual                        -23846
+   res_spd_p95         95th Percentile of Annual Spending Residual                        -23846
+   res_spd_p99         99th Percentile of Annual Spending Residual                        -23846
+   ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                out.msa_2012_09OCT2019 descriptive statistics for numeric variables              11
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                        The MEANS Procedure
+
+                                                                                                  N
+Variable            Label                                                             Maximum  Miss
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+_6_18               Number of Beneficiaries Age 6 to 18 (%)                          1.000000     0
+_19_44_n            Number of Beneficiaries Age 19 to 44 (N)                      5979.000000     0
+_19_44              Number of Beneficiaries Age 19 to 44 (%)                         1.000000     0
+_45_64_n            Number of Beneficiaries Age 45 to 64 (N)                       906.000000     0
+_45_64              Number of Beneficiaries Age 45 to 64 (%)                         1.000000     0
+_65_84_n            Number of Beneficiaries Age 65 to 84 (N)                       649.000000     0
+_65_84              Number of Beneficiaries Age 65 to 84 (%)                         1.000000     0
+_85p_n              Number of Beneficiaries Age 85 and above (N)                   449.000000     0
+_85p                Number of Beneficiaries Age 85 and above (%)                     1.000000     0
+cdps                Mean CDPS Score                                                  3.086787   538
+no_cdps_conds       Proportion of beneficiaries with no CDPS diagnoses in year       1.000000   538
+pred_mcd_spd        Predicted Annual spending, from CDPS score                          49040   538
+beds                Number of hospital beds per 1k people, 2010                      8.967597     0
+md                  Number of physicians per 1k people, 2010                         4.168590     0
+urate               Unemployment rate, 2012                                         18.082277     0
+povrate             Rate of persons in poverty, 2012                                10.869565     0
+partial_benf_mon    Number of person months with partial benefits                  632.000000     0
+wageind_WORK        Medicare WORK Wage Index, 2012                                   1.500000   128
+wageind_PE          Medicare PE Wage Index, 2012                                     1.067000   128
+wageind_MPE         Medicare MPE Wage Index, 2012                                    1.015000   128
+mcd_spd_tot         Total Annual Spending                                            50139350     0
+spd_avg             Mean Annual Spending                                               204916     0
+spd_se              Standard Error of Mean Annual Spending                             158588    58
+mcd_spd_tot_TC      Total Spending (Top Coded)                                        4151208     0
+spd_avg_TC          Mean Annual Spending (Top Coded)                                    53417     0
+spd_se_TC           Standard Error of Mean Annual Spending (Top Coded)                  53417    58
+spd_p10             10th Percentile of Annual Spending                                 107306     0
+spd_p25             25th Percentile of Annual Spending                                 107306     0
+spd_p50             50th Percentile of Annual Spending                                 107306     0
+spd_p75             75th Percentile of Annual Spending                                 519998     0
+spd_p90             90th Percentile of Annual Spending                                 519998     0
+spd_p95             95th Percentile of Annual Spending                                 614306     0
+spd_p99             99th Percentile of Annual Spending                                1366922     0
+res_mcd_spd_tot     Total Annual Spending Residual                                    1213886   538
+res_spd_avg         Mean Annual Spending Residual                                       79571   538
+res_spd_se          Standard Error of Mean Annual Spending Residual                     88328   543
+res_mcd_spd_tot_TC  Total Annual Spending Residual (Top Coded)                         462084     0
+res_spd_avg_TC      Mean Annual Spending Residual (Top Coded)                           49028     0
+res_spd_se_TC       Standard Error of Mean Annual Spending Residual (Top Coded)         49028    58
+res_spd_p10         10th Percentile of Annual Spending Residual                   3203.539484   538
+res_spd_p25         25th Percentile of Annual Spending Residual                   3518.639079   538
+res_spd_p50         50th Percentile of Annual Spending Residual                         32521   538
+res_spd_p75         75th Percentile of Annual Spending Residual                        256049   538
+res_spd_p90         90th Percentile of Annual Spending Residual                        256049   538
+res_spd_p95         95th Percentile of Annual Spending Residual                        256049   538
+res_spd_p99         99th Percentile of Annual Spending Residual                        256049   538
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                out.msa_2012_09OCT2019 descriptive statistics for numeric variables              12
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                        The MEANS Procedure
+
+ 
+Variable            Label                                                          N          Mean
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+res_spd_max         Maximum Annual Spending Residual                              43         68145
+res_spd_TC_max      Maximum Annual Spending Residual (Top Coded)                 581   1735.511188
+spd_TC_max          Maximum Annual Spending (Top Coded)                          581         25688
+spd_max             Maximum Annual Spending                                      581        109856
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+
+ 
+   Variable            Label                                                             Std Dev
+   ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+   res_spd_max         Maximum Annual Spending Residual                                    78558
+   res_spd_TC_max      Maximum Annual Spending Residual (Top Coded)                        17124
+   spd_TC_max          Maximum Annual Spending (Top Coded)                                 50463
+   spd_max             Maximum Annual Spending                                            462568
+   ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+
+ 
+   Variable            Label                                                             Minimum
+   ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+   res_spd_max         Maximum Annual Spending Residual                                   -23846
+   res_spd_TC_max      Maximum Annual Spending Residual (Top Coded)                            0
+   spd_TC_max          Maximum Annual Spending (Top Coded)                                     0
+   spd_max             Maximum Annual Spending                                                 0
+   ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+
+                                                                                                  N
+Variable            Label                                                             Maximum  Miss
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+res_spd_max         Maximum Annual Spending Residual                                   256049   538
+res_spd_TC_max      Maximum Annual Spending Residual (Top Coded)                       196110     0
+spd_TC_max          Maximum Annual Spending (Top Coded)                                196110     0
+spd_max             Maximum Annual Spending                                          10641510     0
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                out.msa_2012_09OCT2019 descriptive statistics for numeric variables              13
+                                                                   22:32 Wednesday, October 9, 2019
+
+Show cells marked .S in out.msa_2012_09OCT2019
+
+                          Show cells marked .S in out.msa_2012_09OCT2019                         14
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                        The FREQ Procedure
+
+                                 50th Percentile of Annual Spending
+ 
+                                                                 Cumulative    Cumulative
+                             spd_p50    Frequency     Percent     Frequency      Percent
+          ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+          Not Missing                        581      100.00           581       100.00  
+
+
+                                  Maximum Annual Spending Residual
+ 
+                                                                 Cumulative    Cumulative
+                         res_spd_max    Frequency     Percent     Frequency      Percent
+          ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+          Missing                            538       92.60           538        92.60  
+          Not Missing                         43        7.40           581       100.00  
+               out.msa_2012_09OCT2019 descriptive statistics for character variables             15
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                        The FREQ Procedure
+
+                                          Unique cell ID
+ 
+                                                           Cumulative    Cumulative
+               age_servicetype    Frequency     Percent     Frequency      Percent
+               ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+               adult_01                  2        0.34             2         0.34  
+               adult_02                  5        0.86             7         1.20  
+               adult_04                  5        0.86            12         2.07  
+               adult_05                 30        5.16            42         7.23  
+               adult_06                 31        5.34            73        12.56  
+               adult_07                 20        3.44            93        16.01  
+               adult_08                 31        5.34           124        21.34  
+               adult_09                 13        2.24           137        23.58  
+               adult_10                 14        2.41           151        25.99  
+               adult_12                  4        0.69           155        26.68  
+               adult_13                 29        4.99           184        31.67  
+               adult_14                 30        5.16           214        36.83  
+               adult_15                  9        1.55           223        38.38  
+               adult_16                 11        1.89           234        40.28  
+               child_01                  1        0.17           235        40.45  
+               child_02                  4        0.69           239        41.14  
+               child_03                  1        0.17           240        41.31  
+               child_04                  5        0.86           245        42.17  
+               child_05                 29        4.99           274        47.16  
+               child_06                 30        5.16           304        52.32  
+               child_07                 22        3.79           326        56.11  
+               child_08                 31        5.34           357        61.45  
+               child_10                  1        0.17           358        61.62  
+               child_13                  3        0.52           361        62.13  
+               child_14                  2        0.34           363        62.48  
+               child_17                 30        5.16           393        67.64  
+               senior_02                 2        0.34           395        67.99  
+               senior_04                 4        0.69           399        68.67  
+               senior_05                 6        1.03           405        69.71  
+               senior_06                10        1.72           415        71.43  
+               senior_07                16        2.75           431        74.18  
+               senior_08                12        2.07           443        76.25  
+               senior_09                 7        1.20           450        77.45  
+               senior_10                14        2.41           464        79.86  
+               senior_11                 8        1.38           472        81.24  
+               senior_12                11        1.89           483        83.13  
+               senior_13                20        3.44           503        86.57  
+               senior_14                19        3.27           522        89.85  
+               senior_15                29        4.99           551        94.84  
+               senior_16                30        5.16           581       100.00  
+               out.msa_2012_09OCT2019 descriptive statistics for character variables             16
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                        The FREQ Procedure
+
+                                          State-MSA Code
+ 
+                                                        Cumulative    Cumulative
+                   st_msa      Frequency     Percent     Frequency      Percent
+                   ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                   AK-11260          19        3.27            19         3.27  
+                   AK-21820          12        2.07            31         5.34  
+                   AK-XXXXX          13        2.24            44         7.57  
+                   AL-11500          22        3.79            66        11.36  
+                   AL-12220          16        2.75            82        14.11  
+                   AL-13820          27        4.65           109        18.76  
+                   AL-17980          18        3.10           127        21.86  
+                   AL-19300          22        3.79           149        25.65  
+                   AL-19460          17        2.93           166        28.57  
+                   AL-20020          15        2.58           181        31.15  
+                   AL-22520          16        2.75           197        33.91  
+                   AL-23460          20        3.44           217        37.35  
+                   AL-26620          23        3.96           240        41.31  
+                   AL-33660          22        3.79           262        45.09  
+                   AL-33860          24        4.13           286        49.23  
+                   AL-46220          23        3.96           309        53.18  
+                   AL-XXXXX          26        4.48           335        57.66  
+                   AR-22220          14        2.41           349        60.07  
+                   AR-22900          14        2.41           363        62.48  
+                   AR-26300          14        2.41           377        64.89  
+                   AR-27860          14        2.41           391        67.30  
+                   AR-30780          16        2.75           407        70.05  
+                   AR-32820          16        2.75           423        72.81  
+                   AR-38220          14        2.41           437        75.22  
+                   AR-45500          14        2.41           451        77.62  
+                   AR-XXXXX          18        3.10           469        80.72  
+                   AZ-22380          24        4.13           493        84.85  
+                   AZ-29420           7        1.20           500        86.06  
+                   AZ-38060          32        5.51           532        91.57  
+                   AZ-43420          21        3.61           553        95.18  
+                   AZ-XXXXX          28        4.82           581       100.00  
+               out.msa_2012_09OCT2019 descriptive statistics for character variables             17
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                      The CONTENTS Procedure
+
+           Data Set Name        OUT.MSA_2012_09OCT2019        Observations          581
+           Member Type          DATA                          Variables             98 
+           Engine               V9                            Indexes               0  
+           Created              10/09/2019 22:33:06           Observation Length    984
+           Last Modified        10/09/2019 22:33:06           Deleted Observations  0  
+           Protection                                         Compressed            NO 
+           Data Set Type                                      Sorted                NO 
+           Label                                                                       
+           Data Representation  WINDOWS_64                                             
+           Encoding             wlatin1  Western (Windows)                             
+
+
+                                 Engine/Host Dependent Information
+
+     Data Set Page Size          262144                                                       
+     Number of Data Set Pages    3                                                            
+     First Data Page             1                                                            
+     Max Obs per Page            266                                                          
+     Obs in First Data Page      252                                                          
+     Number of Data Set Repairs  0                                                            
+     ExtendObsCounter            YES                                                          
+     Filename                    P:\MCD-SPVR\data\workspace\output\msa_2012_09oct2019.sas7bdat
+     Release Created             9.0401M6                                                     
+     Host Created                X64_ES08R2                                                   
+     Owner Name                  UINT\LDURBAK                                                 
+     File Size                   1MB                                                          
+     File Size (bytes)           1048576                                                      
+
+
+                            Alphabetic List of Variables and Attributes
+ 
+ # Variable         Type Len Format  Informat Label
+
+45 _0               Num    8                  Number of Beneficiaries Age less than 1 year (%)    
+44 _0_n             Num    8                  Number of Beneficiaries Age less than 1 year (N)    
+51 _19_44           Num    8                  Number of Beneficiaries Age 19 to 44 (%)            
+50 _19_44_n         Num    8                  Number of Beneficiaries Age 19 to 44 (N)            
+47 _1_5             Num    8                  Number of Beneficiaries Age 1 to 5 (%)              
+46 _1_5_n           Num    8                  Number of Beneficiaries Age 1 to 5 (N)              
+53 _45_64           Num    8                  Number of Beneficiaries Age 45 to 64 (%)            
+52 _45_64_n         Num    8                  Number of Beneficiaries Age 45 to 64 (N)            
+55 _65_84           Num    8                  Number of Beneficiaries Age 65 to 84 (%)            
+54 _65_84_n         Num    8                  Number of Beneficiaries Age 65 to 84 (N)            
+49 _6_18            Num    8                  Number of Beneficiaries Age 6 to 18 (%)             
+48 _6_18_n          Num    8                  Number of Beneficiaries Age 6 to 18 (N)             
+57 _85p             Num    8                  Number of Beneficiaries Age 85 and above (%)        
+56 _85p_n           Num    8                  Number of Beneficiaries Age 85 and above (N)        
+ 3 age_cat          Num    8 AGE.             Age Category                                        
+ 2 age_servicetype  Char  16                  Unique cell ID                                      
+61 beds             Num    8                  Number of hospital beds per 1k people, 2010         
+               out.msa_2012_09OCT2019 descriptive statistics for character variables             18
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                      The CONTENTS Procedure
+
+                            Alphabetic List of Variables and Attributes
+ 
+ # Variable         Type Len Format  Informat Label
+
+35 boe_adult        Num    8                  BOE Adult Beneficiaries (%)                         
+34 boe_adult_n      Num    8                  BOE Adult Beneficiaries (N)                         
+29 boe_aged         Num    8                  BOE Aged Beneficiaries (%)                          
+28 boe_aged_n       Num    8                  BOE Aged Beneficiaries (N)                          
+33 boe_child        Num    8                  BOE Child Beneficiaries (%)                         
+32 boe_child_n      Num    8                  BOE Child Beneficiaries (N)                         
+31 boe_disabled     Num    8                  BOE Disabled Beneficiaries (%)                      
+30 boe_disabled_n   Num    8                  BOE Disabled Beneficiaries (N)                      
+41 boe_fchild       Num    8                  BOE Foster Child Beneficiaries (%)                  
+40 boe_fchild_n     Num    8                  BOE Foster Child Beneficiaries (N)                  
+39 boe_uadult       Num    8                  BOE Unemployed Adult Beneficiaries (%)              
+38 boe_uadult_n     Num    8                  BOE Unemployed Adult Beneficiaries (N)              
+37 boe_uchild       Num    8                  BOE Child (Unemployed Adult) Beneficiaries (%)      
+36 boe_uchild_n     Num    8                  BOE Child (Unemployed Adult) Beneficiaries (N)      
+58 cdps             Num    8                  Mean CDPS Score                                     
+15 cell_n           Num    8                  Number of Beneficiaries                             
+16 d_servicetype_n  Num    8                  Number of Unique Statuses                           
+17 died_n           Num    8                  Number Dying in Year                                
+ 5 dis_cat          Num    8 DIS.             Disability Category                                 
+12 dis_mon          Num    8                  Number of Person Months of Disability               
+ 6 dual_cat         Num    8 DUAL.            Dual-Eligibility Category                           
+10 dual_mon         Num    8                  Number of Person Months of Dual Eligibility         
+14 elg_mon          Num    8                  Number of Person Months of Eligibility              
+ 7 foster_cat       Num    8 FOSTER.          Foster Care Category                                
+ 8 ltss_cat         Num    8 LTSS.            LTSS Use Category                                   
+13 ltss_mon         Num    8                  Number of Person Months of LTSS Use                 
+43 male             Num    8                  Number of Male Beneficiaries (%)                    
+42 male_n           Num    8                  Number of Male Beneficiaries (N)                    
+25 mas_1115         Num    8                  MAS 1115 Exspansion Beneficiaries (%)               
+24 mas_1115_n       Num    8                  MAS 1115 Exspansion Beneficiaries (N)               
+19 mas_cash         Num    8                  MAS Cash Beneficiaries (%)                          
+18 mas_cash_n       Num    8                  MAS Cash Beneficiaries (N)                          
+21 mas_mn           Num    8                  MAS Medically Needy Beneficiaries (%)               
+20 mas_mn_n         Num    8                  MAS Medically Needy Beneficiaries (N)               
+27 mas_oth          Num    8                  MAS Other Beneficiaries (%)                         
+26 mas_oth_n        Num    8                  MAS Other Beneficiaries (N)                         
+23 mas_pov          Num    8                  MAS Poverty-Related Beneficiaries (%)               
+22 mas_pov_n        Num    8                  MAS Poverty-Related Beneficiaries (N)               
+ 9 mc_cat           Num    8 MC.              Managed Care Category                               
+11 mc_mon           Num    8                  Number of Person Months of Managed Care Enrollment  
+69 mcd_spd_tot      Num    8                  Total Annual Spending                               
+72 mcd_spd_tot_TC   Num    8                  Total Spending (Top Coded)                          
+62 md               Num    8                  Number of physicians per 1k people, 2010            
+59 no_cdps_conds    Num    8                  Proportion of beneficiaries with                    
+                                              no CDPS diagnoses in year                           
+65 partial_benf_mon Num    8                  Number of person months with partial benefits       
+               out.msa_2012_09OCT2019 descriptive statistics for character variables             19
+                                                                   22:32 Wednesday, October 9, 2019
+
+                                      The CONTENTS Procedure
+
+                            Alphabetic List of Variables and Attributes
+ 
+ # Variable         Type Len Format  Informat Label
+
+64 povrate          Num    8                  Rate of persons in poverty, 2012                    
+60 pred_mcd_spd     Num    8                  Predicted Annual spending, from CDPS score          
+82 res_mcd_spd_tot  Num    8                  Total Annual Spending Residual                      
+85 res_mcd_spd_     Num    8                  Total Annual Spending Residual (Top Coded)          
+   tot_TC                                                                                         
+96 res_spd_TC_max   Num    8                  Maximum Annual Spending Residual (Top Coded)        
+83 res_spd_avg      Num    8                  Mean Annual Spending Residual                       
+86 res_spd_avg_TC   Num    8                  Mean Annual Spending Residual (Top Coded)           
+95 res_spd_max      Num    8                  Maximum Annual Spending Residual                    
+88 res_spd_p10      Num    8                  10th Percentile of Annual Spending Residual         
+89 res_spd_p25      Num    8                  25th Percentile of Annual Spending Residual         
+90 res_spd_p50      Num    8                  50th Percentile of Annual Spending Residual         
+91 res_spd_p75      Num    8                  75th Percentile of Annual Spending Residual         
+92 res_spd_p90      Num    8                  90th Percentile of Annual Spending Residual         
+93 res_spd_p95      Num    8                  95th Percentile of Annual Spending Residual         
+94 res_spd_p99      Num    8                  99th Percentile of Annual Spending Residual         
+84 res_spd_se       Num    8                  Standard Error of Mean Annual Spending Residual     
+87 res_spd_se_TC    Num    8                  Standard Error of Mean Annual                       
+                                              Spending Residual (Top Coded)                       
+97 spd_TC_max       Num    8                  Maximum Annual Spending (Top Coded)                 
+70 spd_avg          Num    8                  Mean Annual Spending                                
+73 spd_avg_TC       Num    8                  Mean Annual Spending (Top Coded)                    
+98 spd_max          Num    8                  Maximum Annual Spending                             
+75 spd_p10          Num    8                  10th Percentile of Annual Spending                  
+76 spd_p25          Num    8                  25th Percentile of Annual Spending                  
+77 spd_p50          Num    8                  50th Percentile of Annual Spending                  
+78 spd_p75          Num    8                  75th Percentile of Annual Spending                  
+79 spd_p90          Num    8                  90th Percentile of Annual Spending                  
+80 spd_p95          Num    8                  95th Percentile of Annual Spending                  
+81 spd_p99          Num    8                  99th Percentile of Annual Spending                  
+71 spd_se           Num    8                  Standard Error of Mean Annual Spending              
+74 spd_se_TC        Num    8                  Standard Error of Mean Annual Spending (Top Coded)  
+ 4 st_msa           Char 200                  State-MSA Code                                      
+63 urate            Num    8                  Unemployment rate, 2012                             
+68 wageind_MPE      Num    8 BEST12. BEST32.  Medicare MPE Wage Index, 2012                       
+67 wageind_PE       Num    8 BEST12. BEST32.  Medicare PE Wage Index, 2012                        
+66 wageind_WORK     Num    8 BEST12. BEST32.  Medicare WORK Wage Index, 2012                      
+ 1 year             Num    8                  Claims year                                         

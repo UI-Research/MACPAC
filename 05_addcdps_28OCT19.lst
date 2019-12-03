@@ -1,0 +1,33 @@
+                                      Obs with ST_MSA matches    22:04 Monday, October 28, 2019   1
+
+                                        The FREQ Procedure
+
+                                                         Cumulative    Cumulative
+                 st_msa         Frequency     Percent     Frequency      Percent
+                 ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                 Missing            1278        0.00          1278         0.00  
+                 Not Missing    36500703      100.00      36501981       100.00  
+
+
+                                State abbreviation and county code
+ 
+                                                         Cumulative    Cumulative
+                 county         Frequency     Percent     Frequency      Percent
+                 ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                 Not Missing    36501981      100.00      36501981       100.00  
+                                    Obs without ST_MSA matches                                    2
+                                                                     22:04 Monday, October 28, 2019
+
+                                                                                           number_
+State abbreviation and county code                                                         missing
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+AK-270                                                                                          95
+NM-109                                                                                          21
+NM-141                                                                                           6
+NV-051                                                                                           3
+NY-005                                                                                         345
+NY-047                                                                                         391
+NY-081                                                                                         277
+NY-085                                                                                          71
+SD-113                                                                                          63
+SD-133                                                                                           6

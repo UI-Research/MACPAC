@@ -1,0 +1,94 @@
+                                           The SAS System      09:57 Wednesday, January 16, 2019   1
+
+                                         The FREQ Procedure
+
+                                           State-MSA Code
+ 
+                                                          Cumulative    Cumulative
+                  st_msa         Frequency     Percent     Frequency      Percent
+                  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                  Missing           18134        0.03         18134         0.03  
+                  Not Missing    66657241       99.97      66675375       100.00  
+
+
+                                             CBSA Title
+ 
+                                                          Cumulative    Cumulative
+                  cbsatitle      Frequency     Percent     Frequency      Percent
+                  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                  Missing           18134        0.03         18134         0.03  
+                  Not Missing    66657241       99.97      66675375       100.00  
+
+
+                                 State abbreviation and county code
+ 
+                                                          Cumulative    Cumulative
+                  county         Frequency     Percent     Frequency      Percent
+                  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                  Not Missing    66675375      100.00      66675375       100.00  
+                                     Obs without ST_MSA matches                                    2
+                                                                   09:57 Wednesday, January 16, 2019
+
+                                                                                            number_
+State abbreviation and county code                                                          missing
+ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+AK-270                                                                                         5226
+AR-213                                                                                            4
+AZ-031                                                                                            4
+AZ-037                                                                                            5
+NM-109                                                                                           24
+NM-141                                                                                            4
+NV-045                                                                                            4
+NV-051                                                                                            3
+NV-071                                                                                            1
+NV-073                                                                                           24
+NV-091                                                                                            2
+NY-005                                                                                         1373
+NY-047                                                                                         1872
+NY-081                                                                                         1706
+NY-085                                                                                          473
+OK-421                                                                                            1
+OR-073                                                                                           12
+OR-075                                                                                           53
+SD-113                                                                                         7337
+SD-133                                                                                            6
+                                     Obs without ST_MSA matches                                    3
+                                                                   09:57 Wednesday, January 16, 2019
+
+              Obs     hrrnum    hrrstate    hrrnum_c    hrrname                zip_code
+
+                1        301    NY            301       East Long Island-NY       501  
+                2        301    NY            301       East Long Island-NY       544  
+                3        230    MA            230       Springfield-MA           1001  
+                4        230    MA            230       Springfield-MA           1002  
+                5        230    MA            230       Springfield-MA           1003  
+                6        230    MA            230       Springfield-MA           1004  
+                7        231    MA            231       Worcester-MA             1005  
+                8        230    MA            230       Springfield-MA           1007  
+                9        230    MA            230       Springfield-MA           1008  
+               10        230    MA            230       Springfield-MA           1009  
+                                     Obs without ST_MSA matches                                    4
+                                                                   09:57 Wednesday, January 16, 2019
+
+                                         The FREQ Procedure
+
+                                                          Cumulative    Cumulative
+                      hrr_zip    Frequency     Percent     Frequency      Percent
+                  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                  Missing             315        0.00           315         0.00  
+                  Not Missing    66675060      100.00      66675375       100.00  
+
+
+                                                          Cumulative    Cumulative
+                     zip_code    Frequency     Percent     Frequency      Percent
+                  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                  Missing             315        0.00           315         0.00  
+                  Not Missing    66675060      100.00      66675375       100.00  
+
+
+                                              Zip code
+ 
+                                                          Cumulative    Cumulative
+                      zipcode    Frequency     Percent     Frequency      Percent
+                  ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                  Not Missing    66675375      100.00      66675375       100.00  

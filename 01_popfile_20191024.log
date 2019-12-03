@@ -1,0 +1,70 @@
+1                                         The SAS System           12:01 Tuesday, October 29, 2019
+
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M6) 
+      Licensed to THE URBAN INSTITUTE, Site 70113200.
+NOTE: This session is executing on the X64_ES08R2  platform.
+
+
+
+NOTE: Analytical products:
+      
+      SAS/STAT 15.1
+
+NOTE: Additional host information:
+
+ X64_ES08R2 WIN 6.1.7601 Service Pack 1 Server
+
+NOTE: SAS initialization used:
+      real time           0.31 seconds
+      cpu time            0.20 seconds
+      
+
+NOTE: AUTOEXEC processing beginning; file is C:\Program 
+      Files\SASHome2\SASFoundation\9.4\autoexec.sas.
+
+
+NOTE: AUTOEXEC processing completed.
+
+1          /**************************************************************************************
+1        ! *****************************/
+2          /*	Purpose: Using a yearly MAX input data set, create an analytic file with specified
+2        ! variables.
+3          /*				Fix invalid geographic information.
+4          /*	Project: MACPAC Spending Variations
+5          /*	Author: Leah Durbak (based on code by Abby Norling-Ruggles, modified by Kyle
+5        ! Caswell, modified by Tim Waidmann)
+6          /*	Notes:
+7          /*		Drop benes with partial Medicaid eligibility when cell type is determined (last
+7        ! observed month). Add a summary variable on the number of total partial benefit months
+7        ! in the cell.
+8          /*		Include small cell size for internal purposes
+9          /*		Include top-coded spending summary series (sum, mean, etc.)
+10         /*		1) Collapse macros for easier manipulation
+11         /*		2) Dependent on MAX data formatting
+12         /**************************************************************************************
+12       ! *****************************/
+13         /*Options to change*/
+14         %macro prod();
+15         	options obs=MAX;
+16         	/*Log*/
+17         	proc printto print="P:\MCD-SPVR\log\01_popfile_&sysdate..lst"
+18         	               log="P:\MCD-SPVR\log\01_popfile_&sysdate..log" NEW;
+19         	run;
+20         %mend;
+21         
+2                                         The SAS System           12:01 Tuesday, October 29, 2019
+
+22         %macro test();	
+23         	options obs=1000000;
+24         	/*Log*/
+25         	proc printto;run;
+26         %mend;
+27         
+28         %prod();
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           2:24:00.79
+      cpu time            2:24:54.34
+      

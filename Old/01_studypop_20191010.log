@@ -1,0 +1,84 @@
+1                                                          The SAS System                           17:09 Thursday, October 10, 2019
+
+NOTE: Unable to open SASUSER.REGSTRY. WORK.REGSTRY will be opened instead.
+NOTE: All registry changes will be lost at the end of the session.
+
+WARNING: Unable to copy SASUSER registry to WORK registry. Because of this, you will not see registry customizations during this 
+         session.
+NOTE: Unable to open SASUSER.PROFILE. WORK.PROFILE will be opened instead.
+NOTE: All profile changes will be lost at the end of the session.
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M6) 
+      Licensed to THE URBAN INSTITUTE, Site 70113200.
+NOTE: This session is executing on the X64_ES08R2  platform.
+
+
+
+NOTE: Analytical products:
+      
+      SAS/STAT 15.1
+
+NOTE: Additional host information:
+
+ X64_ES08R2 WIN 6.1.7601 Service Pack 1 Server
+
+NOTE: SAS initialization used:
+      real time           0.38 seconds
+      cpu time            0.23 seconds
+      
+
+NOTE: AUTOEXEC processing beginning; file is C:\Program 
+      Files\SASHome2\SASFoundation\9.4\autoexec.sas.
+
+
+NOTE: AUTOEXEC processing completed.
+
+1          /**************************************************************************************
+1        ! *****************************/
+2          /*	Purpose: Using a yearly MAX input data set, create an analytic file with specified
+2        ! variables.
+3          /*				Fix invalid geographic information.
+4          /*	Project: MACPAC Spending Variations
+5          /*	Author: Leah Durbak (based on code by Abby Norling-Ruggles, modified by Kyle
+5        ! Caswell, modified by Tim Waidmann)
+6          /*	Notes:
+7          /*		Drop benes with partial Medicaid eligibility when cell type is determined (last
+7        ! observed month). Add a summary variable on the number of total partial benefit months
+7        ! in the cell.
+8          /*		Include small cell size for internal purposes
+9          /*		Include top-coded spending summary series (sum, mean, etc.)
+10         /*		1) Collapse macros for easier manipulation
+11         /*		2) Dependent on MAX data formatting
+12         /**************************************************************************************
+12       ! *****************************/
+13         /*Options to change*/
+14         %macro prod();
+2                                         The SAS System          17:09 Thursday, October 10, 2019
+
+15         	options obs=MAX;
+16         	/*Log*/
+17         	proc printto print="P:\MCD-SPVR\log\01_studypop_&sysdate..lst"
+18         	               log="P:\MCD-SPVR\log\01_studypop_&sysdate..log" NEW;
+19         	run;
+20         %mend;
+21         
+22         %macro test();	
+23         	options obs=100000;
+24         	/*Log*/
+25         	proc printto;run;
+26         %mend;
+27         
+28         %prod();
+
+NOTE: PROCEDURE PRINTTO used (Total process time):
+      real time           0.00 seconds
+      cpu time            0.00 seconds
+      
+
+ERROR: Errors printed on pages 32,1123.
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           10:46:08.58
+      cpu time            5:46:15.38
+      
