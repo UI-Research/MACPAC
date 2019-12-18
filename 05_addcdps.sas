@@ -16,13 +16,13 @@
 %mend;
 
 %macro test();	
-	options obs=MAX;
+	options obs=10000;
 	/*Log*/
 	proc printto;run;
 %mend;
 
-*%prod();
-%test();
+%prod();
+*%test();
 
 /*Libraries*/
 libname data    "P:\MCD-SPVR\data\raw_data\SAS_DATASETS";
@@ -35,7 +35,7 @@ libname scores  "P:\MCD-SPVR\data\workspace\CDPS_SCORES";
 libname ahrf_hrr "\\sas1_alt\MCD-SPVR\data\NO_PII\HRR\workspace";
 
 /* Macro vars to change*/
-%let indata = space.id_pop; /*input data file from 01_studypop_analyticfile*/
+%let indata = space.id_pop; /*input data file from 02_geofix*/
 %let outdata=space.temp_max_cdpsscores;
 
 %let year=2012;
@@ -50,22 +50,7 @@ proc sql;
 	drop table space.temp_max_cdpsscores;
 quit;
 */
-/*ADHOC FIX FOR RI, ALREADY FIXED IN 01_POPFILE
-proc sql;
-	create table temp (drop=EL_RSDNC_CNTY_CD_LTST county rename=(EL_RSDNC_CNTY_CD_LTST_fx=EL_RSDNC_CNTY_CD_LTST county_fx=county)) as 
-	select *,
-		case when state_cd = 'RI' and EL_RSDNC_CNTY_CD_LTST in('000','999',' ') then "005"
-		else EL_RSDNC_CNTY_CD_LTST
-		end as EL_RSDNC_CNTY_CD_LTST_fx,
-		case when state_cd = 'RI' and EL_RSDNC_CNTY_CD_LTST in('000','999',' ') then "RI-005"
-		else county
-		end as county_fx
-	from &indata.;
-quit;
 
-data space.temp;
-	set temp;
-run;*/
 /****************/
 /* Add CDPS data*/
 /****************/
@@ -120,7 +105,7 @@ quit;
 /************************************************/
 /*Initial processing to attach MSA info to files*/
 /************************************************/
-/*
+
 proc sql;
 	create table space.temp_ahrf_msa_xwalk as
 	select *,
@@ -153,7 +138,7 @@ proc sql;
 	from space.temp_ahrf_msa_xwalk 
 	group by year, st_msa, calculated cbsatitle_fx;
 quit;
-*/
+
 proc sql ;
 	create table max_2012_msa_join (drop=cbsatitle_fx)as
 	select  a.*, b.* ,cbsatitle_fx as cbsatitle
@@ -162,7 +147,7 @@ proc sql ;
 quit;
 
 proc sql;
-	create table space.temp_max_cdpsscores as
+	create table space.pop_cdps_scores as
 	select *
 	from max_2012_msa_join
 	where st_msa ne ' ';
