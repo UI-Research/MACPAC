@@ -5,21 +5,9 @@
 /*		1) Collapse macros for easier manipulation
 /*	Notes: 
 /*******************************************************************************************************************/ 
-/*Options to change*/
-%macro prod();
-	options obs=MAX;
-	/*Log
-	proc printto print="P:\MCD-SPVR\log\subset_ip_lt_claims_byDX_&sysdate..lst"
-	               log="P:\MCD-SPVR\log\subset_ip_lt_claims_byDX_&sysdate..log" NEW;
-	run;*/
-%mend;
-
-%prod();
-
 libname  data    "P:\MCD-SPVR\data\raw_data\SAS_DATASETS";
 libname  space   "P:\MCD-SPVR\data\workspace";
 libname  stateot "P:\MCD-SPVR\data\raw_data\SAS_DATASETS\OT";
-
 
 %let pula = "493", "4930", "49300", "49301", "49302", "4931", "49310", "49311", "49312", "4932", 
 			"49320", "49321", "49322", "4938", "49381", "49382", "4939", "49390", "49391", "49392";
@@ -159,7 +147,7 @@ libname  stateot "P:\MCD-SPVR\data\raw_data\SAS_DATASETS\OT";
 				end as svc_dx
 		from &in_max.
 		where BENE_ID in (select distinct BENE_ID from &pop_data.) and TYPE_CLM_CD="1" and 
-			DIAG_CD_1 in (&cdps_flag.) and
+			DIAG_CD_1 in (%nrquote(&&&cdps_flag)) and
 			(MAX_TOS in (1,8,12,11,16) or PLC_OF_SRVC_CD = 23);
 	quit;
 	/*create bene - svc_dx - svc_type level file*/
@@ -188,7 +176,7 @@ libname  stateot "P:\MCD-SPVR\data\raw_data\SAS_DATASETS\OT";
 			&i. ne 48 %then %do;
 			/*FIPS codes 3,7,14, 42, and 52 do not exist; skip CA, NY, and TX because the file name structure is difference*/
 				%let state = %sysfunc(fipstate(&i));
-				%pull_ot_claims(pop_data=limited_cdpspop,in_max= stateot.Maxdata_&state._ot_2012,cdps_flag=%nrquote(&dia2l.),outdata=&state.);
+				%pull_ot_claims(pop_data=limited_cdpspop,in_max= stateot.Maxdata_&state._ot_2012,cdps_flag=&cdps_diag.,outdata=&state.);
 		%end;
 	%end;	
 %mend;
@@ -196,12 +184,12 @@ libname  stateot "P:\MCD-SPVR\data\raw_data\SAS_DATASETS\OT";
 
 /*CA, NY, TX did not run in above loop because of file naming
 /*run these manually below*/
-%pull_ot_claims(pop_data=limited_cdpspop,in_max= stateot.Maxdata_ca_ot_2012_001,cdps_flag=%nrquote(&dia2l.),outdata=ca1);
-%pull_ot_claims(pop_data=limited_cdpspop,in_max= stateot.Maxdata_ca_ot_2012_002,cdps_flag=%nrquote(&dia2l.),outdata=ca2);
-%pull_ot_claims(pop_data=limited_cdpspop,in_max= stateot.Maxdata_ny_ot_2012_001,cdps_flag=%nrquote(&dia2l.),outdata=ny1);
-%pull_ot_claims(pop_data=limited_cdpspop,in_max= stateot.Maxdata_ny_ot_2012_002,cdps_flag=%nrquote(&dia2l.),outdata=ny2);
-%pull_ot_claims(pop_data=limited_cdpspop,in_max= stateot.Maxdata_tx_ot_2012_001,cdps_flag=%nrquote(&dia2l.),outdata=tx1);
-%pull_ot_claims(pop_data=limited_cdpspop,in_max= stateot.Maxdata_tx_ot_2012_002,cdps_flag=%nrquote(&dia2l.),outdata=tx2);
+%pull_ot_claims(pop_data=limited_cdpspop,in_max= stateot.Maxdata_ca_ot_2012_001,cdps_flag=&cdps_diag.,outdata=ca1);
+%pull_ot_claims(pop_data=limited_cdpspop,in_max= stateot.Maxdata_ca_ot_2012_002,cdps_flag=&cdps_diag.,outdata=ca2);
+%pull_ot_claims(pop_data=limited_cdpspop,in_max= stateot.Maxdata_ny_ot_2012_001,cdps_flag=&cdps_diag.,outdata=ny1);
+%pull_ot_claims(pop_data=limited_cdpspop,in_max= stateot.Maxdata_ny_ot_2012_002,cdps_flag=&cdps_diag.,outdata=ny2);
+%pull_ot_claims(pop_data=limited_cdpspop,in_max= stateot.Maxdata_tx_ot_2012_001,cdps_flag=&cdps_diag.,outdata=tx1);
+%pull_ot_claims(pop_data=limited_cdpspop,in_max= stateot.Maxdata_tx_ot_2012_002,cdps_flag=&cdps_diag.,outdata=tx2);
 
 data all_limited_cdpspop_dxclms_ot;
 	set otclaims_:;

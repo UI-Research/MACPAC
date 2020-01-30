@@ -146,12 +146,35 @@ proc sql ;
 	on a.county=b.st_cnty;
 quit;
 
+/*add additional MAX TOS spending variables*/
+proc sql;
+ 	select name into :prem_cols separated by ", "
+	from dictionary.columns 
+	where libname="DATA" and memname="MAXDATA_PS_2012" and name like "PREM_MDCD_PYMT_AMT_%";
+quit;
+proc sql;
+	select name into :ffs_cols separated by ", "
+	from dictionary.columns
+	where libname="DATA" and memname="MAXDATA_PS_2012" and name like "FFS_PYMT_AMT_%";
+quit;
 proc sql;
 	create table space.pop_cdps_scores as
-	select *
-	from max_2012_msa_join
-	where st_msa ne ' ';
+	select distinct pop.*, &prem_cols., &ffs_cols.
+	from max_2012_msa_join (drop=FFS_PYMT_AMT_01 FFS_PYMT_AMT_08 FFS_PYMT_AMT_12 FFS_PYMT_AMT_16) /*these elements are already in the pop data*/ pop left join
+		(select bene_id, state_cd, &prem_cols., &ffs_cols.
+		from data.maxdata_ps_2012 
+		where bene_id in (select bene_id from max_2012_msa_join)) ps  
+	on pop.bene_id = ps.bene_id and pop.state_cd=ps.state_cd
+	where pop.st_msa ne ' ';
 quit;
+proc sql;
+	select count(*)
+	from space.pop_cdps_scores;
+
+	select count(*)
+	from (select distinct * from space.pop_cdps_scores);
+quit;
+
 /*
 proc freq data=max_2012_msa_join;
 	title "Obs with ST_MSA matches";

@@ -1,4 +1,4 @@
-1                                         The SAS System            15:14 Friday, December 20, 2019
+1                                         The SAS System           14:00 Tuesday, January 14, 2020
 
 NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
 NOTE: SAS (r) Proprietary Software 9.4 (TS1M6) 
@@ -16,8 +16,8 @@ NOTE: Additional host information:
  X64_ES08R2 WIN 6.1.7601 Service Pack 1 Server
 
 NOTE: SAS initialization used:
-      real time           2.04 seconds
-      cpu time            0.13 seconds
+      real time           0.37 seconds
+      cpu time            0.23 seconds
       
 
 NOTE: AUTOEXEC processing beginning; file is C:\Program 
@@ -26,8 +26,8 @@ NOTE: AUTOEXEC processing beginning; file is C:\Program
 
 NOTE: AUTOEXEC processing completed.
 
-1          /***************************************************************************************
-1        ! ****************************/
+1          /**************************************************************************************
+1        ! *****************************/
 2          /*	Purpose: Create MSA-level CDPS flag population analytic files - no MASBOE/Age
 2        ! category differentiators	
 3          /*	Project: MACPAC Spending Variations
@@ -39,34 +39,39 @@ NOTE: AUTOEXEC processing completed.
 8        ! from base population file
 9          •	Fix Oregon geographies -- no data - should be fixed from base population file
 10         •	34 “ROS” geographies have no data (seems unlikely), as well as around 15 MSA areas (8
-10       ! of which are in Oregon - we know what’s going on there) - should be fixed from base
+10       !  of which are in Oregon - we know what’s going on there) - should be fixed from base
 10       ! population file
 11         To add:
 12         •	Exclude those with partial benefits & add partial benefit months flag - done
 13         •	Add Medicare wage index data - done
-14         /***************************************************************************************
-14       ! ****************************/
-15         /*Options to change*/
-16         %macro prod();
-17         	options obs=MAX cleanup;
-18         	/*Log*/
-19         	proc printto print="P:\MCD-SPVR\log\09_cdps_pops&sysdate..lst"
-20         	               log="P:\MCD-SPVR\log\09_cdps_pops&sysdate..log" NEW;
-21         	run;
-2                                         The SAS System            15:14 Friday, December 20, 2019
+14         •	Add comorbidity elements
+15         •	Fix comorbid missing element
+16         /**************************************************************************************
+16       ! *****************************/
+17         %let cdps_diag = canl;
+18         %let comorbid_cond = %str(dia2l=1 or prgcmp=1 or psyl=1 or carel=1 or pula=1);
+19         
+20         /*Options to change*/
+21         %macro prod();
+2                                         The SAS System           14:00 Tuesday, January 14, 2020
 
-22         %mend prod;
-23         
-24         %macro test();	
-25         	options obs=100;
-26         	/*Log*/
-27         	proc printto;run;
-28         %mend;
-29         
-30         %prod();
+22         	options obs=MAX cleanup;
+23         	/*Log*/
+24         	proc printto print="P:\MCD-SPVR\log\09_cdps_pops_&cdps_diag._&sysdate..lst"
+25         	               log="P:\MCD-SPVR\log\09_cdps_pops_&cdps_diag._&sysdate..log" NEW;
+26         	run;
+27         %mend prod;
+28         
+29         %macro test();	
+30         	options obs=1000;
+31         	/*Log*/
+32         	proc printto;run;
+33         %mend;
+34         
+35         %prod();
 
 NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
 NOTE: The SAS System used:
-      real time           2:11:55.37
-      cpu time            1:24:58.08
+      real time           2:28:13.41
+      cpu time            1:29:11.76
       

@@ -1,12 +1,5 @@
-1                                                          The SAS System                          11:38 Wednesday, November 6, 2019
+1                                     The SAS System       21:25 Tuesday, January 28, 2020
 
-NOTE: Unable to open SASUSER.REGSTRY. WORK.REGSTRY will be opened instead.
-NOTE: All registry changes will be lost at the end of the session.
-
-WARNING: Unable to copy SASUSER registry to WORK registry. Because of this, you will not see registry customizations during this 
-         session.
-NOTE: Unable to open SASUSER.PROFILE. WORK.PROFILE will be opened instead.
-NOTE: All profile changes will be lost at the end of the session.
 NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
 NOTE: SAS (r) Proprietary Software 9.4 (TS1M6) 
       Licensed to THE URBAN INSTITUTE, Site 70113200.
@@ -23,8 +16,8 @@ NOTE: Additional host information:
  X64_ES08R2 WIN 6.1.7601 Service Pack 1 Server
 
 NOTE: SAS initialization used:
-      real time           0.57 seconds
-      cpu time            0.21 seconds
+      real time           2.49 seconds
+      cpu time            0.32 seconds
       
 
 NOTE: AUTOEXEC processing beginning; file is C:\Program 
@@ -33,18 +26,18 @@ NOTE: AUTOEXEC processing beginning; file is C:\Program
 
 NOTE: AUTOEXEC processing completed.
 
-1          /***************************************************************************************
-1        ! ****************************/
-2          /*	Purpose: Aggregate cleaned up MAX data from 01_studypop_analyticfile with CDPS data
-2        ! and AHRF and MSA/HRR data
+1          /******************************************************************************
+1        ! *************************************/
+2          /*	Purpose: Aggregate cleaned up MAX data from 01_studypop_analyticfile with
+2        ! CDPS data and AHRF and MSA/HRR data
 3          /*			on user-input geographic variable			
 4          /*	Project: MACPAC Spending Variations
-5          /*	Author: Leah Durbak (based on code by Abby Norling-Ruggles, modified by Kyle Caswell,
-5        !  modified by Tim Waidmann)
+5          /*	Author: Leah Durbak (based on code by Abby Norling-Ruggles, modified by Kyle
+5        !  Caswell, modified by Tim Waidmann)
 6          /*	Notes:
 7          /*		1) Collapse macros for easier manipulation
-8          /***************************************************************************************
-8        ! ****************************/
+8          /******************************************************************************
+8        ! *************************************/
 9          /*Options to change*/
 10         %macro prod();
 11         	options obs=MAX;
@@ -53,12 +46,12 @@ NOTE: AUTOEXEC processing completed.
 14         	               log="P:\MCD-SPVR\log\07_addstats_&sysdate..log" NEW;
 15         	run;
 16         	proc printto;run;
-2                                         The SAS System          11:38 Wednesday, November 6, 2019
-
 17         %mend;
 18         
 19         %macro test();	
-20         	options obs=100000;
+2                                     The SAS System       21:25 Tuesday, January 28, 2020
+
+20         	options obs=MAX;
 21         	/*Log*/
 22         	proc printto;run;
 23         %mend;
@@ -66,8 +59,8 @@ NOTE: AUTOEXEC processing completed.
 25         %prod();
 
 NOTE: PROCEDURE PRINTTO used (Total process time):
-      real time           0.00 seconds
-      cpu time            0.00 seconds
+      real time           0.01 seconds
+      cpu time            0.01 seconds
       
 
 26         *%test();
@@ -101,22 +94,26 @@ NOTE: Libref CPDS_WT was successfully assigned as follows:
       Physical Name: P:\MCD-SPVR\data\NO_PII\CDPS_WEIGHTS
 35         libname scores  "P:\MCD-SPVR\data\workspace\CDPS_SCORES";
 NOTE: Libref SCORES was successfully assigned as follows: 
-      Engine:        V9 
-3                                         The SAS System          11:38 Wednesday, November 6, 2019
+3                                     The SAS System       21:25 Tuesday, January 28, 2020
 
+      Engine:        V9 
       Physical Name: P:\MCD-SPVR\data\workspace\CDPS_SCORES
 36         libname ahrf_hrr "\\sas1_alt\MCD-SPVR\data\NO_PII\HRR\workspace";
 NOTE: Libref AHRF_HRR was successfully assigned as follows: 
       Engine:        V9 
       Physical Name: \\sas1_alt\MCD-SPVR\data\NO_PII\HRR\workspace
-37         
+37         libname spd_adj "\\sas1_alt\MCD-SPVR\Analysis_PartII\CMS64_ADJ";
+NOTE: Libref SPD_ADJ was successfully assigned as follows: 
+      Engine:        V9 
+      Physical Name: \\sas1_alt\MCD-SPVR\Analysis_PartII\CMS64_ADJ
 38         
 39         /* Macro vars to change*/
-40         %let fname = %sysfunc(date(),date9.)_t%sysfunc(compress(%sysfunc(time(),time8.),:.));
+40         %let fname =
+40       ! %sysfunc(date(),date9.)_t%sysfunc(compress(%sysfunc(time(),time8.),:.));
 41         %let space_name = %sysfunc(date(),date9.);
 42         %let year = 2012;
-43         %let dum_tab = %str(ods excel options(sheet_interval="table"); ods exclude all; data
-43       ! _null_; file print; put _all_; run; ods select all;);
+43         %let dum_tab = %str(ods excel options(sheet_interval="table"); ods exclude all;
+43       !  data _null_; file print; put _all_; run; ods select all;);
 44         %let report_folder = P:\MCD-SPVR\reports;
 45         * AHRF HRR-state level file -- check for updated file;
 46         %let ahrf_hrr = ahrf_hrr_state_v09_25_2018;
@@ -124,299 +121,417 @@ NOTE: Libref AHRF_HRR was successfully assigned as follows:
 48         /*********************************/
 49         /*Get statistics and add to table*/
 50         /*********************************/
-51         %let indata=space.temp_max_cdpsscores; /*from 05_addcdps*/
+51         %let indata=space.pop_cdps_scores; /*from 05_addcdps*/
 52         %let indata_collapsed=space.temp_msa_arhfvars_wageind;
 53         %let orig_data=space.temp_ahrf_msa_xwalk;
 54         %let collapsevar=st_msa;
-55         %let outdata=out.msa_2012_02nov2019;
+55         %let outdata=out.msa_2012;
 56         
-57         proc univariate data=&indata. noprint;
-58         	class age_cell &collapsevar. ;
-59         	var TOT_MDCD_PYMT_AMT Rspend_i;
-60         	output out=spend_pctls_&collapsevar.
-61         	pctlpts = 10 25 50 75 90 95 99
-62         	pctlpre=spd_p res_spd_p;
-63         run;
-
-NOTE: The data set WORK.SPEND_PCTLS_ST_MSA has 16709 observations and 16 variables.
-NOTE: PROCEDURE UNIVARIATE used (Total process time):
-      real time           5:57.70
-      cpu time            5:44.15
+57         /*add spending adjustments to MAX TOS spending elements*/
+58         proc sql;
+59          	select name into :prem_cols separated by ", "
+60         	from dictionary.columns
+61         	where libname="DATA" and memname="MAXDATA_PS_2012" and name like
+61       ! "PREM_MDCD_PYMT_AMT_%";
+62         quit;
+NOTE: The PROCEDURE SQL printed page 1.
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.30 seconds
+      cpu time            0.04 seconds
       
 
-64         
-65         proc univariate data=&indata. noprint;
-66         	class &collapsevar. ;
-67         	var TOT_MDCD_PYMT_AMT Rspend_i;
-68         	output out=spend_cap_&collapsevar.
-69         	pctlpts =  99.5
-70         	pctlpre=spd_p res_spd_p;
-71         run;
+63         proc sql;
+64         	select name into :ffs_cols separated by ", "
+65         	from dictionary.columns
+66         	where libname="DATA" and memname="MAXDATA_PS_2012" and name like
+66       ! "FFS_PYMT_AMT_%";
+4                                     The SAS System       21:25 Tuesday, January 28, 2020
 
-NOTE: The data set WORK.SPEND_CAP_ST_MSA has 485 observations and 3 variables.
-NOTE: PROCEDURE UNIVARIATE used (Total process time):
-      real time           6:36.60
-      cpu time            6:21.54
-4                                         The SAS System          11:38 Wednesday, November 6, 2019
-
-      
-
-72         
-73         proc print data=spend_cap_&collapsevar. (obs=10);run;
-
-NOTE: There were 10 observations read from the data set WORK.SPEND_CAP_ST_MSA.
-NOTE: The PROCEDURE PRINT printed page 1.
-NOTE: PROCEDURE PRINT used (Total process time):
-      real time           0.01 seconds
+67         quit;
+NOTE: The PROCEDURE SQL printed page 2.
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           0.00 seconds
       cpu time            0.00 seconds
       
 
-74         
-75         /*
-76         proc sql;
-77         	create table limit as
-78         	select st_msa, spd_p99_5 , res_spd_p99_5
-79         	from spend_cap_&collapsevar.;
-80         quit;
-81         
-82         proc  export data= limit
-83                     outfile= "P:\MCD-SPVR\data\raw_data\tc_values.xlsx"
-84                     dbms=xlsx replace;
-85         run;
-86         */
-87         /*put stats together*/
-88         proc sql;
-89           create table max_cdpsscores_c AS
-90         	select a.&collapsevar., a.age_cell, a.TOT_MDCD_PYMT_AMT as mcd_spd, a.Rspend_i as
-90       ! res_mcd_spd,
-91         		case when a.TOT_MDCD_PYMT_AMT>5000000 then 5000000 else TOT_MDCD_PYMT_AMT end as
-91       ! mcd_spd_TC,
-92         		case when A.Rspend_i>5000000 then 5000000 else Rspend_i end as res_mcd_spd_TC
-93         	from &indata. a left join spend_cap_&collapsevar. b
-94         	on a.&collapsevar.=b.&collapsevar.;
-NOTE: Table WORK.MAX_CDPSSCORES_C created, with 58941632 rows and 6 columns.
+68         
+69         data format_spd_adj;
+70         	set spd_adj.final_factors_v01272020 ;
+71         	format MAX_TOS z2.;
+72         run;
 
-95         quit;
-NOTE: PROCEDURE SQL used (Total process time):
-      real time           9:55.77
-      cpu time            10:31.52
+NOTE: There were 1683 observations read from the data set SPD_ADJ.FINAL_FACTORS_V01272020.
+NOTE: The data set WORK.FORMAT_SPD_ADJ has 1683 observations and 4 variables.
+NOTE: DATA statement used (Total process time):
+      real time           0.11 seconds
+      cpu time            0.01 seconds
       
 
-96         
-97           /*get overall stats*/
-98         proc univariate data=max_cdpsscores_c noprint;
-99         	class age_cell &collapsevar. ;
-100        	var mcd_spd mcd_spd_TC res_mcd_spd res_mcd_spd_TC;
-101        	output out=max_&collapsevar.
-102        	sum=mcd_spd_tot mcd_spd_tot_TC res_mcd_spd_tot res_mcd_spd_tot_TC
-103        	mean=spd_avg spd_avg_TC res_spd_avg res_spd_avg_TC
-104        	stdmean=spd_se spd_se_TC res_spd_se res_spd_se_TC
-105        	max=spd_max spd_TC_max res_spd_max res_spd_TC_max
-5                                         The SAS System          11:38 Wednesday, November 6, 2019
+73         
+74         proc transpose data=format_spd_adj out=spd_adj prefix=adj_var;
+75         	by state;
+76         	id MAX_TOS;
+77         	var MAX_TOS_CMS64_FACTOR;
+78         quit;
 
-106        	;
-107        run;
+NOTE: There were 1683 observations read from the data set WORK.FORMAT_SPD_ADJ.
+NOTE: The data set WORK.SPD_ADJ has 51 observations and 35 variables.
+NOTE: PROCEDURE TRANSPOSE used (Total process time):
+      real time           0.06 seconds
+      cpu time            0.03 seconds
+      
+
+79         
+80         proc sql;
+81         	create table temp (drop=state _NAME_ TOT_MDCD_PYMT_AMT) as
+82         	select *
+83         	from &indata dat left join spd_adj adj
+84         	on dat.state_cd = adj.state;
+NOTE: Table WORK.TEMP created, with 58978490 rows and 637 columns.
+
+85         quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           6:09:33.36
+      cpu time            1:07:18.96
+      
+
+86         
+5                                     The SAS System       21:25 Tuesday, January 28, 2020
+
+87         data recode_array (drop=FFS_PYMT_AMT: adj_var: spd_adj_:);
+88         	set temp;
+89         	label TOT_MDCD_PYMT_AMT = "Adjusted total Medicaid payment amount";
+90         	/*recode prem payment vars to work in array*/
+91         	FFS_PYMT_AMT_20 = PREM_MDCD_PYMT_AMT_HMO;
+92         	FFS_PYMT_AMT_21 = PREM_MDCD_PYMT_AMT_PHP;
+93         	FFS_PYMT_AMT_22 = PREM_MDCD_PYMT_AMT_PCCM;
+94         	FFS_PYMT_AMT_23 = PREM_MDCD_PYMT_AMT_PHI;
+95         	array spd_vars(54) FFS_PYMT_AMT_01-FFS_PYMT_AMT_54;
+96         	array adj_vars(54) adj_var01-adj_var54;
+97         	array adj_spd(54) spd_adj_01-spd_adj_54;
+98         	do i=1 to 54;
+99         		adj_spd[i]=spd_vars[i]*adj_vars[i];
+100        	end;
+101        	drop i;
+102        	TOT_MDCD_PYMT_AMT = sum(of spd_adj_:);
+103        run;
+
+NOTE: Missing values were generated as a result of performing an operation on missing 
+      values.
+      Each place is given by: (Number of times) at (Line):(Column).
+      1238548290 at 99:25   
+NOTE: There were 58978490 observations read from the data set WORK.TEMP.
+NOTE: The data set WORK.RECODE_ARRAY has 58978490 observations and 574 variables.
+NOTE: DATA statement used (Total process time):
+      real time           19:49.66
+      cpu time            19:35.42
+      
+
+104        
+105        proc sql;
+106        	create table recode_array_dist as
+107        	select *
+108        	from (select distinct * from recode_array);
+NOTE: Table WORK.RECODE_ARRAY_DIST created, with 58978490 rows and 574 columns.
+
+109        quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           3:11:56.18
+      cpu time            1:40:50.59
+      
+
+110        
+111        %let indata=recode_array_dist;
+112        
+113        proc univariate data=&indata. noprint;
+114        	class age_cell &collapsevar. ;
+115        	var TOT_MDCD_PYMT_AMT Rspend_i;
+116        	output out=spend_pctls_&collapsevar.
+6                                     The SAS System       21:25 Tuesday, January 28, 2020
+
+117        	pctlpts = 10 25 50 75 90 95 99
+118        	pctlpre=spd_p res_spd_p;
+119        run;
+
+NOTE: The data set WORK.SPEND_PCTLS_ST_MSA has 16709 observations and 16 variables.
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           10:20.29
+      cpu time            10:09.99
+      
+
+120        
+121        proc univariate data=&indata. noprint;
+122        	class &collapsevar. ;
+123        	var TOT_MDCD_PYMT_AMT Rspend_i;
+124        	output out=spend_cap_&collapsevar.
+125        	pctlpts =  99.5
+126        	pctlpre=spd_p res_spd_p;
+127        run;
+
+NOTE: The data set WORK.SPEND_CAP_ST_MSA has 485 observations and 3 variables.
+NOTE: PROCEDURE UNIVARIATE used (Total process time):
+      real time           16:25.10
+      cpu time            10:11.13
+      
+
+128        
+129        proc print data=spend_cap_&collapsevar. (obs=10);run;
+
+NOTE: There were 10 observations read from the data set WORK.SPEND_CAP_ST_MSA.
+NOTE: The PROCEDURE PRINT printed page 3.
+NOTE: PROCEDURE PRINT used (Total process time):
+      real time           0.08 seconds
+      cpu time            0.00 seconds
+      
+
+130        
+131        /*
+132        proc sql;
+133        	create table limit as
+134        	select st_msa, spd_p99_5 , res_spd_p99_5
+135        	from spend_cap_&collapsevar.;
+136        quit;
+137        
+138        proc  export data= limit
+139                    outfile= "P:\MCD-SPVR\data\raw_data\tc_values.xlsx"
+140                    dbms=xlsx replace;
+141        run;
+142        */
+143        /*put stats together*/
+7                                     The SAS System       21:25 Tuesday, January 28, 2020
+
+144        proc sql;
+145          create table max_cdpsscores_c AS
+146        	select a.&collapsevar., a.age_cell, a.TOT_MDCD_PYMT_AMT as mcd_spd, a.Rspend_i
+146      !  as res_mcd_spd,
+147        		case when a.TOT_MDCD_PYMT_AMT>5000000 then 5000000 else TOT_MDCD_PYMT_AMT end
+147      !  as mcd_spd_TC,
+148        		case when A.Rspend_i>5000000 then 5000000 else Rspend_i end as res_mcd_spd_TC
+149        	from &indata. a left join spend_cap_&collapsevar. b
+150        	on a.&collapsevar.=b.&collapsevar.;
+NOTE: Table WORK.MAX_CDPSSCORES_C created, with 58978490 rows and 6 columns.
+
+151        quit;
+NOTE: PROCEDURE SQL used (Total process time):
+      real time           10:13.77
+      cpu time            11:31.19
+      
+
+152        
+153          /*get overall stats*/
+154        proc univariate data=max_cdpsscores_c noprint;
+155        	class age_cell &collapsevar. ;
+156        	var mcd_spd mcd_spd_TC res_mcd_spd res_mcd_spd_TC;
+157        	output out=max_&collapsevar.
+158        	sum=mcd_spd_tot mcd_spd_tot_TC res_mcd_spd_tot res_mcd_spd_tot_TC
+159        	mean=spd_avg spd_avg_TC res_spd_avg res_spd_avg_TC
+160        	stdmean=spd_se spd_se_TC res_spd_se res_spd_se_TC
+161        	max=spd_max spd_TC_max res_spd_max res_spd_TC_max
+162        	;
+163        run;
 
 NOTE: The data set WORK.MAX_ST_MSA has 16709 observations and 18 variables.
 NOTE: PROCEDURE UNIVARIATE used (Total process time):
-      real time           3:48.70
-      cpu time            3:47.38
+      real time           4:39.02
+      cpu time            4:38.58
       
 
-108        
-109        /*put overall stats into final table*/
-110        proc sql;
-111        	create table fintab_&collapsevar._ac as
-112        	select a.*,
-113        	B.mcd_spd_tot,
-114        	B.mcd_spd_tot_tc,
-115        	B.spd_avg,
-116        	B.spd_avg_tc,
-117        	B.spd_se,
-118        	B.spd_se_tc,
-119        	C.spd_p10,
-120        	C.spd_p25,
-121        	C.spd_p50,
-122        	C.spd_p75,
-123        	C.spd_p90,
-124        	C.spd_p95,
-125        	C.spd_p99,
-126        	B.res_mcd_spd_tot,
-127        	B.res_mcd_spd_tot_TC,
-128        	B.res_spd_avg,
-129        	B.res_spd_avg_tc,
-130        	B.res_spd_se,
-131        	B.res_spd_se_tc,
-132        	C.res_spd_p10,
-133        	C.res_spd_p25,
-134        	C.res_spd_p50,
-135        	C.res_spd_p75,
-136        	C.res_spd_p90,
-137        	C.res_spd_p95,
-138        	C.res_spd_p99,
-139        	B.res_spd_max,
-140        	B.res_spd_tc_max,
-141        	B.spd_tc_max,
-142        	B.spd_max
-143        	from &indata_collapsed. a
-144        		left join max_&collapsevar. b on a.age_cell=b.age_cell  and
-144      ! a.&collapsevar.=b.&collapsevar.
-145        		left join spend_pctls_&collapsevar. c on a.age_cell=c.age_cell and
-145      ! a.&collapsevar.=c.&collapsevar.
-146        		;
-NOTE: Table WORK.FINTAB_ST_MSA_AC created, with 16710 rows and 100 columns.
+164        
+165        /*put overall stats into final table*/
+166        proc sql;
+167        	create table fintab_&collapsevar._ac as
+168        	select a.*,
+169        	B.mcd_spd_tot,
+170        	B.mcd_spd_tot_tc,
+171        	B.spd_avg,
+172        	B.spd_avg_tc,
+173        	B.spd_se,
+174        	B.spd_se_tc,
+175        	C.spd_p10,
+176        	C.spd_p25,
+8                                     The SAS System       21:25 Tuesday, January 28, 2020
 
-147        quit;
-6                                         The SAS System          11:38 Wednesday, November 6, 2019
+177        	C.spd_p50,
+178        	C.spd_p75,
+179        	C.spd_p90,
+180        	C.spd_p95,
+181        	C.spd_p99,
+182        	B.res_mcd_spd_tot,
+183        	B.res_mcd_spd_tot_TC,
+184        	B.res_spd_avg,
+185        	B.res_spd_avg_tc,
+186        	B.res_spd_se,
+187        	B.res_spd_se_tc,
+188        	C.res_spd_p10,
+189        	C.res_spd_p25,
+190        	C.res_spd_p50,
+191        	C.res_spd_p75,
+192        	C.res_spd_p90,
+193        	C.res_spd_p95,
+194        	C.res_spd_p99,
+195        	B.res_spd_max,
+196        	B.res_spd_tc_max,
+197        	B.spd_tc_max,
+198        	B.spd_max
+199        	from &indata_collapsed. a
+200        		left join max_&collapsevar. b on a.age_cell=b.age_cell  and
+200      ! a.&collapsevar.=b.&collapsevar.
+201        		left join spend_pctls_&collapsevar. c on a.age_cell=c.age_cell and
+201      ! a.&collapsevar.=c.&collapsevar.
+202        		;
+NOTE: Table WORK.FINTAB_ST_MSA_AC created, with 16710 rows and 135 columns.
 
+203        quit;
 NOTE: PROCEDURE SQL used (Total process time):
-      real time           0.31 seconds
-      cpu time            0.20 seconds
+      real time           0.49 seconds
+      cpu time            0.26 seconds
       
 
-148        
-149        %let maxvars = dual_mon mc_mon dis_mon ltss_mon elg_mon cell_n d_cell_n died_n mas_:
-149      ! boe_: male: _0: _1_5: _6_18: _19_44: _45_64: _65_84: _85p: cdps no_cdps_conds
-149      ! pred_mcd_spd mcd_spd_tot spd: res:;
-150        
-151        data &outdata. ;
-152        	set fintab_&collapsevar._ac;
-153        	format
-154        		age_cat age.
-155        		mc_cat mc.
-156        		dis_cat dis.
-157        		ltss_cat ltss.
-158        		dual_cat dual.
-159        		foster_cat foster.;
-160        	label 	
-161        	state_cd ="State Abbreviation"
-162        	st_msa ="State-MSA Code"
-163        	cbsatitle ="CBSA Name"
-164        	age_cell ="Unique cell ID"
-165        	age_cat ="Age Category"
-166        	dual_cat ="Dual-Eligibility Category"
-167        	mc_cat ="Managed Care Category"
-168        	dis_cat ="Disability Category"
-169        	ltss_cat ="LTSS Use Category"
-170        	foster_cat ="Foster Care Category"
-171        	dual_mon ="Number of Person Months of Dual Eligibility"
-172        	mc_mon ="Number of Person Months of Managed Care Enrollment"
-173        	dis_mon ="Number of Person Months of Disability"
-174        	ltss_mon ="Number of Person Months of LTSS Use"
-175        	elg_mon ="Number of Person Months of Eligibility"
-176        	cell_n ="Number of Beneficiaries"
-177        	d_cell_n ="Number of Unique Statuses"
-178        	died_n ="Number Dying in Year"
-179        	mas_cash_n ="MAS Cash Beneficiaries (N)"
-180        	mas_cash ="MAS Cash Beneficiaries (%)"
-181        	mas_mn_n ="MAS Medically Needy Beneficiaries (N)"
-182        	mas_mn ="MAS Medically Needy Beneficiaries (%)"
-183        	mas_pov_n ="MAS Poverty-Related Beneficiaries (N)"
-184        	mas_pov ="MAS Poverty-Related Beneficiaries (%)"
-185        	mas_oth_n ="MAS Other Beneficiaries (N)"
-186        	mas_oth ="MAS Other Beneficiaries (%)"
-187        	mas_1115_n ="MAS 1115 Exspansion Beneficiaries (N)"
-188        	mas_1115 ="MAS 1115 Exspansion Beneficiaries (%)"
-189        	boe_aged_n ="BOE Aged Beneficiaries (N)"
-190        	boe_aged ="BOE Aged Beneficiaries (%)"
-191        	boe_disabled_n ="BOE Disabled Beneficiaries (N)"
-192        	boe_disabled ="BOE Disabled Beneficiaries (%)"
-193        	boe_child_n ="BOE Child Beneficiaries (N)"
-7                                         The SAS System          11:38 Wednesday, November 6, 2019
+204        
+205        %let maxvars = dual_mon mc_mon dis_mon ltss_mon elg_mon cell_n d_cell_n died_n
+205      ! mas_: boe_: male: _0: _1_5: _6_18: _19_44: _45_64: _65_84: _85p: cdps
+205      ! no_cdps_conds pred_mcd_spd mcd_spd_tot spd: res:;
+206        
+207        data &outdata. ;
+208        	set fintab_&collapsevar._ac;
+209        	format
+210        		age_cat age.
+211        		mc_cat mc.
+212        		dis_cat dis.
+213        		ltss_cat ltss.
+214        		dual_cat dual.
+9                                     The SAS System       21:25 Tuesday, January 28, 2020
 
-194        	boe_child ="BOE Child Beneficiaries (%)"
-195        	boe_adult_n ="BOE Adult Beneficiaries (N)"
-196        	boe_adult ="BOE Adult Beneficiaries (%)"
-197        	boe_uchild_n ="BOE Child (Unemployed Adult) Beneficiaries (N)"
-198        	boe_uchild ="BOE Child (Unemployed Adult) Beneficiaries (%)"
-199        	boe_uadult_n ="BOE Unemployed Adult Beneficiaries (N)"
-200        	boe_uadult ="BOE Unemployed Adult Beneficiaries (%)"
-201        	boe_fchild_n ="BOE Foster Child Beneficiaries (N)"
-202        	boe_fchild ="BOE Foster Child Beneficiaries (%)"
-203        	male_n ="Number of Male Beneficiaries (N)"
-204        	male ="Number of Male Beneficiaries (%)"
-205        	_0_n ="Number of Beneficiaries Age less than 1 year (N)"
-206        	_0 ="Number of Beneficiaries Age less than 1 year (%)"
-207        	_1_5_n ="Number of Beneficiaries Age 1 to 5 (N)"
-208        	_1_5 ="Number of Beneficiaries Age 1 to 5 (%)"
-209        	_6_18_n ="Number of Beneficiaries Age 6 to 18 (N)"
-210        	_6_18 ="Number of Beneficiaries Age 6 to 18 (%)"
-211        	_19_44_n ="Number of Beneficiaries Age 19 to 44 (N)"
-212        	_19_44 ="Number of Beneficiaries Age 19 to 44 (%)"
-213        	_45_64_n ="Number of Beneficiaries Age 45 to 64 (N)"
-214        	_45_64 ="Number of Beneficiaries Age 45 to 64 (%)"
-215        	_65_84_n ="Number of Beneficiaries Age 65 to 84 (N)"
-216        	_65_84 ="Number of Beneficiaries Age 65 to 84 (%)"
-217        	_85p_n ="Number of Beneficiaries Age 85 and above (N)"
-218        	_85p ="Number of Beneficiaries Age 85 and above (%)"
-219        	cdps="Mean CDPS Score"
-220        	no_cdps_conds="Proportion of beneficiaries with no CDPS diagnoses in year"
-221        	pred_mcd_spd="Predicted Annual spending, from CDPS score"
-222        	ahrf_msg ="Missing AHRF Data Flag"
-223        	beds ="Number of hospital beds per 1k people, 2010"
-224        	md ="Number of physicians per 1k people, 2010"
-225        	urate ="Unemployment rate, 2012"
-226        	povrate ="Rate of persons in poverty, 2012"
-227        	mcd_spd_tot ="Total Annual Spending"
-228        	spd_avg ="Mean Annual Spending"
-229        	spd_se ="Standard Error of Mean Annual Spending"
-230        	mcd_spd_tot_tc ="Total Spending (Top Coded)"
-231        	spd_avg_tc ="Mean Annual Spending (Top Coded)"
-232        	spd_se_tc ="Standard Error of Mean Annual Spending (Top Coded)"
-233        	spd_tc_max ="Maximum Annual Spending (Top Coded)"
-234        	spd_p10 ="10th Percentile of Annual Spending"
-235        	spd_p25 ="25th Percentile of Annual Spending"
-236        	spd_p50 ="50th Percentile of Annual Spending"
-237        	spd_p75 ="75th Percentile of Annual Spending"
-238        	spd_p90 ="90th Percentile of Annual Spending"
-239        	spd_p95 ="95th Percentile of Annual Spending"
-240        	spd_p99 ="99th Percentile of Annual Spending"
-241        	spd_max ="Maximum Annual Spending"
-242        	res_mcd_spd_tot ="Total Annual Spending Residual"
-243        	res_spd_avg ="Mean Annual Spending Residual"
-244        	res_spd_se ="Standard Error of Mean Annual Spending Residual"
-245        	res_mcd_spd_tot_tc ="Total Annual Spending Residual (Top Coded)"
-246        	res_spd_avg_tc ="Mean Annual Spending Residual (Top Coded)"
-8                                         The SAS System          11:38 Wednesday, November 6, 2019
+215        		foster_cat foster.;
+216        	label 	
+217        	state_cd ="State Abbreviation"
+218        	st_msa ="State-MSA Code"
+219        	cbsatitle ="CBSA Name"
+220        	age_cell ="Unique cell ID"
+221        	age_cat ="Age Category"
+222        	dual_cat ="Dual-Eligibility Category"
+223        	mc_cat ="Managed Care Category"
+224        	dis_cat ="Disability Category"
+225        	ltss_cat ="LTSS Use Category"
+226        	foster_cat ="Foster Care Category"
+227        	dual_mon ="Number of Person Months of Dual Eligibility"
+228        	mc_mon ="Number of Person Months of Managed Care Enrollment"
+229        	dis_mon ="Number of Person Months of Disability"
+230        	ltss_mon ="Number of Person Months of LTSS Use"
+231        	elg_mon ="Number of Person Months of Eligibility"
+232        	cell_n ="Number of Beneficiaries"
+233        	d_cell_n ="Number of Unique Statuses"
+234        	died_n ="Number Dying in Year"
+235        	mas_cash_n ="MAS Cash Beneficiaries (N)"
+236        	mas_cash ="MAS Cash Beneficiaries (%)"
+237        	mas_mn_n ="MAS Medically Needy Beneficiaries (N)"
+238        	mas_mn ="MAS Medically Needy Beneficiaries (%)"
+239        	mas_pov_n ="MAS Poverty-Related Beneficiaries (N)"
+240        	mas_pov ="MAS Poverty-Related Beneficiaries (%)"
+241        	mas_oth_n ="MAS Other Beneficiaries (N)"
+242        	mas_oth ="MAS Other Beneficiaries (%)"
+243        	mas_1115_n ="MAS 1115 Exspansion Beneficiaries (N)"
+244        	mas_1115 ="MAS 1115 Exspansion Beneficiaries (%)"
+245        	boe_aged_n ="BOE Aged Beneficiaries (N)"
+246        	boe_aged ="BOE Aged Beneficiaries (%)"
+247        	boe_disabled_n ="BOE Disabled Beneficiaries (N)"
+248        	boe_disabled ="BOE Disabled Beneficiaries (%)"
+249        	boe_child_n ="BOE Child Beneficiaries (N)"
+250        	boe_child ="BOE Child Beneficiaries (%)"
+251        	boe_adult_n ="BOE Adult Beneficiaries (N)"
+252        	boe_adult ="BOE Adult Beneficiaries (%)"
+253        	boe_uchild_n ="BOE Child (Unemployed Adult) Beneficiaries (N)"
+254        	boe_uchild ="BOE Child (Unemployed Adult) Beneficiaries (%)"
+255        	boe_uadult_n ="BOE Unemployed Adult Beneficiaries (N)"
+256        	boe_uadult ="BOE Unemployed Adult Beneficiaries (%)"
+257        	boe_fchild_n ="BOE Foster Child Beneficiaries (N)"
+258        	boe_fchild ="BOE Foster Child Beneficiaries (%)"
+259        	male_n ="Number of Male Beneficiaries (N)"
+260        	male ="Number of Male Beneficiaries (%)"
+261        	_0_n ="Number of Beneficiaries Age less than 1 year (N)"
+262        	_0 ="Number of Beneficiaries Age less than 1 year (%)"
+263        	_1_5_n ="Number of Beneficiaries Age 1 to 5 (N)"
+10                                    The SAS System       21:25 Tuesday, January 28, 2020
 
-247        	res_spd_se_tc ="Standard Error of Mean Annual Spending Residual (Top Coded)"
-248        	res_spd_tc_max ="Maximum Annual Spending Residual (Top Coded)"
-249        	res_spd_p10 ="10th Percentile of Annual Spending Residual"
-250        	res_spd_p25 ="25th Percentile of Annual Spending Residual"
-251        	res_spd_p50 ="50th Percentile of Annual Spending Residual"
-252        	res_spd_p75 ="75th Percentile of Annual Spending Residual"
-253        	res_spd_p90 ="90th Percentile of Annual Spending Residual"
-254        	res_spd_p95 ="95th Percentile of Annual Spending Residual"
-255        	res_spd_p99 ="99th Percentile of Annual Spending Residual"
-256        	res_spd_max ="Maximum Annual Spending Residual"
-257        	wageind_WORK = "Medicare WORK Wage Index, 2012"
-258        	wageind_PE = "Medicare PE Wage Index, 2012"
-259        	wageind_MPE = "Medicare MPE Wage Index, 2012"
-260        	partial_benf_mon = "Number of person months with partial benefits"
-261        		;
-262        		/*
-263        		array all_cells {*} &maxvars.;
-264        		if cell_n<11 then do;
-265        			do i=1 to dim(all_cells);
-266        				all_cells(i)=.S;
-267        			end;
-268        		end;
-269        		drop i;
-270        		*/
-271        run;
+264        	_1_5 ="Number of Beneficiaries Age 1 to 5 (%)"
+265        	_6_18_n ="Number of Beneficiaries Age 6 to 18 (N)"
+266        	_6_18 ="Number of Beneficiaries Age 6 to 18 (%)"
+267        	_19_44_n ="Number of Beneficiaries Age 19 to 44 (N)"
+268        	_19_44 ="Number of Beneficiaries Age 19 to 44 (%)"
+269        	_45_64_n ="Number of Beneficiaries Age 45 to 64 (N)"
+270        	_45_64 ="Number of Beneficiaries Age 45 to 64 (%)"
+271        	_65_84_n ="Number of Beneficiaries Age 65 to 84 (N)"
+272        	_65_84 ="Number of Beneficiaries Age 65 to 84 (%)"
+273        	_85p_n ="Number of Beneficiaries Age 85 and above (N)"
+274        	_85p ="Number of Beneficiaries Age 85 and above (%)"
+275        	cdps="Mean CDPS Score"
+276        	no_cdps_conds="Proportion of beneficiaries with no CDPS diagnoses in year"
+277        	pred_mcd_spd="Predicted Annual spending, from CDPS score"
+278        	ahrf_msg ="Missing AHRF Data Flag"
+279        	beds ="Number of hospital beds per 1k people, 2010"
+280        	md ="Number of physicians per 1k people, 2010"
+281        	urate ="Unemployment rate, 2012"
+282        	povrate ="Rate of persons in poverty, 2012"
+283        	mcd_spd_tot ="Total Annual Spending"
+284        	spd_avg ="Mean Annual Spending"
+285        	spd_se ="Standard Error of Mean Annual Spending"
+286        	mcd_spd_tot_tc ="Total Spending (Top Coded)"
+287        	spd_avg_tc ="Mean Annual Spending (Top Coded)"
+288        	spd_se_tc ="Standard Error of Mean Annual Spending (Top Coded)"
+289        	spd_tc_max ="Maximum Annual Spending (Top Coded)"
+290        	spd_p10 ="10th Percentile of Annual Spending"
+291        	spd_p25 ="25th Percentile of Annual Spending"
+292        	spd_p50 ="50th Percentile of Annual Spending"
+293        	spd_p75 ="75th Percentile of Annual Spending"
+294        	spd_p90 ="90th Percentile of Annual Spending"
+295        	spd_p95 ="95th Percentile of Annual Spending"
+296        	spd_p99 ="99th Percentile of Annual Spending"
+297        	spd_max ="Maximum Annual Spending"
+298        	res_mcd_spd_tot ="Total Annual Spending Residual"
+299        	res_spd_avg ="Mean Annual Spending Residual"
+300        	res_spd_se ="Standard Error of Mean Annual Spending Residual"
+301        	res_mcd_spd_tot_tc ="Total Annual Spending Residual (Top Coded)"
+302        	res_spd_avg_tc ="Mean Annual Spending Residual (Top Coded)"
+303        	res_spd_se_tc ="Standard Error of Mean Annual Spending Residual (Top Coded)"
+304        	res_spd_tc_max ="Maximum Annual Spending Residual (Top Coded)"
+305        	res_spd_p10 ="10th Percentile of Annual Spending Residual"
+306        	res_spd_p25 ="25th Percentile of Annual Spending Residual"
+307        	res_spd_p50 ="50th Percentile of Annual Spending Residual"
+308        	res_spd_p75 ="75th Percentile of Annual Spending Residual"
+309        	res_spd_p90 ="90th Percentile of Annual Spending Residual"
+310        	res_spd_p95 ="95th Percentile of Annual Spending Residual"
+311        	res_spd_p99 ="99th Percentile of Annual Spending Residual"
+312        	res_spd_max ="Maximum Annual Spending Residual"
+11                                    The SAS System       21:25 Tuesday, January 28, 2020
+
+313        	wageind_WORK = "Medicare WORK Wage Index, 2012"
+314        	wageind_PE = "Medicare PE Wage Index, 2012"
+315        	wageind_MPE = "Medicare MPE Wage Index, 2012"
+316        	partial_benf_mon = "Number of person months with partial benefits"
+317        		;
+318        		/*
+319        		array all_cells {*} &maxvars.;
+320        		if cell_n<11 then do;
+321        			do i=1 to dim(all_cells);
+322        				all_cells(i)=.S;
+323        			end;
+324        		end;
+325        		drop i;
+326        		*/
+327        run;
 
 NOTE: Variable state_cd is uninitialized.
 NOTE: Variable ahrf_msg is uninitialized.
 NOTE: There were 16710 observations read from the data set WORK.FINTAB_ST_MSA_AC.
-NOTE: The data set OUT.MSA_2012_02NOV2019 has 16710 observations and 100 variables.
+NOTE: The data set OUT.MSA_2012 has 16710 observations and 135 variables.
 NOTE: DATA statement used (Total process time):
-      real time           0.21 seconds
-      cpu time            0.09 seconds
+      real time           0.11 seconds
+      cpu time            0.06 seconds
       
 
-272        
-273        	
-273      !  proc printto;run;
+328        
+329        	
+329      !  proc printto;run;
 
 NOTE: PROCEDURE PRINTTO used (Total process time):
       real time           0.00 seconds
@@ -425,6 +540,6 @@ NOTE: PROCEDURE PRINTTO used (Total process time):
 
 NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
 NOTE: The SAS System used:
-      real time           26:20.09
-      cpu time            26:25.20
+      real time           10:23:01.62
+      cpu time            3:44:16.70
       

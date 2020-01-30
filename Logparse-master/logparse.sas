@@ -675,8 +675,21 @@ quit;
 			outds=log05, system= OTH, pdsloc = NO,append=NO);
 %logparse(saslog=P:\MCD-SPVR\log\06_collapsemsa_16OCT19.log,
 			outds=log06, system= OTH, pdsloc = NO,append=NO);
-%logparse(saslog=P:\MCD-SPVR\log\07_addstats_16OCT19.log,
+%logparse(saslog=P:\MCD-SPVR\log\07_addstats_15oct19.log,
 			outds=log07, system= OTH, pdsloc = NO,append=NO);
+%logparse(saslog=P:\MCD-SPVR\programs\02_Assemble_Data_Files\sandbox\07_addstats.log,
+			outds=newlog07, system= OTH, pdsloc = NO,append=NO);
+%logparse(saslog=P:\MCD-SPVR\log\09_cdps_pops20DEC19.log,
+			outds=log09, system= OTH, pdsloc = NO,append=NO);
+proc sql;
+	title "Old Step 7";
+	select sum(realtime) format=TIME. as new_realtime, sum(cputime) format=TIME. as new_cputime
+	from log07;
+
+	title "New Step 7";
+	select sum(realtime) format=TIME. as new_realtime, sum(cputime) format=TIME. as new_cputime
+	from newlog07;
+quit;
 
 proc sql;
 	title "Step 1";
@@ -697,5 +710,32 @@ proc sql;
 	title "Step 7";
 	select sum(realtime) format=TIME. as new_realtime, sum(cputime) format=TIME. as new_cputime
 	from log07;
+quit;
+
+%logparse(saslog=P:\MCD-SPVR\log\09_cdps_pops_pula_23DEC19.log,
+			outds=log09pula, system= OTH, pdsloc = NO,append=NO);
+%logparse(saslog=P:\MCD-SPVR\log\09_cdps_pops_psyl_23DEC19.log,
+			outds=log09psyl, system= OTH, pdsloc = NO,append=NO);
+%logparse(saslog=P:\MCD-SPVR\log\09_cdps_pops_prgcmp_23DEC19.log,
+			outds=log09prgcmp, system= OTH, pdsloc = NO,append=NO);
+%logparse(saslog=P:\MCD-SPVR\log\09_cdps_pops_carel_23DEC19.log,
+			outds=log09carel, system= OTH, pdsloc = NO,append=NO);
+%logparse(saslog=P:\MCD-SPVR\log\09_cdps_pops_canl_23DEC19.log,
+			outds=log09canl, system= OTH, pdsloc = NO,append=NO);
+%logparse(saslog=P:\MCD-SPVR\log\09_cdps_pops_dia2l_23DEC19.log,
+			outds=log09dia2l, system= OTH, pdsloc = NO,append=NO);
+proc sql;
+	select sum(realtime) format=TIME. as new_realtime, sum(cputime) format=TIME. as new_cputime
+	from log09pula;
+	select sum(realtime) format=TIME. as new_realtime, sum(cputime) format=TIME. as new_cputime
+	from log09psyl;
+	select sum(realtime) format=TIME. as new_realtime, sum(cputime) format=TIME. as new_cputime
+	from log09prgcmp;
+	select sum(realtime) format=TIME. as new_realtime, sum(cputime) format=TIME. as new_cputime
+	from log09carel;
+	select sum(realtime) format=TIME. as new_realtime, sum(cputime) format=TIME. as new_cputime
+	from log09canl;
+	select sum(realtime) format=TIME. as new_realtime, sum(cputime) format=TIME. as new_cputime
+	from log09dia2l;
 
 quit;

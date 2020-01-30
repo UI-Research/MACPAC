@@ -1,12 +1,5 @@
-1                                                          The SAS System                          11:30 Wednesday, November 6, 2019
+1                                     The SAS System     11:29 Wednesday, January 22, 2020
 
-NOTE: Unable to open SASUSER.REGSTRY. WORK.REGSTRY will be opened instead.
-NOTE: All registry changes will be lost at the end of the session.
-
-WARNING: Unable to copy SASUSER registry to WORK registry. Because of this, you will not see registry customizations during this 
-         session.
-NOTE: Unable to open SASUSER.PROFILE. WORK.PROFILE will be opened instead.
-NOTE: All profile changes will be lost at the end of the session.
 NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
 NOTE: SAS (r) Proprietary Software 9.4 (TS1M6) 
       Licensed to THE URBAN INSTITUTE, Site 70113200.
@@ -23,8 +16,8 @@ NOTE: Additional host information:
  X64_ES08R2 WIN 6.1.7601 Service Pack 1 Server
 
 NOTE: SAS initialization used:
-      real time           0.73 seconds
-      cpu time            0.24 seconds
+      real time           0.98 seconds
+      cpu time            0.23 seconds
       
 
 NOTE: AUTOEXEC processing beginning; file is C:\Program 
@@ -33,18 +26,18 @@ NOTE: AUTOEXEC processing beginning; file is C:\Program
 
 NOTE: AUTOEXEC processing completed.
 
-1          /***************************************************************************************
-1        ! ****************************/
-2          /*	Purpose: Aggregate cleaned up MAX data from 01_studypop_analyticfile with CDPS data
-2        ! and AHRF and MSA/HRR data
+1          /******************************************************************************
+1        ! *************************************/
+2          /*	Purpose: Aggregate cleaned up MAX data from 01_studypop_analyticfile with
+2        ! CDPS data and AHRF and MSA/HRR data
 3          /*			on user-input geographic variable			
 4          /*	Project: MACPAC Spending Variations
-5          /*	Author: Leah Durbak (based on code by Abby Norling-Ruggles, modified by Kyle Caswell,
-5        !  modified by Tim Waidmann)
+5          /*	Author: Leah Durbak (based on code by Abby Norling-Ruggles, modified by Kyle
+5        !  Caswell, modified by Tim Waidmann)
 6          /*	Notes:
 7          /*		1) Collapse macros for easier manipulation
-8          /***************************************************************************************
-8        ! ****************************/
+8          /******************************************************************************
+8        ! *************************************/
 9          /*Options to change*/
 10         %macro prod();
 11         	options obs=MAX;
@@ -53,11 +46,11 @@ NOTE: AUTOEXEC processing completed.
 14         	               log="P:\MCD-SPVR\log\06_collapsemsa_&sysdate..log" NEW;
 15         	run;
 16         %mend;
-2                                         The SAS System          11:30 Wednesday, November 6, 2019
-
 17         
 18         %macro test();	
-19         	options obs=MAX;
+19         	options obs=1000;
+2                                     The SAS System     11:29 Wednesday, January 22, 2020
+
 20         	/*Log*/
 21         	proc printto;run;
 22         %mend;
@@ -69,8 +62,12 @@ NOTE: PROCEDURE PRINTTO used (Total process time):
       cpu time            0.00 seconds
       
 
+ERROR: Errors printed on page 8.
+
 NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+9                                     The SAS System     11:29 Wednesday, January 22, 2020
+
 NOTE: The SAS System used:
-      real time           7:37.10
-      cpu time            10:10.91
+      real time           22:33.36
+      cpu time            16:47.28
       

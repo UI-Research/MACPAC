@@ -5,17 +5,6 @@
 /*		1) Collapse macros for easier manipulation
 /*	Notes: 
 /*******************************************************************************************************************/ 
-/*Options to change*/
-%macro prod();
-	options obs=MAX;
-	/*Log
-	proc printto print="P:\MCD-SPVR\log\subset_ip_lt_claims_byDX_&sysdate..lst"
-	               log="P:\MCD-SPVR\log\subset_ip_lt_claims_byDX_&sysdate..log" NEW;
-	run;*/
-%mend;
-
-%prod();
-
 libname  data    "P:\MCD-SPVR\data\raw_data\SAS_DATASETS";
 libname  space   "P:\MCD-SPVR\data\workspace";
 libname  stateot "P:\MCD-SPVR\data\raw_data\SAS_DATASETS\OT";
@@ -154,7 +143,7 @@ libname  stateot "P:\MCD-SPVR\data\raw_data\SAS_DATASETS\OT";
 				end as svc_dx
 		from data.Maxdata_&filetypeshort._2012
 		where BENE_ID in (select distinct BENE_ID from &pop_data.) and TYPE_CLM_CD="1" and MAX_TOS in &maxtos. and 
-			DIAG_CD_1 in (&cdps_flag.);
+			DIAG_CD_1 in (%nrquote(&&&cdps_flag));
 	quit;
 	/*create bene - svc_dx - svc_type level file*/
 	proc sql;

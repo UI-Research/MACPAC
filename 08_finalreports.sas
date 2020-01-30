@@ -10,9 +10,9 @@
 %macro prod();
 	options obs=MAX;
 	/*Log*/
-	/*proc printto print="P:\MCD-SPVR\log\08_finalreports_&sysdate..lst"
+	proc printto print="P:\MCD-SPVR\log\08_finalreports_&sysdate..lst"
 	               log="P:\MCD-SPVR\log\08_finalreports_&sysdate..log" NEW;
-	run;*/
+	run;
 %mend;
 
 %macro test();	
@@ -36,7 +36,7 @@ libname ahrf_hrr "\\sas1_alt\MCD-SPVR\data\NO_PII\HRR\workspace";
 
 
 /* Macro vars to change*/
-%let msa = out.msa_2012_02nov2019;
+%let msa = out.msa_2012;
 
 %let fname = %sysfunc(date(),date9.)_t%sysfunc(compress(%sysfunc(time(),time8.),:.));
 %let space_name = %sysfunc(date(),date9.);

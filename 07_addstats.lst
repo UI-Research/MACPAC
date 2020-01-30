@@ -1,15 +1,58 @@
-                                          The SAS System      11:38 Wednesday, November 6, 2019   1
+                                      The SAS System   21:25 Tuesday, January 28, 2020   1
 
-                                                  spd_      res_spd_
-                              Obs     st_msa      p99_5      p99_5
+                             Column Name
+                             ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                             PREM_MDCD_PYMT_AMT_HMO          
+                             PREM_MDCD_PYMT_AMT_PHP          
+                             PREM_MDCD_PYMT_AMT_PCCM         
+                             PREM_MDCD_PYMT_AMT_PHI          
+                                      The SAS System   21:25 Tuesday, January 28, 2020   2
 
-                                1    AK-11260    161653    138819.48
-                                2    AK-21820    214761    189804.54
-                                3    AK-XXXXX    187391    167783.98
-                                4    AL-11500     74366     59203.81
-                                5    AL-12220     72817     57721.72
-                                6    AL-13820     86731     64656.99
-                                7    AL-17980     66847     53965.53
-                                8    AL-19300     77687     62256.71
-                                9    AL-19460     91556     70560.82
-                               10    AL-20020     71871     60465.02
+                             Column Name
+                             ƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒƒ
+                             FFS_PYMT_AMT_01                 
+                             FFS_PYMT_AMT_02                 
+                             FFS_PYMT_AMT_04                 
+                             FFS_PYMT_AMT_05                 
+                             FFS_PYMT_AMT_07                 
+                             FFS_PYMT_AMT_08                 
+                             FFS_PYMT_AMT_09                 
+                             FFS_PYMT_AMT_10                 
+                             FFS_PYMT_AMT_11                 
+                             FFS_PYMT_AMT_12                 
+                             FFS_PYMT_AMT_13                 
+                             FFS_PYMT_AMT_15                 
+                             FFS_PYMT_AMT_16                 
+                             FFS_PYMT_AMT_19                 
+                             FFS_PYMT_AMT_24                 
+                             FFS_PYMT_AMT_25                 
+                             FFS_PYMT_AMT_26                 
+                             FFS_PYMT_AMT_30                 
+                             FFS_PYMT_AMT_31                 
+                             FFS_PYMT_AMT_33                 
+                             FFS_PYMT_AMT_34                 
+                             FFS_PYMT_AMT_35                 
+                             FFS_PYMT_AMT_36                 
+                             FFS_PYMT_AMT_37                 
+                             FFS_PYMT_AMT_38                 
+                             FFS_PYMT_AMT_39                 
+                             FFS_PYMT_AMT_51                 
+                             FFS_PYMT_AMT_52                 
+                             FFS_PYMT_AMT_53                 
+                             FFS_PYMT_AMT_54                 
+                             FFS_PYMT_AMT_99                 
+                                      The SAS System   21:25 Tuesday, January 28, 2020   3
+
+                                                         res_spd_
+                        Obs     st_msa     spd_p99_5      p99_5
+
+                          1    AK-11260    163235.88    138819.48
+                          2    AK-21820    218363.89    189804.54
+                          3    AK-XXXXX    191030.46    167783.98
+                          4    AL-11500     85249.70     59203.81
+                          5    AL-12220     74332.86     57721.72
+                          6    AL-13820    101320.06     64656.99
+                          7    AL-17980     69007.21     53965.53
+                          8    AL-19300     90314.30     62256.71
+                          9    AL-19460    103513.37     70560.82
+                         10    AL-20020     75530.36     60453.86

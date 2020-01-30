@@ -1,0 +1,85 @@
+1                                                          The SAS System                             11:32 Monday, January 13, 2020
+
+NOTE: Unable to open SASUSER.REGSTRY. WORK.REGSTRY will be opened instead.
+NOTE: All registry changes will be lost at the end of the session.
+
+WARNING: Unable to copy SASUSER registry to WORK registry. Because of this, you will not see registry customizations during this 
+         session.
+NOTE: Unable to open SASUSER.PROFILE. WORK.PROFILE will be opened instead.
+NOTE: All profile changes will be lost at the end of the session.
+NOTE: Copyright (c) 2016 by SAS Institute Inc., Cary, NC, USA. 
+NOTE: SAS (r) Proprietary Software 9.4 (TS1M6) 
+      Licensed to THE URBAN INSTITUTE, Site 70113200.
+NOTE: This session is executing on the X64_ES08R2  platform.
+
+
+
+NOTE: Analytical products:
+      
+      SAS/STAT 15.1
+
+NOTE: Additional host information:
+
+ X64_ES08R2 WIN 6.1.7601 Service Pack 1 Server
+
+NOTE: SAS initialization used:
+      real time           1.95 seconds
+      cpu time            0.28 seconds
+      
+
+NOTE: AUTOEXEC processing beginning; file is C:\Program 
+      Files\SASHome2\SASFoundation\9.4\autoexec.sas.
+
+
+NOTE: AUTOEXEC processing completed.
+
+1          /******************************************************************************
+1        ! *************************************/
+2          /*	Purpose: Create MSA-level CDPS flag population analytic files - no
+2        ! MASBOE/Age category differentiators	
+3          /*	Project: MACPAC Spending Variations
+4          /*	Author: Leah Durbak
+5          /*	Notes:
+6          /*		1) Collapse macros for easier manipulation
+7          Check:
+8          •	Implement new managed care definition – large implication for Utah - should
+8        ! be fixed from base population file
+9          •	Fix Oregon geographies -- no data - should be fixed from base population file
+10         •	34 “ROS” geographies have no data (seems unlikely), as well as around 15 MSA
+10       ! areas (8 of which are in Oregon - we know what’s going on there) - should be
+10       ! fixed from base population file
+11         To add:
+2                                     The SAS System        11:32 Monday, January 13, 2020
+
+12         •	Exclude those with partial benefits & add partial benefit months flag - done
+13         •	Add Medicare wage index data - done
+14         •	Add comorbidity elements
+15         •	Fix comorbid missing element
+16         /******************************************************************************
+16       ! *************************************/
+17         %let cdps_diag = psyl;
+18         %let comorbid_cond = %str(carel=1 or dia2l=1 or prgcmp=1 or canl=1 or pula=1);
+19         
+20         /*Options to change*/
+21         %macro prod();
+22         	options obs=MAX cleanup;
+23         	/*Log*/
+24         	proc printto print="P:\MCD-SPVR\log\09_cdps_pops_&cdps_diag._&sysdate..lst"
+25         	               log="P:\MCD-SPVR\log\09_cdps_pops_&cdps_diag._&sysdate..log"
+25       ! NEW;
+26         	run;
+27         %mend prod;
+28         
+29         %macro test();	
+30         	options obs=1000;
+31         	/*Log*/
+32         	proc printto;run;
+33         %mend;
+34         
+35         %prod();
+
+NOTE: SAS Institute Inc., SAS Campus Drive, Cary, NC USA 27513-2414
+NOTE: The SAS System used:
+      real time           2:04:38.03
+      cpu time            1:42:07.96
+      

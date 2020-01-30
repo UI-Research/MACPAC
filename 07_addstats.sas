@@ -17,7 +17,7 @@
 %mend;
 
 %macro test();	
-	options obs=100000;
+	options obs=MAX;
 	/*Log*/
 	proc printto;run;
 %mend;
@@ -34,7 +34,7 @@ libname library "P:\MCD-SPVR\data\workspace"; * includes format file;
 libname cpds_wt "P:\MCD-SPVR\data\NO_PII\CDPS_WEIGHTS";
 libname scores  "P:\MCD-SPVR\data\workspace\CDPS_SCORES";
 libname ahrf_hrr "\\sas1_alt\MCD-SPVR\data\NO_PII\HRR\workspace";
-
+libname spd_adj "\\sas1_alt\MCD-SPVR\Analysis_PartII\CMS64_ADJ";
 
 /* Macro vars to change*/
 %let fname = %sysfunc(date(),date9.)_t%sysfunc(compress(%sysfunc(time(),time8.),:.));
@@ -48,11 +48,67 @@ libname ahrf_hrr "\\sas1_alt\MCD-SPVR\data\NO_PII\HRR\workspace";
 /*********************************/
 /*Get statistics and add to table*/
 /*********************************/
-%let indata=space.temp_max_cdpsscores; /*from 05_addcdps*/
+%let indata=space.pop_cdps_scores; /*from 05_addcdps*/
 %let indata_collapsed=space.temp_msa_arhfvars_wageind;
 %let orig_data=space.temp_ahrf_msa_xwalk;
 %let collapsevar=st_msa;
-%let outdata=out.msa_2012_02nov2019;
+%let outdata=out.msa_2012;
+
+/*add spending adjustments to MAX TOS spending elements*/
+proc sql;
+ 	select name into :prem_cols separated by ", "
+	from dictionary.columns
+	where libname="DATA" and memname="MAXDATA_PS_2012" and name like "PREM_MDCD_PYMT_AMT_%";
+quit;
+proc sql;
+	select name into :ffs_cols separated by ", "
+	from dictionary.columns
+	where libname="DATA" and memname="MAXDATA_PS_2012" and name like "FFS_PYMT_AMT_%";
+quit;
+
+data format_spd_adj;
+	set spd_adj.final_factors_v01272020 ;
+	format MAX_TOS z2.;
+run;
+
+proc transpose data=format_spd_adj out=spd_adj prefix=adj_var;
+	by state;
+	id MAX_TOS;
+	var MAX_TOS_CMS64_FACTOR;
+quit;
+
+proc sql;
+	create table temp (drop=state _NAME_ TOT_MDCD_PYMT_AMT) as
+	select *
+	from &indata dat left join spd_adj adj
+	on dat.state_cd = adj.state;
+quit;
+
+data recode_array (drop=FFS_PYMT_AMT: adj_var: spd_adj_:);
+	set temp;
+	label TOT_MDCD_PYMT_AMT = "Adjusted total Medicaid payment amount";
+	/*recode prem payment vars to work in array*/
+	FFS_PYMT_AMT_20 = PREM_MDCD_PYMT_AMT_HMO;
+	FFS_PYMT_AMT_21 = PREM_MDCD_PYMT_AMT_PHP;
+	FFS_PYMT_AMT_22 = PREM_MDCD_PYMT_AMT_PCCM;
+	FFS_PYMT_AMT_23 = PREM_MDCD_PYMT_AMT_PHI;
+	array spd_vars(54) FFS_PYMT_AMT_01-FFS_PYMT_AMT_54;
+	array adj_vars(54) adj_var01-adj_var54;
+	array adj_spd(54) spd_adj_01-spd_adj_54;
+	do i=1 to 54;
+		adj_spd[i]=spd_vars[i]*adj_vars[i];
+	end;
+	drop i;
+	TOT_MDCD_PYMT_AMT = sum(of spd_adj_:);
+run;
+
+proc sql;
+	create table recode_array_dist as
+	select *
+	from (select distinct * from recode_array);
+quit;
+
+%let indata=recode_array_dist;
 
 proc univariate data=&indata. noprint;
 	class age_cell &collapsevar. ;

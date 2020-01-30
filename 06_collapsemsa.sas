@@ -16,7 +16,7 @@
 %mend;
 
 %macro test();	
-	options obs=MAX;
+	options obs=1000;
 	/*Log*/
 	proc printto;run;
 %mend;
@@ -35,7 +35,7 @@ libname scores  "P:\MCD-SPVR\data\workspace\CDPS_SCORES";
 libname ahrf_hrr "\\sas1_alt\MCD-SPVR\data\NO_PII\HRR\workspace";
 
 /* Macro vars to change*/
-%let indata=space.temp_max_cdpsscores; 
+%let indata=space.pop_cdps_scores; 
 %let outdata= space.temp_msa_arhfvars_wageind;
 
 %let fname = %sysfunc(date(),date9.)_t%sysfunc(compress(%sysfunc(time(),time8.),:.));
@@ -50,16 +50,27 @@ proc sql;
 quit;
 */
 
-/***************************/
-/*Collapse to specified var*/
-/***************************/
-
+/******************************/
+/*Collapse to specified st msa*/
+/******************************/
+proc sql;
+ 	select "sum("||name||") as "||catt(name,"_tot") into :sum_prem_cols separated by ", "
+	from dictionary.columns 
+	where libname="DATA" and memname="MAXDATA_PS_2012" and name like "PREM_MDCD_PYMT_AMT_%";
+quit;
+proc sql;
+	select "sum("||name||") as "||catt(name,"_tot") into :sum_ffs_cols separated by ", "
+	from dictionary.columns
+	where libname="DATA" and memname="MAXDATA_PS_2012" and name like "FFS_PYMT_AMT_%";
+quit;
 proc sql;
 create table msa_collapse as
 	select year, age_cell, age_cat, st_msa, dis_cat, dual_cat, foster_cat, ltss_cat, mc_cat,
 		case when substr(st_msa,4) = "XXXXX" then "Non-metro area"
 			else cbsatitle
 		end as cbsatitle_fx, 
+	&sum_ffs_cols.,
+	&sum_prem_cols.,
 	sum(partial_benf_mon) as partial_benf_mon, 
 	sum(TOT_MDCD_PYMT_AMT) as mcd_spd,
 	sum(mo_dual) as dual_mon, 
@@ -175,9 +186,6 @@ proc sql;
     on msa.st_msa = wag.clms_st_msa;
 quit;
 
-proc sql;
-	select sum(cell_n)
-	from space.temp_msa_arhfvars_wageind 
-	where substr(st_msa,1,2) ="RI";
-quit;
-	proc printto;run;
+proc print data=space.temp_msa_arhfvars_wageind (obs=10);run;
+proc means data=space.temp_msa_arhvars_wageind;run;
+proc printto;run;
